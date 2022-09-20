@@ -30,8 +30,6 @@ main:
     lea rsi, [num]
     call scanf
 
-    
-
     xor eax,eax
     lea rdi, [msgs]
     call printf
@@ -46,7 +44,7 @@ main:
     call printf
 
     xor eax, eax
-    lea rdi, [num] 
+    mov rdi, [num] 
     call printf
 
     xor eax, eax
