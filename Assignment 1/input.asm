@@ -8,7 +8,7 @@ section .data
     msgos: db "The string you have entered is: ",0
     msgoi: db "The number you have entered is: ",0
     integ: db "%d",0
-    integout: db  "%d",10,0
+    integout: db "%d",10,0
     strng: db "%s",0
     strngout: db "%s",10,0
     stringvar times 100 db 0
