@@ -46,7 +46,7 @@ main:
 
     xor eax, eax
     lea rdi, [integout]
-    mov edx, [num] 
+    mov rsi, [num] 
     call printf
 
     ; xor eax, eax
