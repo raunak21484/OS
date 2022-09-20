@@ -44,7 +44,7 @@ main:
     call printf
 
     xor eax, eax
-    mov rdi, [num] 
+    mov edx, [num] 
     call printf
 
     xor eax, eax
