@@ -16,7 +16,8 @@ exit(1);;
 printf("hello, I am child (pid:%d)\n", (int) getpid());;
 } else {
 // parent goes down this path (main);
-printf("hello, I am parent of %d (pid:%d)\n",rc, (int) getpid());
+    int wc = wait(NULL);
+printf("hello, I am parent of %d, (wd:%d) (pid:%d)\n",rc,wc, (int) getpid());
 }
 return 0;
 }
