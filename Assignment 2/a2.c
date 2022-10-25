@@ -45,12 +45,12 @@ char* delim(char* input){
     return input2;
 }
 
-//char* getPWD(){
-//    char* buffer = NULL;
-//    int size = 0;
-//    getcwd(buffer,size);
-//    return buffer;
-//}
+char* getPWD(){
+    char* buffer = NULL;
+    int size = 0;
+    getcwd(buffer,size);
+    return buffer;
+}
 void shell_loop(){
     while(1) {
         printf("$ ");
@@ -62,9 +62,9 @@ void shell_loop(){
         else if (strcmp(s0, "exit") == 0) {free(s0); break; }
         else if(strcmp(s0,"cd")==0){}
         else if(strcmp(s0,"pwd")==0){
-//            char * cwd = getPWD();
-//            printf("%s",cwd);
-//            free(cwd);
+            char * cwd = getPWD();
+            printf("%s",cwd);
+            free(cwd);
         }
         else if(strcmp(s0,"echo")==0){ echo(segment);}
         else{printf("Segment[0] is %s!\n",segment[0]);printf("Command Not Found!\n");}
