@@ -20,7 +20,7 @@ char **getInput(){
     for(int i=0;i<c;i++){
         sizes[i] =0 ;
     }
-    int ptr = 0,sp=0;
+    int sp=0;
     while(line[ptr]!='\0'){
         if(line[ptr]=='\n' || line[ptr]==' ' || line[ptr] == '\t'){
             sp++;
