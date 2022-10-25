@@ -41,20 +41,20 @@ void echo(char** segment){
     }
 }
 char* delim(char* input){
-    input = strtok(input,"\n");
-    return input;
+    char *input2 = strtok(input,"\n");
+    return input2;
 }
 void shell_loop(){
     while(1) {
         printf("$ ");
         char **segment = getInput();
         int ptr = 0;
-
+        char* s0 = delim(segment[0]);
         if (segment[0]==NULL) {continue;}
-        else if (strcmp(delim(segment[0]), "exit") == 0) { break; }
-        else if(strcmp(segment[0],"cd")==0 || strcmp(segment[0],"cd\n")==0){}
-        else if(strcmp(segment[0],"pwd")==0|| strcmp(segment[0],"pwd\n")==0){printf("hiii");}
-        else if(strcmp(segment[0],"echo")==0 || strcmp(segment[0],"echo\n")==0){ echo(segment);}
+        else if (strcmp(s0, "exit") == 0) { break; }
+        else if(strcmp(s0,"cd")==0){}
+        else if(strcmp(s0,"pwd")==0){printf("hiii");}
+        else if(strcmp(s0,"echo")==0){ echo(segment);}
         else{printf("Segment[0] is %s!\n",segment[0]);printf("Command Not Found!\n");continue;}
     }
 }
