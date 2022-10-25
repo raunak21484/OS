@@ -53,13 +53,13 @@ void executing(char **args)
     }
     else if (strcmp(args[0], "pwd"))
     {
-        if (strcmp(args[1], "-P") == 0)
+        if (args[1]!=NULL && strcmp(args[1], "-L") == 0)
         {
             char ss[400];
             printf("%s\n", getcwd(ss, 400));
         }
 
-        else if (strcmp(args[1], "") == 0)
+        else if (args[1]==NULL)
         {
             char ss[400];
             printf("%s\n", getcwd(ss, 400));
