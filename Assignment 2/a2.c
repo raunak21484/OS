@@ -35,15 +35,23 @@ void echo(char** segment){
             ptr = 2;
         }
     }
-    int marking = -1;
+    int marking = -1, dollarmarking = -1;
     while(segment[ptr]!=NULL){
         int ptr2 = 0;
-        marking = -1;
+        marking = -1;dollarmarking=-1;
         while(segment[ptr][ptr2]!='\0'){
             if(segment[ptr][ptr2]=='\\'){
                 if(segment[ptr][ptr2+1]=='\\' && marking!= ptr2){
                     marking = ptr2+1;
                     printf("%c",'\\');}
+                ptr2++;
+                continue;
+            }
+            if(segment[ptr][ptr2]=='$'){
+                if(segment[ptr][ptr2+1]=='$' && dollarmarking!=ptr2){
+                    dollarmarking = ptr2+1;
+                    printf("%d",(int)getpid())
+                }
                 ptr2++;
                 continue;
             }
