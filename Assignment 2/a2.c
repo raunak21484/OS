@@ -101,7 +101,7 @@ void shell_loop(){
         //char* s0 = segment[0];
         if (segment[0]==NULL) {}
         else if (strcmp(s0, "exit") == 0) {free(s0); break; }
-        else if(strcmp(s0,"cd")==0){}
+        else if(strcmp(s0,"cd")==0){ changeDir(segment);}
         else if(strcmp(s0,"pwd")==0){
             char * cwd = getPWD(segment);
             printf("%s\n",cwd);
