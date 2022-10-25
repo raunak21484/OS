@@ -25,7 +25,7 @@ char **getInput(){
     return tokens;
 }
 void echo(char** segment){
-    int ptr =0 ;
+    int ptr =1;
     while(segment[ptr]!=NULL){
         int ptr2 = 0;
         while(segment[ptr][ptr2]!='\0'){
@@ -46,7 +46,7 @@ void shell_loop(){
         else if (strcmp(segment[0], "exit") == 0) { break; }
         else if(strcmp(segment[0],"cd")==0){}
         else if(strcmp(segment[0],"pwd")==0){}
-        else if(strcmp(segment[0],"echo")==0){}
+        else if(strcmp(segment[0],"echo")==0){ echo(segment);}
         else{printf("Command Not Found!\n");continue;}
     }
 }
