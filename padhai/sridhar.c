@@ -32,24 +32,60 @@ char **inpt()
 
 void executing(char **args)
 {
-    pid_t pid = fork();
-    if (pid < 0)
+    if (strcmp(args[0], "cd"))
     {
-        printf("Fork failed\n");
-        exit(1);
+        if (strcmp(args[1], ".."))
+        {
+            chdir("..");
+        }
+        else if (strcmp(args[1], "") == 0 || strcmp(args[1], "~") == 0)
+        {
+            chdir(getenv("HOME"));
+        }
+        else if (strcmp(args[1], "-L") == 0)
+        {
+            chdir(args[2]);
+        }
+        else if (strcmp(args[1], "-P") == 0)
+        {
+            chdir(args[2]);
+        }
     }
-    else if (pid == 0)
+    else if (strcmp(args[0], "pwd"))
     {
-        execvp(args[0], args);
-        printf("there is some error");
-        exit(1);
-    }
-    else
-    {
-        wait(NULL);
-    }
-}
+        if (strcmp(args[1], "-P") == 0)
+        {
+            char ss[400];
+            printf("%s\n", getcwd(ss, 400));
+        }
 
+        else if (strcmp(args[1], "") == 0)
+        {
+            char ss[400];
+            printf("%s\n", getcwd(ss, 400));
+        }
+    }
+    else if (strcmp(args[0], "echo"))
+    {
+    }
+
+    // pid_t pid = fork();
+    // if (pid < 0)
+    // {
+    //     printf("Fork failed\n");
+    //     exit(1);
+    // }
+    // else if (pid == 0)
+    // {
+    //     execvp(args[0], args);
+    //     printf("there is some error");
+    //     exit(1);
+    // }
+    // else
+    // {
+    //     wait(NULL);
+    // }
+}
 int main()
 {
     printf("---------------Sridhar's Shell-----------------\n");
@@ -58,6 +94,7 @@ int main()
 
         printf("$ ");
         char **split_input = inpt();
+        //char *input = strtok(split_input, "\n");
         if (split_input[0] != NULL)
         {
             executing(split_input);
