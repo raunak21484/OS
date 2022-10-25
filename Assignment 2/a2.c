@@ -33,12 +33,15 @@ void echo(char** segment){
             ptr = 2;
         }
     }
+    int marking = 0;
     while(segment[ptr]!=NULL){
         int ptr2 = 0;
 
         while(segment[ptr][ptr2]!='\0'){
             if(segment[ptr][ptr2]=='\\'){
-                if(segment[ptr][ptr2+1]=='\\'){printf("%c",'\\');}
+                if(segment[ptr][ptr2+1]=='\\' && marking!= ptr2){
+                    marking = ptr2;
+                    printf("%c",'\\');}
                 ptr2++;
                 continue;
             }
