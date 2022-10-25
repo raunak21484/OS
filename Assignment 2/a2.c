@@ -33,10 +33,10 @@ void echo(char** segment){
             ptr = 2;
         }
     }
-    int marking = 0;
+    int marking = -1;
     while(segment[ptr]!=NULL){
         int ptr2 = 0;
-
+        marking = -1;
         while(segment[ptr][ptr2]!='\0'){
             if(segment[ptr][ptr2]=='\\'){
                 if(segment[ptr][ptr2+1]=='\\' && marking!= ptr2){
