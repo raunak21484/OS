@@ -29,7 +29,7 @@ void echo(char** segment){
     while(segment[ptr]!=NULL){
         int ptr2 = 0;
         while(segment[ptr][ptr2]!='\0'){
-            if(segment[ptr][ptr2]=="\\"){
+            if(segment[ptr][ptr2]=='\\'){
                 ptr2++;
                 continue;
             }
