@@ -33,6 +33,8 @@ void echo(char** segment){
             ptr2++;
         }
         printf(" ");
+        ptr++;
+        ptr++;
     }
     printf("\n");
 }
