@@ -26,10 +26,17 @@ char **getInput(){
     return tokens;
 }
 void shell_loop(){
-    printf("$ ");
-    char** segment = getInput();
-    int ptr =0;
-    if(strcmp(segment[0],"exit")!=0){shell_loop();}
+    while(1) {
+        printf("$ ");
+        char **segment = getInput();
+        int ptr = 0;
+
+        if (segment[0]==NULL) {continue;}
+        else if (strcmp(segment[0], "exit") == 0) { break; }
+        else if(strcmp(segment[0],"cd")==0){}
+        else if(strcmp(segment[0],"pwd")==0){}
+        else{printf("Command Not Found!\n");continue;}
+    }
 }
 int main(int argc, char* argv[]){
     shell_loop();
