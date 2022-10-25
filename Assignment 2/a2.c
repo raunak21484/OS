@@ -49,7 +49,7 @@ void shell_loop(){
         if (segment[0]==NULL) {continue;}
         else if (strcmp(segment[0], "exit") == 0) { break; }
         else if(strcmp(segment[0],"cd")==0){}
-        else if(strcmp(segment[0],"pwd")==0){}
+        else if(strcmp(segment[0],"pwd")==0){printf("hiii")}
         else if(strcmp(segment[0],"echo")==0){ echo(segment);}
         else{printf("Command Not Found!\n");continue;}
     }
