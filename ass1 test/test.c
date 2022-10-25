@@ -3,7 +3,7 @@
 void NULLIFY2D(char** array){
     int ptr = 0;
     while(array[ptr]!=NULL){
-        free(arr[ptr]);
+        free(array[ptr]);
         ptr++;
     }
     free(array);
