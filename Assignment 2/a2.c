@@ -75,7 +75,6 @@ void shell_loop(){
         }
         else if(strcmp(s0,"echo")==0){ echo(segment);}
         else{printf("Segment[0] is %s!\n",segment[0]);printf("Command Not Found!\n");}
-        free(s0);
         NULLIFY2D(&segment);
     }
 }
