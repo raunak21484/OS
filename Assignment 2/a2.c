@@ -98,7 +98,7 @@ void changeDir(char ** segment){
         c++;
     }
     char * temp = delim(newDir);
-    int fin = changeDir(temp);
+    int fin = chdir(temp);
     if(fin!=0){
         printf("Could not find directory: %s",fin);
     }
