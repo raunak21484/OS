@@ -49,7 +49,8 @@ void shell_loop(){
         printf("$ ");
         char **segment = getInput();
         int ptr = 0;
-        char* s0 = delim(segment[0]);
+        //char* s0 = delim(segment[0]);
+        char* s0 = segment[0];
         if (segment[0]==NULL) {continue;}
         else if (strcmp(s0, "exit") == 0) { break; }
         else if(strcmp(s0,"cd")==0){}
