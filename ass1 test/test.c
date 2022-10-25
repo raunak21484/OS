@@ -24,7 +24,7 @@ int main(){
     if(chararray!=NULL){
         printf("\n %d %d\n",(chararray[0]==NULL),(chararray[1]==NULL));
     }
-    NULLIFY2D(chararray);
+    NULLIFY2D(&chararray);
     printf("%d",(chararray==NULL));
     if(chararray!=NULL){
         printf("\n %d %d\n",(chararray[0]==NULL),(chararray[1]==NULL));
