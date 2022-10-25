@@ -40,12 +40,9 @@ void echo(char** segment){
         if(segment[ptr]!=NULL){printf(" ");}
     }
 }
-void stripEnd(char* string){
-    int c = 0;
-    while(string[c]!='\0'){
-        c++;
-    }
-    string[c-1] = '\0';
+char* delim(char* input){
+    input = strtok(input,"\n");
+    return input;
 }
 void shell_loop(){
     while(1) {
@@ -54,7 +51,7 @@ void shell_loop(){
         int ptr = 0;
 
         if (segment[0]==NULL) {continue;}
-        else if (strcmp(segment[0], "exit") == 0 || strcmp(segment[0], "exit\n") == 0) { break; }
+        else if (strcmp(delim(segment[0]), "exit") == 0) == 0) { break; }
         else if(strcmp(segment[0],"cd")==0 || strcmp(segment[0],"cd\n")==0){}
         else if(strcmp(segment[0],"pwd")==0|| strcmp(segment[0],"pwd\n")==0){printf("hiii");}
         else if(strcmp(segment[0],"echo")==0 || strcmp(segment[0],"echo\n")==0){ echo(segment);}
