@@ -9,10 +9,7 @@ void NULLIFY2D(char** array){
     free(array);
 }
 int main(){
-    int x= 5, y = 10;
-    int *p = &x;
-    printf("p is %p",&p);
-    int *p = &y;
+
     char ** chararray = (char**)malloc(3*sizeof(char*));
     chararray[0] = (char*)malloc(3*sizeof(char));
     chararray[0][0]= 'a';
