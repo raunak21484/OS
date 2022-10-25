@@ -3,6 +3,8 @@
 #include<unistd.h>
 #include<stdlib.h>
 #include<sys/wait.h>
+#include<libgen.h>
+
 char **getInput(){
     char *line = NULL;
     size_t l = 0;
