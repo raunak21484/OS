@@ -49,14 +49,15 @@ void shell_loop(){
         printf("$ ");
         char **segment = getInput();
         int ptr = 0;
-        //char* s0 = delim(segment[0]);
-        char* s0 = segment[0];
+        char* s0 = delim(segment[0]);
+        //char* s0 = segment[0];
         if (segment[0]==NULL) {continue;}
         else if (strcmp(s0, "exit") == 0) { break; }
         else if(strcmp(s0,"cd")==0){}
         else if(strcmp(s0,"pwd")==0){printf("hiii");}
         else if(strcmp(s0,"echo")==0){ echo(segment);}
         else{printf("Segment[0] is %s!\n",segment[0]);printf("Command Not Found!\n");continue;}
+        free(s0);
     }
 }
 int main(int argc, char* argv[]){
