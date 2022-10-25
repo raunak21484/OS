@@ -16,12 +16,11 @@ char **getInput(){
 
     while (tokentemp!=NULL) {
         tokens[len++] = tokentemp;
-
         if (len >= cap) {
             cap*=(int)1.75;
             tokens = realloc(tokens, cap * sizeof(char*));
         }
-        tokentemp = strtok(NULL, delimiters);
+        tokentemp = strtok(NULL, delim);
     }
     tokens[len] = NULL;
     return tokens;
