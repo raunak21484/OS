@@ -85,7 +85,7 @@ void changeDir(char ** segment){
     char * temp = delim(segment[1]);
     chdir(temp);
     printf("Changed to %s",temp);
-    free(temp);
+    //free(temp);
 }
 char* getPWD(){
     char* buffer = NULL;
