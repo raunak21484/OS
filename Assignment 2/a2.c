@@ -47,9 +47,8 @@ char* delim(char* input){
 
 char* getPWD(){
     char* buffer = NULL;
-    int size = 0;
-    getcwd(buffer,size);
-    return buffer;
+    size_t size = 0;
+    return getcwd(buffer,size);
 }
 void shell_loop(){
     while(1) {
