@@ -77,6 +77,9 @@ char* getPWD(){
 }
 void shell_loop(){
     while(1) {
+        char * x = getPWD();
+        printf("< %s >",basename(x));
+        free(x);
         printf("$ ");
         char **segment = getInput();
         int ptr = 0;
