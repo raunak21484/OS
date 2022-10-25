@@ -31,7 +31,10 @@ char **getInput(){
         ptr++;
 
     }
-    printf("PLS");
+    printf("Sizes: ");
+    for(int i=0;i<c;i++){
+        printf("%d\n",sizes[i]);
+    }
     char** segment = (char**) malloc(sizeof(char*)*(c+1));
     for(int i=0;i<c;i++){
         segment[i] = (char*)malloc(sizeof(char) * sizes[i]);
