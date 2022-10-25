@@ -52,6 +52,7 @@ void shell_loop(){
 int main(int argc, char* argv[]){
     shell_loop();
     char** segment = getInput();
+    printf("hi");
 //    int ptr =0;
 //    while(segment[ptr][0]!='0'){
 //        printf("%s\n",segment[ptr]);
