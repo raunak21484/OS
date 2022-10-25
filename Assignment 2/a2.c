@@ -81,6 +81,7 @@ void changeDir(char ** segment){
             c++;
             tptr++;
         }
+        ptr1++;
         c++;
     }
     char* newDir = (char*)malloc((c+1)*sizeof(char));
@@ -94,6 +95,7 @@ void changeDir(char ** segment){
             c++;
             tptr++;
         }
+        ptr1++;
         newDir[c] = ' ';
         c++;
     }
