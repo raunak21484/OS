@@ -44,6 +44,7 @@ char* delim(char* input){
     char *input2 = strtok(input,"\n");
     return input2;
 }
+
 void shell_loop(){
     while(1) {
         printf("$ ");
