@@ -26,12 +26,22 @@ char **getInput(){
 }
 void echo(char** segment){
     int ptr =1;
+    int EOL = 1;
+    if(segment[1] != NULL){
+        if(strcmp(segment[1],"-n")==0){
+            EOL = 0;
+        }
+    }
     while(segment[ptr]!=NULL){
         int ptr2 = 0;
+
         while(segment[ptr][ptr2]!='\0'){
             if(segment[ptr][ptr2]=='\\'){
                 ptr2++;
                 continue;
+            }
+            if(segment[ptr+1]==NULL && segment[ptr][ptr2]=='\n'){
+                ptr2++;
             }
             printf("%c",segment[ptr][ptr2]);
             ptr2++;
@@ -62,7 +72,7 @@ void shell_loop(){
         else if(strcmp(s0,"cd")==0){}
         else if(strcmp(s0,"pwd")==0){
             char * cwd = getPWD();
-            printf("%s",cwd);
+            printf("%s\n",cwd);
             free(cwd);
         }
         else if(strcmp(s0,"echo")==0){ echo(segment);}
