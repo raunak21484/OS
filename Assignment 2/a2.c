@@ -31,6 +31,7 @@ char **getInput(){
         ptr++;
 
     }
+    printf("PLS");
     char** segment = (char**) malloc(sizeof(char*)*(c+1));
     for(int i=0;i<c;i++){
         segment[i] = (char*)malloc(sizeof(char) * sizes[i]);
@@ -53,7 +54,6 @@ void shell_loop(){
 int main(int argc, char* argv[]){
     shell_loop();
     char** segment = getInput();
-    printf("hi");
     int ptr =0;
     while(segment[ptr][0]!='0'){
         printf("%s\n",segment[ptr]);
