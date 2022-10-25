@@ -5,52 +5,26 @@
 #include<sys/wait.h>
 char **getInput(){
     char *line = NULL;
-    size_t length = 0;
-    getline(&line,&length,stdin);
-    //printf("Your input of size %d, is %s",length,line);
-    int c= 0,ptr=0;
-    while(line[ptr]!='\0'){
-        if(line[ptr]=='\n'||line[ptr]==' '|| line[ptr] == '\t'){
-            c++;
-        }
-        ptr++;
-    }
+    size_t l = 0;
+    getline(&line,&l,stdin);
+    int cap = 16;
+    int len = 0;
+    char **tokens = malloc(sizeof(char*) *cap );
 
-    int *sizes =  (int*)malloc(sizeof(int )*c);
-    for(int i=0;i<c;i++){
-        sizes[i] =0 ;
-    }
-    int sp=0;
-    ptr = 0;
-    while(line[ptr]!='\0'){
-        if(line[ptr]=='\n' || line[ptr]==' ' || line[ptr] == '\t'){
-            sp++;
-            ptr++;
-            continue;
-        }
-        sizes[sp]++;
-        ptr++;
+    char *delim = " \t\r\n";
+    char *tokentemp = strtok(line, delim);
 
-    }
-    printf("Sizes: ");
-    for(int i=0;i<c;i++){
-        printf("%d\n",sizes[i]);
-    }
-    char** segment = (char**) malloc(sizeof(char*)*(c+1));
-    for(int i=0;i<c;i++){
-        segment[i] = (char*)malloc(sizeof(char) * sizes[i]);
-    }
-    ptr = 0;
-    for(int i=0;i<c;i++){
-        for(int j=0;j<sizes[i];j++){
-            segment[i][j] = line[ptr];
-            ptr++;
+    while (tokentemp!=NULL) {
+        tokens[len++] = tokentemp;
+
+        if (len >= cap) {
+            cap*=(int)1.75;
+            tokens = realloc(tokens, cap * sizeof(char*));
         }
+        tokentemp = strtok(NULL, delimiters);
     }
-    segment[c+1] = (char*)malloc(sizeof(char*));
-    segment[c+1][0] = '\0';
-    return segment;
-//    return NULL;
+    tokens[len] = NULL;
+    return tokens;
 }
 void shell_loop(){
 
