@@ -38,7 +38,7 @@ void echo(char** segment){
 
         while(segment[ptr][ptr2]!='\0'){
             if(segment[ptr][ptr2]=='\\'){
-                if(segment[ptr][ptr2+1]!=NULL && segment[ptr][ptr2+1]=='\\'){printf("\\");}
+                if(segment[ptr][ptr2+1]=='\\'){printf("\\");}
                 ptr2++;
                 continue;
             }
