@@ -46,7 +46,6 @@ void stripEnd(char* string){
         c++;
     }
     string[c-1] = '\0';
-    string
 }
 void shell_loop(){
     while(1) {
