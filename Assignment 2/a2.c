@@ -11,7 +11,7 @@ char **getInput(){
     int len = 0;
     char **tokens = malloc(sizeof(char*) *cap );
 
-    char *delim = " \t\r\n";
+    char *delim = " ";
     char *tokentemp = strtok(line, delim);
 
     while (tokentemp!=NULL) {
@@ -23,7 +23,14 @@ char **getInput(){
         tokentemp = strtok(NULL, delim);
     }
     tokens[len] = NULL;
+
     return tokens;
+}
+void echo(char** segment){
+    int ptr =0 ;
+    while(segment[ptr]!=NULL){
+        printf("%s ",)
+    }
 }
 void shell_loop(){
     while(1) {
@@ -35,11 +42,12 @@ void shell_loop(){
         else if (strcmp(segment[0], "exit") == 0) { break; }
         else if(strcmp(segment[0],"cd")==0){}
         else if(strcmp(segment[0],"pwd")==0){}
+        else if(strcmp(segment[0],"echo")==0){}
         else{printf("Command Not Found!\n");continue;}
     }
 }
 int main(int argc, char* argv[]){
-    shell_loop();
+    //shell_loop();
 
 return 0;
 }
