@@ -1,12 +1,12 @@
 #include<stdio.h>
 #include<stdlib.h>
-void NULLIFY2D(char** array){
+void NULLIFY2D(char*** array){
     int ptr = 0;
-    while(array[ptr]!=NULL){
-        free(array[ptr]);
+    while((*array)[ptr]!=NULL){
+        free((*array)[ptr]);
         ptr++;
     }
-    free(array);
+    free(*array);
 }
 int main(){
 
