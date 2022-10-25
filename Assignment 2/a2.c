@@ -85,7 +85,7 @@ void changeDir(char ** segment){
         c++;
     }
     if(c==0){
-        chdir("/");
+        chdir("/home");
         return;
     }
     char* newDir = (char*)malloc((c+1)*sizeof(char));
