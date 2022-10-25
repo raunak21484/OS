@@ -34,7 +34,6 @@ void echo(char** segment){
         }
         printf(" ");
         ptr++;
-        ptr++;
     }
     printf("\n");
 }
