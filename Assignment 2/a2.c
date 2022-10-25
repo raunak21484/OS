@@ -51,7 +51,7 @@ void shell_loop(){
         else if(strcmp(segment[0],"cd")==0){}
         else if(strcmp(segment[0],"pwd")==0){printf("hiii");}
         else if(strcmp(segment[0],"echo")==0){ echo(segment);}
-        else{printf("Segment[0] is %s",segment[0]);printf("Command Not Found!\n");continue;}
+        else{printf("Segment[0] is %s!\n",segment[0]);printf("Command Not Found!\n");continue;}
     }
 }
 int main(int argc, char* argv[]){
