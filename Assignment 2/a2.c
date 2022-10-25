@@ -40,7 +40,7 @@ void echo(char** segment){
         while(segment[ptr][ptr2]!='\0'){
             if(segment[ptr][ptr2]=='\\'){
                 if(segment[ptr][ptr2+1]=='\\' && marking!= ptr2){
-                    marking = ptr2;
+                    marking = ptr2+1;
                     printf("%c",'\\');}
                 ptr2++;
                 continue;
