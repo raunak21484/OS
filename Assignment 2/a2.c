@@ -52,12 +52,12 @@ void NULLIFY2D(char*** array){
     }
     free(*array);
 }
-char* getPWD(){
-    char* buffer = NULL;
-    int size = 0;
-    getcwd(buffer,size);
-    return buffer;
-}
+//char* getPWD(){
+//    char* buffer = NULL;
+//    int size = 0;
+//    getcwd(buffer,size);
+//    return buffer;
+//}
 void shell_loop(){
     while(1) {
         printf("$ ");
