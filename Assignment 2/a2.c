@@ -8,11 +8,12 @@ char **getInput(){
     size_t length = 0;
     getline(&line,&length,stdin);
     //printf("Your input of size %d, is %s",length,line);
-    int c= 0;
-    while(line[c]!='\0'){
-        if(line[c]=='\n'||line[c]==' '|| line[c] == '\t'){
+    int c= 0,ptr=0;
+    while(line[ptr]!='\0'){
+        if(line[ptr]=='\n'||line[ptr]==' '|| line[ptr] == '\t'){
             c++;
         }
+        ptr++;
     }
     printf("C = %d",c);
 //    int *sizes =  (int*)malloc(sizeof(int )*c);
