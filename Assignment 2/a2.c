@@ -72,7 +72,18 @@ char* delim(char* input){
     char *input2 = strtok(input,"\n");
     return input2;
 }
-
+void changeDir(char ** segment){
+//    int c =0,ptr1 =1;
+//    int tptr = 0;
+//    while(segment[ptr1]!=NULL){
+//        tptr = 0;
+//        while(segment[ptr1][tptr]!='\0'){
+//            c++;
+//            tptr++;
+//        }
+//    }
+    chdir(segment[1]);
+}
 char* getPWD(){
     char* buffer = NULL;
     size_t size = 0;
@@ -92,7 +103,7 @@ void shell_loop(){
         else if (strcmp(s0, "exit") == 0) {free(s0); break; }
         else if(strcmp(s0,"cd")==0){}
         else if(strcmp(s0,"pwd")==0){
-            char * cwd = getPWD();
+            char * cwd = getPWD(segment);
             printf("%s\n",cwd);
             free(cwd);
         }
