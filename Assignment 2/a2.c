@@ -14,6 +14,7 @@ char **getInput(){
             c++;
         }
     }
+    printf("C = %d",c);
     int *sizes =  (int*)malloc(sizeof(int )*c);
     for(int i=0;i<c;i++){
         sizes[i] =0 ;
