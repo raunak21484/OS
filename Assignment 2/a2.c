@@ -7,7 +7,7 @@ char **getInput(){
     char *line = NULL;
     size_t length = 0;
     getline(&line,&length,stdin);
-    printf("Your input of size %d, is %s",length/sizeof(char ),line);
+    printf("Your input of size %d, is %s",length,line);
     return NULL;
 }
 void shell_loop(){
