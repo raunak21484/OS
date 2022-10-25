@@ -36,8 +36,8 @@ void echo(char** segment){
             printf("%c",segment[ptr][ptr2]);
             ptr2++;
         }
-        printf(" ");
         ptr++;
+        if(segment[ptr]!=NULL){printf(" ");}
     }
 }
 void shell_loop(){
