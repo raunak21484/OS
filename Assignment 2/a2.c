@@ -52,7 +52,7 @@ void shell_loop(){
         //char* s0 = delim(segment[0]);
         char* s0 = segment[0];
         if (segment[0]==NULL) {continue;}
-        else if (strcmp(segment[0], "exit") == 0) { break; }
+        else if (strcmp(s0, "exit") == 0) { break; }
         else if(strcmp(s0,"cd")==0){}
         else if(strcmp(s0,"pwd")==0){printf("hiii");}
         else if(strcmp(s0,"echo")==0){ echo(segment);}
