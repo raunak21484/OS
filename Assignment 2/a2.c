@@ -33,7 +33,7 @@ char **getInput(){
     for(int i=0;i<c;i++){
         segment[i] = (char*)malloc(sizeof(char) * sizes[i]);
     }
-    int ptr = 0;
+    ptr = 0;
     for(int i=0;i<c;i++){
         for(int j=0;j<sizes[i];j++){
             segment[i][j] = line[ptr];
