@@ -51,7 +51,7 @@ void shell_loop(){
         int ptr = 0;
 
         if (segment[0]==NULL) {continue;}
-        else if (strcmp(delim(segment[0]), "exit") == 0) == 0) { break; }
+        else if (strcmp(delim(segment[0]), "exit") == 0) { break; }
         else if(strcmp(segment[0],"cd")==0 || strcmp(segment[0],"cd\n")==0){}
         else if(strcmp(segment[0],"pwd")==0|| strcmp(segment[0],"pwd\n")==0){printf("hiii");}
         else if(strcmp(segment[0],"echo")==0 || strcmp(segment[0],"echo\n")==0){ echo(segment);}
