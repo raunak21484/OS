@@ -1,6 +1,12 @@
 #include<stdio.h>
 
 int main(){
-    printf("test 123 \r test2");
+    int *p = (int*)malloc(sizeof(int)*100);
+    printf("location of p: %p",p);
+    free(p);
+    int *p = (int*)malloc(sizeof(int)*100);
+    printf("location of p: %p",p);
+    int *p = (int*)malloc(sizeof(int)*100);
+    printf("location of p: %p",p);
     return 0;
 }
