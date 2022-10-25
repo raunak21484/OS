@@ -84,6 +84,11 @@ void changeDir(char ** segment){
         ptr1++;
         c++;
     }
+    if(c==0){
+        chdir();
+        printf("Going to BASE BASE")
+        return;
+    }
     char* newDir = (char*)malloc((c+1)*sizeof(char));
     newDir[c] = '\0';
     ptr1 = 1;
