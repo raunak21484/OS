@@ -29,13 +29,16 @@ void echo(char** segment){
     while(segment[ptr]!=NULL){
         int ptr2 = 0;
         while(segment[ptr][ptr2]!='\0'){
+            if(segment[ptr][ptr2]=="\\"){
+                ptr2++;
+                continue;
+            }
             printf("%c",segment[ptr][ptr2]);
             ptr2++;
         }
         printf(" ");
         ptr++;
     }
-    printf("\n");
 }
 void shell_loop(){
     while(1) {
