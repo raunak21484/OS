@@ -69,9 +69,9 @@ void shell_loop(){
         else if (strcmp(s0, "exit") == 0) {free(s0); NULLIFY2D(&segment); break; }
         else if(strcmp(s0,"cd")==0){}
         else if(strcmp(s0,"pwd")==0){
-            char * cwd = getPWD();
-            printf("%s",cwd);
-            free(cwd);
+//            char * cwd = getPWD();
+//            printf("%s",cwd);
+//            free(cwd);
         }
         else if(strcmp(s0,"echo")==0){ echo(segment);}
         else{printf("Segment[0] is %s!\n",segment[0]);printf("Command Not Found!\n");}
