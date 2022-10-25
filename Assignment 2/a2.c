@@ -44,14 +44,7 @@ char* delim(char* input){
     char *input2 = strtok(input,"\n");
     return input2;
 }
-void NULLIFY2D(char*** array){
-    int ptr = 0;
-    while((*array)[ptr]!=NULL){
-        free((*array)[ptr]);
-        ptr++;
-    }
-    free(*array);
-}
+
 //char* getPWD(){
 //    char* buffer = NULL;
 //    int size = 0;
@@ -66,7 +59,7 @@ void shell_loop(){
         char* s0 = delim(segment[0]);
         //char* s0 = segment[0];
         if (segment[0]==NULL) {}
-        else if (strcmp(s0, "exit") == 0) {free(s0); NULLIFY2D(&segment); break; }
+        else if (strcmp(s0, "exit") == 0) {free(s0); break; }
         else if(strcmp(s0,"cd")==0){}
         else if(strcmp(s0,"pwd")==0){
 //            char * cwd = getPWD();
@@ -75,7 +68,8 @@ void shell_loop(){
         }
         else if(strcmp(s0,"echo")==0){ echo(segment);}
         else{printf("Segment[0] is %s!\n",segment[0]);printf("Command Not Found!\n");}
-        NULLIFY2D(&segment);
+        free(s0);
+
     }
 }
 int main(int argc, char* argv[]){
