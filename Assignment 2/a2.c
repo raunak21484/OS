@@ -28,8 +28,10 @@ void echo(char** segment){
     int ptr =1;
     int EOL = 1;
     if(segment[1] != NULL){
-        if(strcmp(segment[1],"-n")==0){
+        if(strcmp(segment[1],"-n")==0 || strcmp(segment[1],"-n\n")==0){
             EOL = 0;
+            ptr = 2;
+        }else if(strcmp(segment[1],"-E")==0 || strcmp(segment[1],"-E\n")==0){
             ptr = 2;
         }
     }
