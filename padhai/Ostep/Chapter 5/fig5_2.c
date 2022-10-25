@@ -19,11 +19,12 @@ printf("c1: x = %d",x);
 x++;
 printf("c2: x = %d",x);
 printf("hello, I am child (pid:%d)\n", (int) getpid());;
+
 } else {
     x++;
     printf("p1: x = %d",x);
 // parent goes down this path (main);
-    int wc = wait(NULL);
+    //int wc = wait(NULL);
     x++;
 printf("hello, I am parent of %d, (wd:%d) (pid:%d)\n x = %d",rc,wc, (int) getpid(),x);
 }
