@@ -26,15 +26,13 @@ char **getInput(){
     return tokens;
 }
 void shell_loop(){
-
+    printf("$ ");
+    char** segment = getInput();
+    int ptr =0;
+    if(strcmp(segment[0],"exit")!=0){shell_loop();}
 }
 int main(int argc, char* argv[]){
     shell_loop();
-    char** segment = getInput();
-    int ptr =0;
-    while(segment[ptr]!= NULL){
-        printf("%s\n",segment[ptr]);
-        ptr++;
-    }
+
 return 0;
 }
