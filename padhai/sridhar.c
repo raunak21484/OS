@@ -65,9 +65,9 @@ void executing(char **args)
             printf("%s\n", getcwd(ss, 400));
         }
     }
-    else if (strcmp(args[0], "echo"))
-    {
-    }
+    // else if (strcmp(args[0], "echo"))
+    // {
+    // }
 
     // pid_t pid = fork();
     // if (pid < 0)
@@ -94,7 +94,7 @@ int main()
 
         printf("$ ");
         char **split_input = inpt();
-        //char *input = strtok(split_input, "\n");
+        // char *input = strtok(split_input, "\n");
         if (split_input[0] != NULL)
         {
             executing(split_input);
