@@ -40,7 +40,7 @@ void echo(char** segment){
                 ptr2++;
                 continue;
             }
-            if(segment[ptr+1]==NULL && segment[ptr][ptr2]=='\n'){
+            if(segment[ptr+1]==NULL && segment[ptr][ptr2]=='\n' && EOL==0){
                 ptr2++;
             }
             printf("%c",segment[ptr][ptr2]);
