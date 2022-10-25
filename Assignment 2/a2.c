@@ -73,19 +73,40 @@ char* delim(char* input){
     return input2;
 }
 void changeDir(char ** segment){
-//    int c =0,ptr1 =1;
-//    int tptr = 0;
-//    while(segment[ptr1]!=NULL){
-//        tptr = 0;
-//        while(segment[ptr1][tptr]!='\0'){
-//            c++;
-//            tptr++;
-//        }
-//    }
-    char * temp = delim(segment[1]);
-    chdir(temp);
-    printf("Changed to %s",temp);
-    free(temp);
+    int c =0,ptr1 =1;
+    int tptr = 0;
+    while(segment[ptr1]!=NULL){
+        tptr = 0;
+        while(segment[ptr1][tptr]!='\0'){
+            c++;
+            tptr++;
+        }
+        c++;
+    }
+    char* newDir = (char*)malloc((c+1)*sizeof(char));
+    newDir[c] = '\0';
+    ptr1 = 1;
+    c=0;
+    while(segment[ptr1]!=0){
+        tptr = 0;
+        while(segment[ptr1][tptr1]!='\0'){
+            newDir[c] = segment[ptr1][tptr1];
+            c++;
+            tptr++;
+        }
+        newDir[c] = ' ';
+        c++;
+    }
+    char * temp = delim(newDir);
+    int fin = changeDir(temp);
+    if(fin!=0){
+        printf("Could not find directory: %s",fin);
+    }
+    printf("\n");
+//    char * temp = delim(segment[1]);
+//    chdir(temp);
+//    printf("Changed to %s",temp);
+//    free(temp);
 }
 char* getPWD(){
     char* buffer = NULL;
