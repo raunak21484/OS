@@ -29,7 +29,8 @@ char **getInput(){
 void echo(char** segment){
     int ptr =0 ;
     while(segment[ptr]!=NULL){
-        printf("%s ",)
+        //printf("%s ",)
+        ptr++;
     }
 }
 void shell_loop(){
