@@ -85,7 +85,7 @@ void changeDir(char ** segment){
         c++;
     }
     if(c==0){
-        chdir();
+        chdir("/");
         printf("Going to BASE BASE");
         return;
     }
