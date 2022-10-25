@@ -50,7 +50,7 @@ void echo(char** segment){
             if(segment[ptr][ptr2]=='$'){
                 if(segment[ptr][ptr2+1]=='$' && dollarmarking!=ptr2){
                     dollarmarking = ptr2+1;
-                    printf("%d",(int)getpid())
+                    printf("%d",(int)getpid());
                 }
                 ptr2++;
                 continue;
