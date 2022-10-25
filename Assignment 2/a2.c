@@ -18,9 +18,10 @@ char **getInput(){
 
     int *sizes =  (int*)malloc(sizeof(int )*c);
     for(int i=0;i<c;i++){
-        sizes[i] =1 ;
+        sizes[i] =0 ;
     }
     int sp=0;
+    ptr = 0;
     while(line[ptr]!='\0'){
         if(line[ptr]=='\n' || line[ptr]==' ' || line[ptr] == '\t'){
             sp++;
