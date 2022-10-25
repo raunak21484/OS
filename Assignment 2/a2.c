@@ -18,7 +18,7 @@ char **getInput(){
 
     int *sizes =  (int*)malloc(sizeof(int )*c);
     for(int i=0;i<c;i++){
-        sizes[i] =0 ;
+        sizes[i] =1 ;
     }
     int sp=0;
     while(line[ptr]!='\0'){
