@@ -85,6 +85,7 @@ void shell_loop(){
         free(x);
         printf("$ ");
         char **segment = getInput();
+        if(segment == NULL){}
         int ptr = 0;
         char* s0 = delim(segment[0]);
         //char* s0 = segment[0];
