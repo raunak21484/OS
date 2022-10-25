@@ -10,9 +10,7 @@ char **getInput(){
     int cap = 16;
     int len = 0;
     char **tokens = malloc(sizeof(char*) *cap );
-
-    char *delim = " ";
-    char *tokentemp = strtok(line, delim);
+    char *tokentemp = strtok(line, " ");
 
     while (tokentemp!=NULL) {
         tokens[len++] = tokentemp;
@@ -20,7 +18,7 @@ char **getInput(){
             cap*=(int)1.75;
             tokens = realloc(tokens, cap * sizeof(char*));
         }
-        tokentemp = strtok(NULL, delim);
+        tokentemp = strtok(NULL, " ");
     }
     tokens[len] = NULL;
 
@@ -29,9 +27,14 @@ char **getInput(){
 void echo(char** segment){
     int ptr =0 ;
     while(segment[ptr]!=NULL){
-        //printf("%s ",)
-        ptr++;
+        int ptr2 = 0;
+        while(segment[ptr][ptr2]!='\0'){
+            printf("%c",segment[ptr][ptr2]);
+            ptr2++;
+        }
+        printf(" ");
     }
+    printf("\n");
 }
 void shell_loop(){
     while(1) {
@@ -48,12 +51,12 @@ void shell_loop(){
     }
 }
 int main(int argc, char* argv[]){
-    //shell_loop();
-    char ** segment = getInput();
-    int ptr = 0;
-    while(segment[ptr]!=NULL){
-        printf("%s\n",segment[ptr]);
-        ptr++;
-    }
+    shell_loop();
+//    char ** segment = getInput();
+//    int ptr = 0;
+//    while(segment[ptr]!=NULL){
+//        printf("%s\n",segment[ptr]);
+//        ptr++;
+//    }
 return 0;
 }
