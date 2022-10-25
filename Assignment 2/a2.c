@@ -79,10 +79,10 @@ char* getPWD(){
 }
 void shell_loop(){
     while(1) {
-        char * x = getPWD();
-        printf("< \033[0;36m %s \033[0m >",basename(x));
-        free(x);
-        printf("$ ");
+//        char * x = getPWD();
+//        printf("< \033[0;36m %s \033[0m >",basename(x));
+//        free(x);
+//        printf("$ ");
         char **segment = getInput();
         int ptr = 0;
         char* s0 = delim(segment[0]);
