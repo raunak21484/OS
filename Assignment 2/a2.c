@@ -90,7 +90,7 @@ void changeDir(char ** segment){
     while(segment[ptr1]!=0){
         tptr = 0;
         while(segment[ptr1][tptr]!='\0'){
-            newDir[c] = segment[ptr1][tptr1];
+            newDir[c] = segment[ptr1][tptr];
             c++;
             tptr++;
         }
