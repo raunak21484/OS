@@ -83,6 +83,7 @@ void changeDir(char ** segment){
 //        }
 //    }
     chdir(segment[1]);
+    printf("Changed to %s",segment[1]);
 }
 char* getPWD(){
     char* buffer = NULL;
