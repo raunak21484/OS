@@ -9,6 +9,7 @@ char **getInput(){
     char *line = NULL;
     size_t l = 0;
     getline(&line,&l,stdin);
+    if(line[0]=='\n' && line[1]=='\0'){return NULL;}
     int cap = 16;
     int len = 0;
     char **tokens = malloc(sizeof(char*) *cap );
@@ -79,10 +80,10 @@ char* getPWD(){
 }
 void shell_loop(){
     while(1) {
-//        char * x = getPWD();
-//        printf("< \033[0;36m %s \033[0m >",basename(x));
-//        free(x);
-//        printf("$ ");
+        char * x = getPWD();
+        printf("< \033[0;36m %s \033[0m >",basename(x));
+        free(x);
+        printf("$ ");
         char **segment = getInput();
         int ptr = 0;
         char* s0 = delim(segment[0]);
