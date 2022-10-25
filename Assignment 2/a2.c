@@ -30,6 +30,7 @@ void echo(char** segment){
     if(segment[1] != NULL){
         if(strcmp(segment[1],"-n")==0){
             EOL = 0;
+            ptr = 2;
         }
     }
     while(segment[ptr]!=NULL){
