@@ -13,7 +13,6 @@ int main(int argc, char* argv[]){
         argv[0] = "ls";
         argv[1] = NULL;
         execve("ls",argv,NULL);
-        printf("MAA");
     }else{
         wait(NULL);
     }
