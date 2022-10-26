@@ -230,7 +230,9 @@ void mkdir1(char ** segment){
             char * temp = "";
             for(int i=0;segmentTWO[i]!=NULL;i++){
                 strncat(temp,segmentTWO[i],strlen(segmentTWO[i]));
-                call_mkdir(temp);
+                if(call_mkdir(temp)!=0){
+                    printf("ERROR");
+                }
             }
         }else{
             char* message = echoMessage(segment,1,' ');
