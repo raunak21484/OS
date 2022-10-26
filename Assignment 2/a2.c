@@ -4,6 +4,9 @@
 #include<stdlib.h>
 #include<sys/wait.h>
 #include<libgen.h>
+
+// get ECHO TO WORK! $'\n'
+
 char * _PROGRAM_DIRECTORY;
 char ** getSplittedLine(char* line, char* delim){
     int cap = 16;
@@ -72,7 +75,7 @@ void echo(char** segment){
     }
 }
 char* echoMessage(char** segment, int ptr, char sep){
-    int EOL = 1;
+    int EOL = 0;
     int tsize =0;
     int tptr = ptr;
     while(segment[tptr]!=NULL){tsize+=strlen(segment[tptr]);tptr++;}
