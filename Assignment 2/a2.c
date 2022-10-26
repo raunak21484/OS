@@ -73,12 +73,16 @@ void echo(char** segment){
 }
 char* echoMessage(char** segment, int ptr, char sep){
     int EOL = 1;
-    char * ECHOMESSAGE = (char*)malloc(15000 * sizeof(char));
+    int tsize =0;
+    int tptr = ptr;
+    while(segment[tptr]!=NULL){tsize+=strlen(segment[tptr]);tptr++;}
+    printf("TSIZE: %d\n",tsize);
+    char * ECHOMESSAGE = (char*)malloc((tsize*2) * sizeof(char));
     int eptr = 0;
     int marking = -1, dollarmarking = -1;
 
     while(segment[ptr]!=NULL){
-        printf("Segment[%d] = %s\n",ptr,segment[ptr]);
+        //printf("Segment[%d] = %s\n",ptr,segment[ptr]);
         int ptr2 = 0;
         marking = -1;dollarmarking=-1;
         while(segment[ptr][ptr2]!='\0'){
