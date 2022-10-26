@@ -214,7 +214,7 @@ void mkdir1(char ** segment){
         if(strcmp(segment[1],"\n")==0 || strcmp(segment[1]," ") == 0){return;}
         else if(strcmp(segment[1],"-v")==0){
             char* message = echoMessage(segment,2,' ');
-            int stat =call_mkdir(message);z
+            int stat =call_mkdir(message);
             //printf("\nstat = %d\n",stat);//
             if(stat==0){
                 printf("Created Directory: %s\n",message);
