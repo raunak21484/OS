@@ -123,7 +123,7 @@ char* echoMessage(char** segment, int ptr, char sep){
     printf("EPTR = %d",eptr);
     printf("\nMessage: \n");
     for(int i=0;i<eptr;i++){
-        printf("'%c' ",ECHOMESSAGE[eptr]);
+        printf("'%c' ",ECHOMESSAGE[i]);
     }
     return ECHOMESSAGE;
 }
