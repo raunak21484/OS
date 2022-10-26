@@ -8,6 +8,4 @@
 int main(int argc, char* argv[]){
     char* path = strcat(argv[2], strcat("/",argv[1]));
     return mkdir(path);
-    return 0;
-
 }
