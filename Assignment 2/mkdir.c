@@ -6,6 +6,7 @@
 #include<libgen.h>
 
 int main(int argc, char* argv[]){
-    printf("%d",1/0);
+    int path = strcat(argv[2],argv[1]);
+    printf("Path = %s",path);
     return 0;
 }
