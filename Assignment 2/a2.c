@@ -110,11 +110,13 @@ char* echoMessage(char** segment, int ptr, char sep){
                 continue;
             }
             if(segment[ptr+1]==NULL && segment[ptr][ptr2]=='\n' && EOL==0){
+                printf("HERE");
                 ptr2++;
             }
             //printf("%c",segment[ptr][ptr2]);
-            ptr2++;
             ECHOMESSAGE[eptr] = segment[ptr][ptr2];
+            ptr2++;
+
             eptr++;
         }
         ptr++;
