@@ -7,7 +7,7 @@
 
 int main(int argc, char* argv[]){
     char *test = "hello123";
-    printf("%d",sizeof(test));
+    printf("%ulld",strlen(test));
 //    int test = fork();
 //    if(test<0){printf("FAILED!");}
 //    if(test==0){
