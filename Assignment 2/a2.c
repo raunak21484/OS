@@ -216,7 +216,7 @@ void mkdir1(char ** segment){
     if(segment[1]!=NULL) {
         if(strcmp(segment[1],"\n")==0 || strcmp(segment[1]," ") == 0){return;}
         else if(strcmp(segment[1],"-v")==0){
-            char* message = echoMessage(segment,2);
+            char* message = echoMessage(segment,2,' ');
             printf("echo message = %s\n",message);
             //MERGE EVERYTHING AFTER 1
             //char * path = getPWD();
