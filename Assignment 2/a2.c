@@ -101,7 +101,7 @@ void changeDir(char ** segment){
             tptr++;
         }
         ptr1++;
-        newDir[c] = ' ';//
+        newDir[c] = ' ';
         c++;
     }
     char * temp = delim(newDir);
