@@ -9,7 +9,7 @@ int main(int argc, char* argv[]){
     int test = fork();
     if(test<0){printf("FAILED!");}
     if(test==0){
-        int test 2= fork();
+        int fork2= fork();
         if(fork2<0){printf("FORK FAILED!");}
         else if(fork2==0){
         char* argv[5] = {"gcc","-o","test.o","test.c",NULL};
