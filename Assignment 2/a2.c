@@ -4,16 +4,11 @@
 #include<stdlib.h>
 #include<sys/wait.h>
 #include<libgen.h>
-
-char **getInput(){
-    char *line = NULL;
-    size_t l = 0;
-    getline(&line,&l,stdin);
-    if(line[0]=='\n' && line[1]=='\0'){return NULL;}
+char ** getSplittedLine(char* line, char* delim){
     int cap = 16;
     int len = 0;
     char **tokens = malloc(sizeof(char*) *cap );
-    char *tokentemp = strtok(line, " ");
+    char *tokentemp = strtok(line, delim);
 
     while (tokentemp!=NULL) {
         tokens[len++] = tokentemp;
@@ -21,11 +16,18 @@ char **getInput(){
             cap*=(int)1.75;
             tokens = realloc(tokens, cap * sizeof(char*));
         }
-        tokentemp = strtok(NULL, " ");
+        tokentemp = strtok(NULL, delim);
     }
     tokens[len] = NULL;
 
     return tokens;
+}
+char **getInput(){
+    char *line = NULL;
+    size_t l = 0;
+    getline(&line,&l,stdin);
+    if(line[0]=='\n' && line[1]=='\0'){return NULL;}
+    return getSplittedLine(line," ");
 }
 void echo(char** segment){
     int ptr =1;
@@ -118,6 +120,36 @@ char* getPWD(){
     size_t size = 0;
     return getcwd(buffer,size);
 }
+char* delimslash(char * input){
+    return strtok(input,"/");
+}
+void call_mkdir(char* path){
+    pid_t proc = fork();
+    if (proc < 0) {
+        printf("Failed!\n");
+        return;
+    }
+    if (proc == 0) {
+
+
+    } else {
+        wait(NULL);
+    }
+}
+void mkdir(char ** segment){
+    if(segment[1]!=NULL) {
+        if(strcmp(segment[1],"\n")==0 || strcmp(segment[1]," ") == 0){return;}
+        else if(strcmp(segment[1],"-v")==0){
+            //char * path = getPWD();
+
+        }else if(strcmp(segment[1],"-v\n")==0 || strcmp(segment[1],"-p\n")==0){
+            printf("mkdir: Missing operand\n");
+        }else if(strcmp(segment[1],"-p")){
+
+        }
+
+    }
+}
 void shell_loop(){
     while(1) {
         char * x = getPWD();
@@ -137,6 +169,7 @@ void shell_loop(){
             free(cwd);
         }
         else if(strcmp(s0,"echo")==0){ echo(segment);}
+        else if(strcmp(s0,"mkdir")==0){mkdir(segment);}
         else{printf("Segment[0] is %s!\n",segment[0]);printf("Command Not Found!\n");}
         free(s0);
 
