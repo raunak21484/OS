@@ -99,6 +99,7 @@ char* echoMessage(char** segment, int ptr, char sep){
                 continue;
             }
             if(segment[ptr][ptr2]=='$'){
+                printf("FOUND2!");
                 ECHOMESSAGE[eptr] = '$';
                 eptr++;
                 if(segment[ptr][ptr2+1]=='$' && dollarmarking!=ptr2){
