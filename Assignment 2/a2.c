@@ -224,8 +224,7 @@ void mkdir1(char ** segment){
 
         }else if(strcmp(segment[1],"-v\n")==0 || strcmp(segment[1],"-p\n")==0){
             printf("mkdir: Missing operand\n");
-        }else if(strcmp(segment[1],"-p")){
-            printf("here");
+        }else if(strcmp(segment[1],"-p")==0){
             char* message = echoMessage(segment,2,' ');
             char** segmentTWO = getSplittedLine(message,"/");
             char * temp = "";
