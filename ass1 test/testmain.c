@@ -10,7 +10,8 @@ int main(int argc, char* argv[]){
     if(test<0){printf("FAILED!");}
     if(test==0){
         char *argv2[2] = {"./test.o", NULL};
-        execv("./test.o", argv2);
+        char *env[1] = {NULL};
+        execve("./test.o", argv2,env);
         printf("FORK 1 FAILED!");
         }
     else{
