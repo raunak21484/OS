@@ -4,6 +4,7 @@
 #include<stdlib.h>
 #include<sys/wait.h>
 #include<libgen.h>
+char * _PROGRAM_DIRECTORY;
 char ** getSplittedLine(char* line, char* delim){
     int cap = 16;
     int len = 0;
@@ -136,16 +137,38 @@ void call_mkdir(char* path){
         wait(NULL);
     }
 }
-void mkdir(char ** segment){
+char* mergeSegment(char ** segment, char mergeChar, int ptr){]
+    if(segment[ptr]==NULL){
+        return NULL;
+    }
+    int c=0,ptr1=ptr,tptr=0;
+    while(segment[ptr1]!=NULL){
+        tptr= 0;
+        while(segment[ptr1][tptr]!=NULL){
+            tptr++;
+            c++;
+        }
+        c++
+        ptr1++;
+    }
+    char* margedSeg = (char*)malloc((c+1)*sizeof(char));
+
+}
+void mkdir1(char ** segment){
     if(segment[1]!=NULL) {
         if(strcmp(segment[1],"\n")==0 || strcmp(segment[1]," ") == 0){return;}
         else if(strcmp(segment[1],"-v")==0){
+
+            //MERGE EVERYTHING AFTER 1
             //char * path = getPWD();
+            //MAKE DIRECTORY NORMALLY + PRINT MESSAGE
 
         }else if(strcmp(segment[1],"-v\n")==0 || strcmp(segment[1],"-p\n")==0){
             printf("mkdir: Missing operand\n");
         }else if(strcmp(segment[1],"-p")){
 
+        }else{
+            //MAKE DIRECTORY NORMALLY
         }
 
     }
@@ -169,13 +192,14 @@ void shell_loop(){
             free(cwd);
         }
         else if(strcmp(s0,"echo")==0){ echo(segment);}
-        else if(strcmp(s0,"mkdir")==0){mkdir(segment);}
+        else if(strcmp(s0,"mkdir")==0){mkdir1(segment);}
         else{printf("Segment[0] is %s!\n",segment[0]);printf("Command Not Found!\n");}
         free(s0);
 
     }
 }
 int main(int argc, char* argv[]){
+    _PROGRAM_DIRECTORY = getPWD();
     shell_loop();
 //    char ** segment = getInput();
 //    int ptr = 0;
