@@ -88,7 +88,6 @@ void changeDir(char ** segment){
         chdir("/home");
         return;
     }
-    printf("AM HERE!");
     char* newDir = (char*)malloc((c+1)*sizeof(char));
     newDir[c] = '\0';
     ptr1 = 1;
@@ -111,11 +110,7 @@ void changeDir(char ** segment){
         printf("Could not find directory: %s\n",temp);
     }
     free(temp);
-    //printf("SUC\n");
-//    char * temp = delim(segment[1]);
-//    chdir(temp);
-//    printf("Changed to %s",temp);
-//    free(temp);
+
 }
 char* getPWD(){
     char* buffer = NULL;
