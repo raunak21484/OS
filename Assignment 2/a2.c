@@ -214,7 +214,7 @@ void mkdir1(char ** segment){
         if(strcmp(segment[1],"\n")==0 || strcmp(segment[1]," ") == 0){return;}
         else if(strcmp(segment[1],"-v")==0){
             char* message = echoMessage(segment,2,' ');
-            int stat =call_mkdir(message);
+            int stat =call_mkdir(message);z
             //printf("\nstat = %d\n",stat);//
             if(stat==0){
                 printf("Created Directory: %s\n",message);
@@ -226,7 +226,7 @@ void mkdir1(char ** segment){
             printf("mkdir: Missing operand\n");
         }else if(strcmp(segment[1],"-p")){
             char* message = echoMessage(segment,2,' ');
-            char** segmentTWO = getSplittedLine(message,'/');
+            char** segmentTWO = getSplittedLine(message,"/");
             char * temp = "";
             for(int i=0;segmentTWO[i]!=NULL;i++){
                 strncat(temp,segmentTWO[i],strlen(segmentTWO[i]));
