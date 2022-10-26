@@ -6,7 +6,7 @@
 #include<libgen.h>
 
 int main(int argc, char* argv[]){
-    char *test = "hello";
+    char *test = "hello123";
     printf("%d",sizeof(test));
 //    int test = fork();
 //    if(test<0){printf("FAILED!");}
