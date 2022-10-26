@@ -112,6 +112,7 @@ char* echoMessage(char** segment, int ptr){
         if(segment[ptr]!=NULL){ECHOMESSAGE[eptr] = ' '; eptr++;}
     }
     ECHOMESSAGE[eptr] = '\0';
+    return ECHOMESSAGE;
 }
 char* delim(char* input){
     char *input2 = strtok(input,"\n");
