@@ -104,12 +104,12 @@ void changeDir(char ** segment){
         c++;
     }
     char * temp = delim(newDir);
-    printf("Temp = %s\n",temp);
+    //printf("Temp = %s\n",temp);
     int fin = chdir(temp);
     if(fin!=0){
         printf("Could not find directory: %s",temp);
     }
-    printf("SUC\n");
+    //printf("SUC\n");
 //    char * temp = delim(segment[1]);
 //    chdir(temp);
 //    printf("Changed to %s",temp);
