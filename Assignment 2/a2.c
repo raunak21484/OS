@@ -84,11 +84,11 @@ void changeDir(char ** segment){
         ptr1++;
         c++;
     }
-    if(ptr1==1){
+    if(ptr1==1 || strcmp("\n",segment[1])){
         chdir("/home");
         return;
     }
-    printf("segment[1] is '%s'\n",segment[1]);
+    //printf("segment[1] is '%s'\n",segment[1]);
     char* newDir = (char*)malloc((c+1)*sizeof(char));
     newDir[c] = '\0';
     ptr1 = 1;
