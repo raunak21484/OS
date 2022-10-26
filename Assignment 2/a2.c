@@ -88,7 +88,7 @@ char* echoMessage(char** segment, int ptr, char sep){
         while(segment[ptr][ptr2]!='\0'){
 
             if(segment[ptr][ptr2]=='\\'){
-                printf("FOUND1!!");
+                //printf("FOUND1!!");
                 if(segment[ptr][ptr2+1]=='\\' && marking!= ptr2){
                     marking = ptr2+1;
                     //printf("%c",'\\');
@@ -99,7 +99,7 @@ char* echoMessage(char** segment, int ptr, char sep){
                 continue;
             }
             if(segment[ptr][ptr2]=='$'){
-                printf("FOUND2!");
+                //printf("FOUND2!");
                 ECHOMESSAGE[eptr] = '$';
                 eptr++;
                 if(segment[ptr][ptr2+1]=='$' && dollarmarking!=ptr2){
@@ -110,7 +110,7 @@ char* echoMessage(char** segment, int ptr, char sep){
                 continue;
             }
             if(segment[ptr+1]==NULL && segment[ptr][ptr2]=='\n' && EOL==0){
-                printf("HERE");
+                //printf("HERE");
                 ptr2++;
             }
             //printf("%c",segment[ptr][ptr2]);
@@ -183,58 +183,40 @@ char* getPWD(){
 char* delimslash(char * input){
     return strtok(input,"/");
 }
-void call_mkdir(char* path){
+int call_mkdir(char* path){
     pid_t proc = fork();
     if (proc < 0) {
         printf("Failed!\n");
         return;
     }
     if (proc == 0) {
+        char* mkname = strcat(_PROGRAM_DIRECTORY,"/mkdir.o");
+        char* pwd = getPWD();
+        char* arr[4] = {mkname,path,pwd,NULL};
 
+        char * env[1] = {NULL};
+
+        execve(mkname,arr,env);
+        return 1;
 
     } else {
-        wait(NULL);
+        int status;
+        wait(&status);
+        return status;
     }
 }
-//char* mergeSegment(char ** segment, char mergeChar, int ptr){]
-//    if(segment[ptr]==NULL){
-//        return NULL;
-//    }
-//    int c=0,ptr1=ptr,tptr=0;
-//    while(segment[ptr1]!=NULL){
-//        tptr= 0;
-//        while(segment[ptr1][tptr]!=NULL){
-//            tptr++;
-//            c++;
-//        }
-//        c++
-//        ptr1++;
-//    }
-//    char* mergedSeg = (char*)malloc((c+1)*sizeof(char));
-//    c = 0,ptr1 = ptr;
-//    while(segment[ptr1]!=NULL){
-//        tptr = 0;
-//        while(segment[ptr1][tptr]!=NULL){
-//            mergedSeg[c] = segment[ptr1][tptr];
-//            tptr++;
-//            c++;
-//        }
-//        mergedSeg[c] = mergeChar;
-//        c++;
-//        ptr1++;
-//    }
-//    mergedSeg[c] = '\0';
-//
-//}
+
 void mkdir1(char ** segment){
     if(segment[1]!=NULL) {
         if(strcmp(segment[1],"\n")==0 || strcmp(segment[1]," ") == 0){return;}
         else if(strcmp(segment[1],"-v")==0){
             char* message = echoMessage(segment,2,' ');
-            printf("echo message = %s\n",message);
-            //MERGE EVERYTHING AFTER 1
-            //char * path = getPWD();
-            //MAKE DIRECTORY NORMALLY + PRINT MESSAGE
+            int stat =call_mkdir(message);
+            if(stat){
+                printf("Created Directory: %s\n",message);
+            }else{
+                printf("Creation of directory failed!\n");
+            }
 
         }else if(strcmp(segment[1],"-v\n")==0 || strcmp(segment[1],"-p\n")==0){
             printf("mkdir: Missing operand\n");
