@@ -231,7 +231,7 @@ void mkdir1(char ** segment){
             for(int i=0;segmentTWO[i]!=NULL;i++){
                 strncat(temp,segmentTWO[i],strlen(segmentTWO[i]));
                 if(call_mkdir(temp)!=0){
-                    printf("ERROR");
+                    printf("ERROR, temp = %s",temp);
                 }
             }
         }else{
