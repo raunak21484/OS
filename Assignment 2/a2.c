@@ -121,6 +121,10 @@ char* echoMessage(char** segment, int ptr, char sep){
     }
     ECHOMESSAGE[eptr] = '\0';
     printf("EPTR = %d",eptr);
+    printf("\nMessage: \n");
+    for(int i=0;i<eptr;i++){
+        printf("'%c' ",ECHOMESSAGE[eptr]);
+    }
     return ECHOMESSAGE;
 }
 char* delim(char* input){
