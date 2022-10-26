@@ -9,7 +9,10 @@ int main(int argc, char* argv[]){
     int test = fork();
     if(test<0){printf("FAILED!");}
     if(test==0){
-        execve("ls",NULL,NULL);
+        (char*) argv[2];
+        argv[0] = "ls";
+        argv[1] = NULL;
+        execve("ls",argv,NULL);
         printf("MAA");
     }else{
         wait(NULL);
