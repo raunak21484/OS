@@ -71,6 +71,46 @@ void echo(char** segment){
         if(segment[ptr]!=NULL){printf(" ");}
     }
 }
+char* echoMessage(char** segment, int ptr){
+    int EOL = 1;
+    char * ECHOMESSAGE = (char*)malloc(15000 * sizeof(char));
+    int marking = -1, dollarmarking = -1;
+    while(segment[ptr]!=NULL){
+        int ptr2 = 0;
+        marking = -1;dollarmarking=-1;
+        while(segment[ptr][ptr2]!='\0'){
+            if(segment[ptr][ptr2]=='\\'){
+                if(segment[ptr][ptr2+1]=='\\' && marking!= ptr2){
+                    marking = ptr2+1;
+                    printf("%c",'\\');
+                    ECHOMESSAGE[eptr] = '\\';
+                    eptr++;
+                }
+                ptr2++;
+                continue;
+            }
+            if(segment[ptr][ptr2]=='$'){
+                ECHOMESSAGE[eptr] = '$';
+                eptr++;
+                if(segment[ptr][ptr2+1]=='$' && dollarmarking!=ptr2){
+                    dollarmarking = ptr2+1;
+                    //printf("%d",(int)getpid());
+                }
+                ptr2++;
+                continue;
+            }
+            if(segment[ptr+1]==NULL && segment[ptr][ptr2]=='\n' && EOL==0){
+                ptr2++;
+            }
+            //printf("%c",segment[ptr][ptr2]);
+            ptr2++;
+            ECHOMESSAGE[eptr] = segment[ptr][ptr2];
+            eptr++;
+        }
+        ptr++;
+        if(segment[ptr]!=NULL){ECHOMESSAGE[eptr] = ' '; eptr++;}
+    }
+}
 char* delim(char* input){
     char *input2 = strtok(input,"\n");
     return input2;
@@ -151,14 +191,28 @@ char* mergeSegment(char ** segment, char mergeChar, int ptr){]
         c++
         ptr1++;
     }
-    char* margedSeg = (char*)malloc((c+1)*sizeof(char));
+    char* mergedSeg = (char*)malloc((c+1)*sizeof(char));
+    c = 0,ptr1 = ptr;
+    while(segment[ptr1]!=NULL){
+        tptr = 0;
+        while(segment[ptr1][tptr]!=NULL){
+            mergedSeg[c] = segment[ptr1][tptr];
+            tptr++;
+            c++;
+        }
+        mergedSeg[c] = mergeChar;
+        c++;
+        ptr1++;
+    }
+    mergedSeg[c] = '\0';
 
 }
 void mkdir1(char ** segment){
     if(segment[1]!=NULL) {
         if(strcmp(segment[1],"\n")==0 || strcmp(segment[1]," ") == 0){return;}
         else if(strcmp(segment[1],"-v")==0){
-
+            char* message = echoMessage(segment,2);
+            printf("echo message = %s\n",message);
             //MERGE EVERYTHING AFTER 1
             //char * path = getPWD();
             //MAKE DIRECTORY NORMALLY + PRINT MESSAGE
