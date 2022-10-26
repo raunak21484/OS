@@ -213,7 +213,7 @@ void mkdir1(char ** segment){
             char* message = echoMessage(segment,2,' ');
             int stat =call_mkdir(message);
             printf("\nstat = %d\n",stat);//
-            if(stat){
+            if(stat==0){
                 printf("Created Directory: %s\n",message);
             }else{
                 printf("Creation of directory failed!\n");
