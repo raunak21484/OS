@@ -177,36 +177,36 @@ void call_mkdir(char* path){
         wait(NULL);
     }
 }
-char* mergeSegment(char ** segment, char mergeChar, int ptr){]
-    if(segment[ptr]==NULL){
-        return NULL;
-    }
-    int c=0,ptr1=ptr,tptr=0;
-    while(segment[ptr1]!=NULL){
-        tptr= 0;
-        while(segment[ptr1][tptr]!=NULL){
-            tptr++;
-            c++;
-        }
-        c++
-        ptr1++;
-    }
-    char* mergedSeg = (char*)malloc((c+1)*sizeof(char));
-    c = 0,ptr1 = ptr;
-    while(segment[ptr1]!=NULL){
-        tptr = 0;
-        while(segment[ptr1][tptr]!=NULL){
-            mergedSeg[c] = segment[ptr1][tptr];
-            tptr++;
-            c++;
-        }
-        mergedSeg[c] = mergeChar;
-        c++;
-        ptr1++;
-    }
-    mergedSeg[c] = '\0';
-
-}
+//char* mergeSegment(char ** segment, char mergeChar, int ptr){]
+//    if(segment[ptr]==NULL){
+//        return NULL;
+//    }
+//    int c=0,ptr1=ptr,tptr=0;
+//    while(segment[ptr1]!=NULL){
+//        tptr= 0;
+//        while(segment[ptr1][tptr]!=NULL){
+//            tptr++;
+//            c++;
+//        }
+//        c++
+//        ptr1++;
+//    }
+//    char* mergedSeg = (char*)malloc((c+1)*sizeof(char));
+//    c = 0,ptr1 = ptr;
+//    while(segment[ptr1]!=NULL){
+//        tptr = 0;
+//        while(segment[ptr1][tptr]!=NULL){
+//            mergedSeg[c] = segment[ptr1][tptr];
+//            tptr++;
+//            c++;
+//        }
+//        mergedSeg[c] = mergeChar;
+//        c++;
+//        ptr1++;
+//    }
+//    mergedSeg[c] = '\0';
+//
+//}
 void mkdir1(char ** segment){
     if(segment[1]!=NULL) {
         if(strcmp(segment[1],"\n")==0 || strcmp(segment[1]," ") == 0){return;}
