@@ -88,7 +88,7 @@ void changeDir(char ** segment){
         chdir("/home");
         return;
     }
-    //printf("segment[1] is '%s'\n",segment[1]);
+    printf("segment[1] is '%s'\n",segment[1]);
     char* newDir = (char*)malloc((c+1)*sizeof(char));
     newDir[c] = '\0';
     ptr1 = 1;
