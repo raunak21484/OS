@@ -6,7 +6,8 @@
 #include<libgen.h>
 
 int main(int argc, char* argv[]){
-    char* path = mkdir(strcat(argv[2], strcat("/",argv[1])));
-    return path;
+    char* path = strcat(argv[2], strcat("/",argv[1]));
+    mkdir(path);
+    return 0;
 
 }
