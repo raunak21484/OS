@@ -74,6 +74,7 @@ void echo(char** segment){
 char* echoMessage(char** segment, int ptr){
     int EOL = 1;
     char * ECHOMESSAGE = (char*)malloc(15000 * sizeof(char));
+    int eptr = 0;
     int marking = -1, dollarmarking = -1;
     while(segment[ptr]!=NULL){
         int ptr2 = 0;
