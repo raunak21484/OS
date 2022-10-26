@@ -84,7 +84,7 @@ void changeDir(char ** segment){
         ptr1++;
         c++;
     }
-    if(c==0){
+    if(ptr1==1){
         chdir("/home");
         return;
     }
