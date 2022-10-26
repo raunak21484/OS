@@ -21,7 +21,7 @@ int main(int argc, char* argv[]){
             wait(NULL);
             char *argv2[2] = {"./test.o", NULL};
             execv("./test.o", argv2);
-            printf("FORK 1 FAILED!")
+            printf("FORK 1 FAILED!");
         }
     }else{
         wait(NULL);
