@@ -71,7 +71,7 @@ void echo(char** segment){
         if(segment[ptr]!=NULL){printf(" ");}
     }
 }
-char* echoMessage(char** segment, int ptr){
+char* echoMessage(char** segment, int ptr, char sep){
     int EOL = 1;
     char * ECHOMESSAGE = (char*)malloc(15000 * sizeof(char));
     int eptr = 0;
@@ -109,7 +109,7 @@ char* echoMessage(char** segment, int ptr){
             eptr++;
         }
         ptr++;
-        if(segment[ptr]!=NULL){ECHOMESSAGE[eptr] = ' '; eptr++;}
+        if(segment[ptr]!=NULL){ECHOMESSAGE[eptr] = sep; eptr++;}
     }
     ECHOMESSAGE[eptr] = '\0';
     return ECHOMESSAGE;
