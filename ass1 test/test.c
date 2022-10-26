@@ -8,7 +8,7 @@ void NULLIFY2D(char*** array){
     }
     free(*array);
 }
-int main(){
+int main(char* argv[]){
 
     char ** chararray = (char**)malloc(3*sizeof(char*));
     chararray[0] = (char*)malloc(3*sizeof(char));
