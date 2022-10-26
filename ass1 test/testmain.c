@@ -13,10 +13,7 @@ int main(int argc, char* argv[]){
         execv("./test.o", argv2);
         printf("FORK 1 FAILED!");
         }
-        else {
-            wait(NULL);
 
-        }
     }else{
         wait(NULL);
     }
