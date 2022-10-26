@@ -227,14 +227,27 @@ void mkdir1(char ** segment){
         }else if(strcmp(segment[1],"-p")==0){
             char* message = echoMessage(segment,2,' ');
             char** segmentTWO = getSplittedLine(message,"/");
-            char * temp = "";
+            int c =0;
+            for(int i=0;segmentTWO[i]!=NULL;i++){
+                c+=strlen(segmentTWO[i]);
+            }
+            char * temp = (char*)malloc(sizeof(char)*(2*c+1));
+            int ptr = 0;
             for(int i=0;segmentTWO[i]!=NULL;i++){
                 printf("%s\n",segmentTWO[i]);
+                for(int j=0;j<strlen(segmentTWO[i]);j++){
+                    temp[ptr] = segmentTWO[i][j];
+                    ptr++;
+                }
+                temp[ptr] = '/';
+                ptr++;
+                temp[ptr+1] = '\0';
                 //strncat(temp,segmentTWO[i],strlen(segmentTWO[i]));
-//                if(call_mkdir(temp)!=0){
-//                    printf("ERROR, temp = %\n",temp);
-//                }
+                if(call_mkdir(temp)!=0){
+                    printf("ERROR, temp = %\n",temp);
+                }
             }
+            free(temp);
         }else{
             printf("DEFAULT");
             char* message = echoMessage(segment,1,' ');
