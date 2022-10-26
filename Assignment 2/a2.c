@@ -83,7 +83,7 @@ char* echoMessage(char** segment, int ptr){
             if(segment[ptr][ptr2]=='\\'){
                 if(segment[ptr][ptr2+1]=='\\' && marking!= ptr2){
                     marking = ptr2+1;
-                    printf("%c",'\\');
+                    //printf("%c",'\\');
                     ECHOMESSAGE[eptr] = '\\';
                     eptr++;
                 }
@@ -111,6 +111,7 @@ char* echoMessage(char** segment, int ptr){
         ptr++;
         if(segment[ptr]!=NULL){ECHOMESSAGE[eptr] = ' '; eptr++;}
     }
+    ECHOMESSAGE[eptr] = '\0';
 }
 char* delim(char* input){
     char *input2 = strtok(input,"\n");
