@@ -187,7 +187,7 @@ int call_mkdir(char* path){
     pid_t proc = fork();
     if (proc < 0) {
         printf("Failed!\n");
-        return;
+        return 1;
     }
     if (proc == 0) {
         char* mkname = strcat(_PROGRAM_DIRECTORY,"/mkdir.o");
