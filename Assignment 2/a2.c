@@ -229,10 +229,11 @@ void mkdir1(char ** segment){
             char** segmentTWO = getSplittedLine(message,"/");
             char * temp = "";
             for(int i=0;segmentTWO[i]!=NULL;i++){
-                strncat(temp,segmentTWO[i],strlen(segmentTWO[i]));
-                if(call_mkdir(temp)!=0){
-                    printf("ERROR, temp = %\n",temp);
-                }
+                printf("%s\n",segmentTWO[i]);
+                //strncat(temp,segmentTWO[i],strlen(segmentTWO[i]));
+//                if(call_mkdir(temp)!=0){
+//                    printf("ERROR, temp = %\n",temp);
+//                }
             }
         }else{
             printf("DEFAULT");
