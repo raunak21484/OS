@@ -126,11 +126,11 @@ char* echoMessage(char** segment, int ptr, char sep){
         if(segment[ptr]!=NULL){ECHOMESSAGE[eptr] = sep; eptr++;}
     }
     ECHOMESSAGE[eptr] = '\0';
-    printf("EPTR = %d",eptr);
-    printf("\nMessage: \n");
-    for(int i=0;i<eptr;i++){
-        printf("'%c' ",ECHOMESSAGE[i]);
-    }
+    //printf("EPTR = %d",eptr);
+//    printf("\nMessage: \n");
+//    for(int i=0;i<eptr;i++){
+//        printf("'%c' ",ECHOMESSAGE[i]);
+//    }
     return ECHOMESSAGE;
 }
 char* delim(char* input){
@@ -215,7 +215,7 @@ void mkdir1(char ** segment){
         else if(strcmp(segment[1],"-v")==0){
             char* message = echoMessage(segment,2,' ');
             int stat =call_mkdir(message);
-            printf("\nstat = %d\n",stat);//
+            //printf("\nstat = %d\n",stat);//
             if(stat==0){
                 printf("Created Directory: %s\n",message);
             }else{
