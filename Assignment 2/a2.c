@@ -187,7 +187,7 @@ int call_mkdir(char* path){
     pid_t proc = fork();
     if (proc < 0) {
         printf("Failed!\n");
-        return 1;
+        return 2;
     }
     if (proc == 0) {
         char* mkname = strcat(_PROGRAM_DIRECTORY,"/mkdir.o");
@@ -197,7 +197,7 @@ int call_mkdir(char* path){
         char * env[1] = {NULL};
 
         execve(mkname,arr,env);
-        return 1;
+        return 3;
 
     } else {
         int status;
@@ -212,6 +212,7 @@ void mkdir1(char ** segment){
         else if(strcmp(segment[1],"-v")==0){
             char* message = echoMessage(segment,2,' ');
             int stat =call_mkdir(message);
+            printf("stat = %d",stat);
             if(stat){
                 printf("Created Directory: %s\n",message);
             }else{
