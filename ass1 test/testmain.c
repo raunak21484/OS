@@ -13,7 +13,7 @@ int main(int argc, char* argv[]){
         if(fork2<0){printf("FORK FAILED!");}
         else if(fork2==0){
         char* argv[5] = {"gcc","-o","test.o","test.c",NULL};
-        execv("gcc",argv);
+        execvp("gcc",argv);
 
         printf("FORK 2 FAILED!");
         }
