@@ -236,6 +236,7 @@ void mkdir1(char ** segment){
                 }
             }
         }else{
+            printf("DEFAULT");
             char* message = echoMessage(segment,1,' ');
             if(call_mkdir(message)!=0){ printf("Creation of directory failed!\n");}
             //MAKE DIRECTORY NORMALLY
