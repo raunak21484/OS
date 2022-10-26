@@ -107,7 +107,7 @@ void changeDir(char ** segment){
     //printf("Temp = %s\n",temp);
     int fin = chdir(temp);
     if(fin!=0){
-        printf("Could not find directory: %s",temp);
+        printf("Could not find directory: %s\n",temp);
     }
     free(temp);
     //printf("SUC\n");
