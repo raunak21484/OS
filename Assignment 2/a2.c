@@ -76,7 +76,7 @@ char* echoMessage(char** segment, int ptr, char sep){
     int tsize =0;
     int tptr = ptr;
     while(segment[tptr]!=NULL){tsize+=strlen(segment[tptr]);tptr++;}
-    printf("TSIZE: %d\n",tsize);
+//    printf("TSIZE: %d\n",tsize);
     char * ECHOMESSAGE = (char*)malloc((tsize*2) * sizeof(char));
     int eptr = 0;
     int marking = -1, dollarmarking = -1;
@@ -86,7 +86,9 @@ char* echoMessage(char** segment, int ptr, char sep){
         int ptr2 = 0;
         marking = -1;dollarmarking=-1;
         while(segment[ptr][ptr2]!='\0'){
+
             if(segment[ptr][ptr2]=='\\'){
+                printf("FOUND1!!");
                 if(segment[ptr][ptr2+1]=='\\' && marking!= ptr2){
                     marking = ptr2+1;
                     //printf("%c",'\\');
@@ -118,6 +120,7 @@ char* echoMessage(char** segment, int ptr, char sep){
         if(segment[ptr]!=NULL){ECHOMESSAGE[eptr] = sep; eptr++;}
     }
     ECHOMESSAGE[eptr] = '\0';
+    printf("EPTR = %d",eptr);
     return ECHOMESSAGE;
 }
 char* delim(char* input){
