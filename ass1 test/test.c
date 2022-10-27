@@ -178,30 +178,30 @@ void mkdircall(char **args)
     {
         printf("HIIHIIHIHI");
     }
-    if(t==0)
-    {
-        printf("Hello");
-        char *mypath=strcat(parentcwd,"/mkdir.o");
-        char *pass="";
-        for(int i=1;args[i]!=NULL;i++)
-        {
-            printf("%s",args[i]);
-            pass=strcat(pass,args[i]);
-            pass=strcat(pass," ");
-        }
-        printf("%s",pass);
-        char *arr[3]={mypath,pass,NULL};
-        char *env[1]={NULL};
-        execve(mypath,arr,env);
-        printf("Hello");
-        return;
-    }
-    else
-    {
-        printf("Hi");
-        printf("%d ",t);
-        wait(NULL);
-    }
+//    if(t==0)
+//    {
+//        printf("Hello");
+//        char *mypath=strcat(parentcwd,"/mkdir.o");
+//        char *pass="";
+//        for(int i=1;args[i]!=NULL;i++)
+//        {
+//            printf("%s",args[i]);
+//            pass=strcat(pass,args[i]);
+//            pass=strcat(pass," ");
+//        }
+//        printf("%s",pass);
+//        char *arr[3]={mypath,pass,NULL};
+//        char *env[1]={NULL};
+//        execve(mypath,arr,env);
+//        printf("Hello");
+//        return;
+//    }
+//    else
+//    {
+//        printf("Hi");
+//        printf("%d ",t);
+//        wait(NULL);
+//    }
 }
 void cd_exec(char **args)
 {
