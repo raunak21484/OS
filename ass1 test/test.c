@@ -7,7 +7,7 @@
 int main()
 {
     char *st=" ";
-    char *mkbname=strcat(st,"dkndwjc");
+    char *mkbname=strcat("test","dkndwjc");
     printf("%s",mkbname);
     return 0;
 }
