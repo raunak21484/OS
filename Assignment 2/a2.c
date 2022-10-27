@@ -214,7 +214,7 @@ void date(char ** segment){
     if(fid===0){
         char* argv[3];
         if(segment[1]==NULL){
-            segment[0][strlen(segment[1])]
+            //segment[0][strlen(segment[1])]
         }
 
         return;
