@@ -1,77 +1,126 @@
-int flag=0;
-if(args[1]==NULL)
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/wait.h>
+#include <unistd.h>
+#include <libgen.h>
+char parentcwd[256];
+char* cd_read_line()
 {
-printf("\n");
-return;
+    char *line=NULL;
+    size_t bufl=0;
+    getline(&line,&bufl,stdin);
+    return line;
 }
-if(strcmp(args[1],"-n")==0)
+char** cd_split_line(char *line)
 {
-flag=1;
+    int len=0;
+    int cap=16;
+    char **tok=malloc(16*sizeof(char *));
+    char *delim=" \t\r\n";
+    char *token=strtok(line,delim);
+    while(token!=NULL)
+    {
+        tok[len]=token;
+        len++;
+        if(len>=cap)
+        {
+            cap=(int)(cap*1.5);
+            tok=realloc(tok,cap*sizeof(char*));
+        }
+        token=strtok(NULL,delim);
+    }
+    tok[len]=NULL;
+    return tok;
 }
-int start=1;
-if(flag==1)
+void pwd()
 {
-start=2;
+    char cwdarr[256];
+    if(getcwd(cwdarr, sizeof(cwdarr))==NULL)
+    {
+        perror("directory error ");
+    }
+    else
+    {
+        printf("The current working directory is: %s\n", cwdarr);
+    }
 }
-else
-{
-start=1;
-}
-for(int i=start;args[i]!=NULL;i++)
-{
+void echo(char **args)
+{int flag=0;
+    if(args[1]==NULL)
+    {
+        printf("\n");
+        return;
+    }
+    if(strcmp(args[1],"-n")==0)
+    {
+        flag=1;
+    }
+    int start=1;
+    if(flag==1)
+    {
+        start=2;
+    }
+    else
+    {
+        start=1;
+    }
+    for(int i=start;args[i]!=NULL;i++)
+    {
 //        char *st=args[i];
-if(args[i+1]==NULL && flag==1)
-{
-args[i]=strtok(args[i],"\n");
-}
-else
-{
-args[i]=args[i];
+        if(args[i+1]==NULL && flag==1)
+        {
+            args[i]=strtok(args[i],"\n");
+        }
+        else
+        {
+            args[i]=args[i];
 //            printf("%s",st);
-}
+        }
 //        printf("%s",st);
-for(int j=0;args[i][j]!='\0';j++)
-{
-if(args[i][j]!='\\')
-{
-if(args[i][j]=='$')
-{
-int count=0;
-while(args[i][j]=='$')
-{
-count++;
-j++;
-}
-j-=1;
-int pid=getpid();
-for(int l=0;l<count/2;l++)
-printf("%d",pid);
-}
-else
-{
-printf("%c",args[i][j]);
-}
-}
-else
-if(args[i][j]=='\\')
-{
-while(args[i][j]=='\\' && args[i][j+1]=='\\')
-{
-printf("%c",'\\');
-j+=2;
-}
-if(args[i][j]!='\\')
-j-=1;
-}
-else
-{
-printf("%c",args[i][j]);
-}
-}
-printf(" ");
-}
-if(flag!=1)
-printf("\n");
+        for(int j=0;args[i][j]!='\0';j++)
+        {
+            if(args[i][j]!='\\')
+            {
+                if(args[i][j]=='$')
+                {
+                    int count=0;
+                    while(args[i][j]=='$')
+                    {
+                        count++;
+                        j++;
+                    }
+                    j-=1;
+                    int pid=getpid();
+                    for(int l=0;l<count/2;l++)
+                        printf("%d",pid);
+                }
+                else
+                {
+                    printf("%c",args[i][j]);
+                }
+            }
+            else
+            if(args[i][j]=='\\')
+            {
+                while(args[i][j]=='\\' && args[i][j+1]=='\\')
+                {
+                    printf("%c",'\\');
+                    j+=2;
+                }
+                if(args[i][j]!='\\')
+                    j-=1;
+            }
+            else
+            {
+                printf("%c",args[i][j]);
+            }
+        }
+        printf(" ");
+    }
+    if(flag!=1)
+        printf("\n");
 }
 void cd(char **args)
 {
