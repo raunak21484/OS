@@ -1,33 +1,228 @@
-#include<stdio.h>
-#include<stdlib.h>
-void NULLIFY2D(char*** array){
-    int ptr = 0;
-    while((*array)[ptr]!=NULL){
-        free((*array)[ptr]);
-        ptr++;
-    }
-    free(*array);
+int flag=0;
+if(args[1]==NULL)
+{
+printf("\n");
+return;
 }
-int main(int argc, char* argv[]){
-
-    char ** chararray = (char**)malloc(3*sizeof(char*));
-    chararray[0] = (char*)malloc(3*sizeof(char));
-    chararray[0][0]= 'a';
-    chararray[0][1]= 'b';
-    chararray[0][2]= '\0';
-    chararray[1] = (char*)malloc(3*sizeof(char));
-    chararray[1][0]= 'b';
-    chararray[1][1]= 'c';
-    chararray[1][2]= '\0';
-    chararray[2] = NULL;
-    printf("%d",(chararray==NULL));
-    if(chararray!=NULL){
-        printf("\n %d %d\n",(chararray[0]==NULL),(chararray[1]==NULL));
+if(strcmp(args[1],"-n")==0)
+{
+flag=1;
+}
+int start=1;
+if(flag==1)
+{
+start=2;
+}
+else
+{
+start=1;
+}
+for(int i=start;args[i]!=NULL;i++)
+{
+//        char *st=args[i];
+if(args[i+1]==NULL && flag==1)
+{
+args[i]=strtok(args[i],"\n");
+}
+else
+{
+args[i]=args[i];
+//            printf("%s",st);
+}
+//        printf("%s",st);
+for(int j=0;args[i][j]!='\0';j++)
+{
+if(args[i][j]!='\\')
+{
+if(args[i][j]=='$')
+{
+int count=0;
+while(args[i][j]=='$')
+{
+count++;
+j++;
+}
+j-=1;
+int pid=getpid();
+for(int l=0;l<count/2;l++)
+printf("%d",pid);
+}
+else
+{
+printf("%c",args[i][j]);
+}
+}
+else
+if(args[i][j]=='\\')
+{
+while(args[i][j]=='\\' && args[i][j+1]=='\\')
+{
+printf("%c",'\\');
+j+=2;
+}
+if(args[i][j]!='\\')
+j-=1;
+}
+else
+{
+printf("%c",args[i][j]);
+}
+}
+printf(" ");
+}
+if(flag!=1)
+printf("\n");
+}
+void cd(char **args)
+{
+    int ct=0;
+    for(int i=1;args[i]!=NULL;i++)
+    {
+        ct++;
     }
-    NULLIFY2D(&chararray);
-    printf("%d",(chararray==NULL));
-    if(chararray!=NULL){
-        printf("\n %d %d\n",(chararray[0]==NULL),(chararray[1]==NULL));
+    if(ct>1)
+    {
+        printf("too many arguments\n");
+        return;
+    }
+    else
+    {
+        if(ct==1)
+        {
+            if(strcmp(args[1],"/")==0)
+            {
+                chdir("/");
+            }
+            else
+            if(strcmp(args[1],"~")==0)
+            {
+                chdir(parentcwd);
+            }
+            else
+            {
+                int suc=chdir(args[1]);
+                if(suc==-1 && strcmp(args[1],"~")!=0)
+                {
+                    printf("No such file or directory");
+                }
+            }
+        }
+        else
+        if(ct==0)
+        {
+            chdir(parentcwd);
+        }
+    }
+}
+void mkdircall(char **args)
+{
+    printf("hijkghjkghkjg");
+    pid_t t=fork();
+    printf("%d \n",t);
+    if(t<0)
+    {
+        printf("Failed\n");
+        return;
+    }
+    printf("%d \n",t);
+    if(t==0)
+    {
+        printf("HIIHIIHIHI");
+    }
+    if(t==0)
+    {
+        printf("Hello");
+        char *mypath=strcat(parentcwd,"/mkdir.o");
+        char *pass="";
+        for(int i=1;args[i]!=NULL;i++)
+        {
+            printf("%s",args[i]);
+            pass=strcat(pass,args[i]);
+            pass=strcat(pass," ");
+        }
+        printf("%s",pass);
+        char *arr[3]={mypath,pass,NULL};
+        char *env[1]={NULL};
+        execve(mypath,arr,env);
+        printf("Hello");
+        return;
+    }
+    else
+    {
+        printf("Hi");
+        printf("%d ",t);
+        wait(NULL);
+    }
+}
+void cd_exec(char **args)
+{
+    if(strcmp(args[0],"pwd")==0 || strcmp(args[0],"pwd\n")==0)
+    {
+        pwd();
+        return;
+    }
+    else
+    if(strcmp(args[0],"echo")==0)
+    {
+        echo(args);
+        return;
+    }
+    else
+    if(strcmp(args[0],"cd")==0)
+    {
+        cd(args);
+        return;
+    }
+    else
+    if(strcmp(args[0],"mkdir")==0)
+    {
+        mkdircall(args);
+        return;
+    }
+    /*pid_t child_pid=fork();
+    if(child_pid==0)
+    {
+        execvp(args[0],args);
+        perror("cd");
+        exit(1);
+    }
+    else
+    if(child_pid>0)
+    {
+        int status;
+        do
+        {
+            waitpid(child_pid, &status,WUNTRACED);
+        }
+        while(!WIFEXITED(status) && !WIFSIGNALED(status));
+    }
+    else
+    {
+        perror("cd");
+    }*/
+}
+int main()
+{
+    getcwd(parentcwd,sizeof(parentcwd));
+    printf("............Chaitanya's shell...........\n");
+    while(1)
+    {
+        //printf("Chaitanya's shell.........\n");
+        char *a=NULL;
+        char *i=getcwd(a,0);
+        printf("[ %s ]$ ",basename(i));
+        char *line=cd_read_line();
+        char **tok=cd_split_line(line);
+        if(strcmp(tok[0],"exit")==0)
+        {
+            break;
+        }
+        if(tok[0]!=NULL)
+        {
+            cd_exec(tok);
+        }
+        free(tok);
+        free(line);
     }
     return 0;
 }

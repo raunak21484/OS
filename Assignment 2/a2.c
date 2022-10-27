@@ -212,11 +212,20 @@ void date(char ** segment){
     int fid = fork();
     if(fid<0){printf("Failed due to unexpected error!\n");return;}
     if(fid==0){
-        char* argv[3];
-        if(segment[1]==NULL){
-            //segment[0][strlen(segment[1])]
-        }
+        char* mkname = strcat(_PROGRAM_DIRECTORY,"/date.o");
+        if(segment[1]==NULL || strcmp(segment[1],"-u")==0 || strcmp(segment[1],"--utc")==0 || strcmp(segment[1],"--universal")==0){
+            //segment[0][strlen(segment[0])-1] = '\0';
 
+            char* argv[3]=  {mkname,"default",NULL};
+            char* env[1] = {NULL};
+            execve(mkname,argv,env);
+        }else if(strcmp(segment[1],"-R")==0 || strcmp(segment[1],"--rfc-email")==0){
+                char *argv[3] = {mkname,"r",NULL};
+                char* env[1] = {NULL};
+                execve(mkname,argv,env);
+            }
+
+        printf("Failed due to unexpected error!\n");
         return;
     }else{
         int status;
