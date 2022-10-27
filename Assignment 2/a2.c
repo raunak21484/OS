@@ -196,7 +196,7 @@ int call_mkdir(char* path){
         char* mkname = strcat(_PROGRAM_DIRECTORY,"/mkdir.o");
         char* pwd = getPWD();
         char* arr[4] = {mkname,path,pwd,NULL};
-
+        printf("PATH = %s\n",path);
         char * env[1] = {NULL};
 
         execve(mkname,arr,env);
@@ -208,7 +208,22 @@ int call_mkdir(char* path){
         return status;
     }
 }
+void date(char ** segment){
+    int fid = fork();
+    if(fid<0){printf("Failed due to unexpected error!\n");return;}
+    if(fid===0){
+        char* argv[3];
+        if(segment[1]==NULL){
+            segment[0][strlen(segment[1])]
+        }
 
+        return;
+    }else{
+        int status;
+        wait(&status);
+        if(status!=0){printf("Failed due to unexpected error!\n");}
+    }
+}
 void mkdir1(char ** segment){
     if(segment[1]!=NULL) {
         if(strcmp(segment[1],"\n")==0 || strcmp(segment[1]," ") == 0){return;}
@@ -277,6 +292,7 @@ void shell_loop(){
         }
         else if(strcmp(s0,"echo")==0){ echo(segment);}
         else if(strcmp(s0,"mkdir")==0){mkdir1(segment);}
+        else if(strcmp(s0,"date")==0){date(segment);}
         else{printf("Segment[0] is %s!\n",segment[0]);printf("Command Not Found!\n");}
         free(s0);
 
