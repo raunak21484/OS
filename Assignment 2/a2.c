@@ -220,7 +220,7 @@ void date(char ** segment){
             char* argv[3]=  {mkname,"default",NULL};
             char* env[1] = {NULL};
             execve(mkname,argv,env);
-        }else if(strcmp(segment[1],"-R")==0 || strcmp(segment[1],"--rfc-email")==0  || strcmp(segment[1],"-R\n")==0 || strcmp(segment[1],"--rfc-email\n"){
+        }else if(strcmp(segment[1],"-R")==0 || strcmp(segment[1],"--rfc-email")==0  || strcmp(segment[1],"-R\n")==0 || strcmp(segment[1],"--rfc-email\n")==0){
                 char *argv[3] = {mkname,"r",NULL};
                 char* env[1] = {NULL};
                 execve(mkname,argv,env);
