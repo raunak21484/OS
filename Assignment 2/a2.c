@@ -211,7 +211,7 @@ int call_mkdir(char* path){
 void date(char ** segment){
     int fid = fork();
     if(fid<0){printf("Failed due to unexpected error!\n");return;}
-    if(fid===0){
+    if(fid==0){
         char* argv[3];
         if(segment[1]==NULL){
             //segment[0][strlen(segment[1])]
