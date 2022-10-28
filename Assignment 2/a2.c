@@ -193,9 +193,6 @@ int call_mkdir(char* path){
         return 2;
     }
     if (proc == 0) {
-        printf("here");
-        //char * tempDIR;
-        //strcpy(tempDIR,_PROGRAM_DIRECTORY);
 
         char* mkname = strcat(_PROGRAM_DIRECTORY,"/mkdir.o");
         printf("MKNAME = %d\n",mkname);
@@ -217,16 +214,16 @@ void date(char ** segment){
     int fid = fork();
     if(fid<0){printf("Failed due to unexpected error1!\n");return;}
     if(fid==0){
-        char* tempDIR;
-        strcpy(tempDIR,_PROGRAM_DIRECTORY);
-        char* mkname = strcat(tempDIR,"/date.o");
+        //char* tempDIR;
+        //strcpy(tempDIR,_PROGRAM_DIRECTORY);
+        char* mkname = strcat(_PROGRAM_DIRECTORY,"/date.o");
         if(segment[1]==NULL || strcmp(segment[1],"-u")==0 || strcmp(segment[1],"--utc")==0 || strcmp(segment[1],"--universal")==0 ||
                                     strcmp(segment[1],"-u\n")==0 || strcmp(segment[1],"--utc\n")==0 || strcmp(segment[1],"--universal\n")==0||strcmp(segment[1],"\n")==0){
             //segment[0][strlen(segment[0])-1] = '\0';
             printf("in HEREEE!!");
             char* argv[3]=  {mkname,"default",NULL};
             char* env[1] = {NULL};
-            printf("mkname = %s\n",mkname);
+            printf("mkname = %s, location = %p\n",mkname,mkname);
             execve(mkname,argv,env);
         }else if(strcmp(segment[1],"-R")==0 || strcmp(segment[1],"--rfc-email")==0  || strcmp(segment[1],"-R\n")==0 || strcmp(segment[1],"--rfc-email\n")==0){
                 printf("in here!!!");
