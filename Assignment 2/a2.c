@@ -317,7 +317,7 @@ void shell_loop(){
 }
 int main(int argc, char* argv[]){
     _PROGRAM_DIRECTORY = getPWD();
-    _PROGRAM_DIRECTORY_backup = getPWD();
+    //_PROGRAM_DIRECTORY_backup = getPWD();
     shell_loop();
 //    char ** segment = getInput();
 //    int ptr = 0;
