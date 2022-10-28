@@ -21,7 +21,7 @@ char * concatString(char * string1, char * string2){
     stringfinal[c] = '\0';
     printf("here");
     printf("stringfinal = %s",stringfinal);
-    return NULL;
+    return stringfinal;
 }
 int main()
 {
@@ -29,6 +29,6 @@ int main()
     char* bi="456";
    char * third = concatString(test,bi);
    free(third);
-  // printf("third = %s\n",third);
+  printf("third = %s\n",third);
     return 0;
 }
