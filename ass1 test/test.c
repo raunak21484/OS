@@ -9,7 +9,7 @@ char * concatString(char * string1, char * string2){
     int c2 = strlen(string2);
     int c = c1+c2;
     printf("c = %d",c);
-    char* stringfinal = (char*)malloc(sizeof(char)*(c+1));
+    //char* stringfinal = (char*)malloc(sizeof(char)*(c+1));
 
 //    for(int i=0;i< c1;i++){
 //        stringfinal[i] = string1[i];
@@ -21,7 +21,7 @@ char * concatString(char * string1, char * string2){
 //    stringfinal[c] = '\0';
 //    printf("here");
     //printf("stringfinal = %s",stringfinal);
-    return stringfinal;
+    return NULL;
 }
 int main()
 {
