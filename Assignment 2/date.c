@@ -20,7 +20,7 @@ int main(int argc, char* argv[]){
         printf("ONE\n");
         printf("%s %d %s %d %d:%d:%d %s UTC\n",bigArrayD[currtime.tm_wday],currtime.tm_mday,bigarrayM[currtime.tm_mon],(currtime.tm_year+1900),((currtime.tm_hour>=12?currtime.tm_hour-12:currtime.tm_hour)),currtime.tm_min,currtime.tm_sec,((currtime.tm_hour>=12?"PM":"AM")));
         return 0;
-    }else if(strcmp(argv[1],"r")){
+    }else if(strcmp(argv[1],"r")==0){
         printf("TWO\n");
         printf("%s, %d %s %d %d:%d:%d +0000",smallArrayD[currtime.tm_wday],currtime.tm_mday,smallarrayM[currtime.tm_mon],(currtime.tm_year+1900),currtime.tm_hour,currtime.tm_min,currtime.tm_sec);
         return 0;
