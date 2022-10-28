@@ -212,9 +212,9 @@ int call_mkdir(char* path){
         return 2;
     }
     if (proc == 0) {
-        char* tempDir;
-        strcpy(tempDir,_PROGRAM_DIRECTORY);
-        printf("\nTEMPDIR: %s\nPROGRAMDIR: %s\n",tempDir,_PROGRAM_DIRECTORY);
+//        char* tempDir;
+//        strcpy(tempDir,_PROGRAM_DIRECTORY);
+//        printf("\nTEMPDIR: %s\nPROGRAMDIR: %s\n",tempDir,_PROGRAM_DIRECTORY);
         char* mkname2 = concatString(_PROGRAM_DIRECTORY,"/mkdir.o");
         char* mkname = strcat(_PROGRAM_DIRECTORY,"/mkdir.o");
 
