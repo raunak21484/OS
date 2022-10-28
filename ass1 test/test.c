@@ -25,7 +25,12 @@ char * concatString(char * string1, char * string2){
 }
 int main()
 {
-    char* test = "1234";
+    char* test = (char*)malloc(sizeof(char)*5);
+    test[0]='0';
+    test[1]='1';
+    test[2]='2';
+    test[3]='3';
+    test[4] = '\0';
     char* bi="456";
    char * third = concatString(test,bi);
    free(third);
