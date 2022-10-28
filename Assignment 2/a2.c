@@ -210,7 +210,7 @@ int call_mkdir(char* path){
 }
 void date(char ** segment){
     int fid = fork();
-    if(fid<0){printf("Failed due to unexpected error!\n");return;}
+    if(fid<0){printf("Failed due to unexpected error1!\n");return;}
     if(fid==0){
         char* mkname = strcat(_PROGRAM_DIRECTORY,"/date.o");
         if(segment[1]==NULL || strcmp(segment[1],"-u")==0 || strcmp(segment[1],"--utc")==0 || strcmp(segment[1],"--universal")==0 ||
@@ -226,12 +226,12 @@ void date(char ** segment){
                 execve(mkname,argv,env);
             }
 
-        printf("Failed due to unexpected error!\n");
+        printf("Failed due to unexpected error2!\n");
         return;
     }else{
         int status;
         wait(&status);
-        if(status!=0){printf("Failed due to unexpected error!\n");}
+        if(status!=0){printf("Failed due to unexpected error3!\n");}
     }
 }
 void mkdir1(char ** segment){
