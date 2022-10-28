@@ -188,15 +188,17 @@ char* delimslash(char * input){
 }
 char * concatString(char * string1, char * string2){
     int c = strlen(string1)+strlen(string2);
-    char* sfinal = (char*)malloc(sizeof(char)*(c+1));
+    printf("c = %d",c);
+    char* stringfinal = (char*)malloc(sizeof(char)*(c+1));
     for(int i=0;i< strlen(string1);i++){
-        sfinal[i] = string1[i];
+        stringfinal[i] = string1[i];
     }
     int c1 = strlen(string1);
     for(int i=0;i< strlen(string2);i++){
-        sfinal[i+ c1] = string2[i];
+        stringfinal[i+ c1] = string2[i];
     }
-    sfinal[c] = '\0';
+    stringfinal[c] = '\0';
+    printf("stringfinal = %s",stringfinal);
     return sfinal;
 }
 int call_mkdir(char* path){
