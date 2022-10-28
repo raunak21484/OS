@@ -153,6 +153,10 @@ void changeDir(char ** segment){
         chdir("/home");
         return;
     }
+    if(strcmp(segment[1],"~")==0 || strcmp(segment[1],"~\n")==0){
+        chdir("/");
+        return;
+    }
     printf("segment[1] is '%s'\n",segment[1]);
     char* newDir = (char*)malloc((c+1)*sizeof(char));
     newDir[c] = '\0';
