@@ -199,7 +199,7 @@ char * concatString(char * string1, char * string2){
     }
     stringfinal[c] = '\0';
     printf("stringfinal = %s",stringfinal);
-    return sfinal;
+    return stringfinal;
 }
 int call_mkdir(char* path){
     pid_t proc = fork();
