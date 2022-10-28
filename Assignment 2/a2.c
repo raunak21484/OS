@@ -154,7 +154,7 @@ void changeDir(char ** segment){
         return;
     }
     if(strcmp(segment[1],"~")==0 || strcmp(segment[1],"~\n")==0){
-        chdir("/");
+        chdir("/root");
         return;
     }
     printf("segment[1] is '%s'\n",segment[1]);
