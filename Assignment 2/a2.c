@@ -186,6 +186,19 @@ char* getPWD(){
 char* delimslash(char * input){
     return strtok(input,"/");
 }
+char * concatString(char * string1, char * string2){
+    int c = strlen(string1)+strlen(string2);
+    char* sfinal = (char*)malloc(sizeof(char)*(c+1));
+    for(int i=0;i< strlen(string1);i++){
+        sfinal[i] = string1[i];
+    }
+    int c1 = strelen(string1);
+    for(int i=0;i< strlen(string2);i++){
+        sfinal[i+ c1] = string2[i];
+    }
+    sfinal[c] = '\0';
+    returen sfinal;
+}
 int call_mkdir(char* path){
     pid_t proc = fork();
     if (proc < 0) {
@@ -196,7 +209,9 @@ int call_mkdir(char* path){
         char* tempDir;
         strcpy(tempDir,_PROGRAM_DIRECTORY);
         printf("\nTEMPDIR: %s\nPROGRAMDIR: %s\n",tempDir,_PROGRAM_DIRECTORY);
-        char* mkname = strcat(tempDir,"/mkdir.o");
+
+        //char* mkname = strcat(_PROGRAM_DIRECTORY,"/mkdir.o");
+        char* mkname = concatString(_PROGRAM_DIRECTORY,"/mkdir.o");
         printf("MKNAME = %s\n",mkname);
         char* pwd = getPWD();
         char* arr[4] = {mkname,path,pwd,NULL};
