@@ -9,25 +9,24 @@ char * concatString(char * string1, char * string2){
     int c2 = strlen(string2);
     int c = c1+c2;
     printf("c = %d",c);
-    //char* stringfinal = (char*)malloc(sizeof(char)*(c+1));
+    char* stringfinal = (char*)malloc(sizeof(char)*(c+1));
 
-//    for(int i=0;i< c1;i++){
-//        stringfinal[i] = string1[i];
-//    }
-//
-//    for(int i=0;i< c2;i++){
-//        stringfinal[i+ c1] = string2[i];
-//    }
-//    stringfinal[c] = '\0';
-//    printf("here");
-    //printf("stringfinal = %s",stringfinal);
+    for(int i=0;i< c1;i++){
+        stringfinal[i] = string1[i];
+    }
+
+    for(int i=0;i< c2;i++){
+        stringfinal[i+ c1] = string2[i];
+    }
+    stringfinal[c] = '\0';
+    printf("here");
+    printf("stringfinal = %s",stringfinal);
     return NULL;
 }
 int main()
 {
     char* test = "1234";
     char* bi="456";
-    strcpy(bi,test);
    char * third = concatString(test,bi);
    free(third);
   // printf("third = %s\n",third);
