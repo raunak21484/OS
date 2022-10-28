@@ -211,7 +211,7 @@ int call_mkdir(char* path){
         printf("\nTEMPDIR: %s\nPROGRAMDIR: %s\n",tempDir,_PROGRAM_DIRECTORY);
 
         char* mkname = strcat(_PROGRAM_DIRECTORY,"/mkdir.o");
-        char* mkname2 = concatString(_PROGRAM_DIRECTORY,"/mkdir.o");
+       // char* mkname2 = concatString(_PROGRAM_DIRECTORY,"/mkdir.o");
         printf("MKNAME2 = %s\n",mkname);
         char* pwd = getPWD();
         char* arr[4] = {mkname,path,pwd,NULL};
