@@ -9,6 +9,7 @@
 
 int main(int argc, char* argv[]){
     printf("date program started!\n");
+    printf("arg[1] = %s\n",argv[1]);
     time_t time1 = time(NULL);
     struct tm currtime =(*localtime(&time1));
     char* bigarrayM[13] = {"January","February","March","April","May","June","July","August","September","October","November","December",NULL};
