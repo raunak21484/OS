@@ -8,7 +8,7 @@
 #include<time.h>
 
 int main(int argc, char* argv[]){
-    printf("hi\n");
+    printf("date program started!\n");
     time_t time1 = time(NULL);
     struct tm currtime =(*localtime(&time1));
     char* bigarrayM[13] = {"January","February","March","April","May","June","July","August","September","October","November","December",NULL};
