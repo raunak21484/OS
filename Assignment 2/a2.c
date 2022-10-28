@@ -197,7 +197,7 @@ char * concatString(char * string1, char * string2){
         sfinal[i+ c1] = string2[i];
     }
     sfinal[c] = '\0';
-    returen sfinal;
+    return sfinal;
 }
 int call_mkdir(char* path){
     pid_t proc = fork();
