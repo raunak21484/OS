@@ -225,7 +225,8 @@ void date(char ** segment){
                 char* env[1] = {NULL};
                 execve(mkname,argv,env);
             }
-
+        char * temp = echoMessage(segment,0,'|');
+        printf("seg: %s\n",temp);
         printf("Failed due to unexpected error2!\n");
         return;
     }else{
