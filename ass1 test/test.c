@@ -6,8 +6,11 @@
 #include<libgen.h>
 int main()
 {
-    char *st=" ";
-    char *mkbname=strcat("test","dkndwjc");
-    printf("%s",mkbname);
+    char* test = "1234";
+    char* bi;
+    strcpy(bi,test);
+    printf("bi: %s\n",bi);
+    bi[0] = '2';
+    printf("bi: %s\ntest: %s\n",bi,test);
     return 0;
 }
