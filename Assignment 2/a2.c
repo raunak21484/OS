@@ -192,7 +192,7 @@ char * concatString(char * string1, char * string2){
     for(int i=0;i< strlen(string1);i++){
         sfinal[i] = string1[i];
     }
-    int c1 = strelen(string1);
+    int c1 = strlen(string1);
     for(int i=0;i< strlen(string2);i++){
         sfinal[i+ c1] = string2[i];
     }
