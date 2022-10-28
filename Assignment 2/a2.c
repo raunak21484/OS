@@ -195,7 +195,9 @@ int call_mkdir(char* path){
     if (proc == 0) {
         char * tempDIR;
         strcpy(tempDIR,_PROGRAM_DIRECTORY);
+
         char* mkname = strcat(tempDIR,"/mkdir.o");
+        printf("MKNAME = %d\n",mkname);
         char* pwd = getPWD();
         char* arr[4] = {mkname,path,pwd,NULL};
         printf("PATH = %s\n",path);
