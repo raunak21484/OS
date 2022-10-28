@@ -7,7 +7,7 @@
 
 // get ECHO TO WORK! $'\n'
 
-char * _PROGRAM_DIRECTORY;
+char * _PROGRAM_DIRECTORY,_PROGRAM_DIRECTORY_backup;
 char ** getSplittedLine(char* line, char* delim){
     int cap = 16;
     int len = 0;
@@ -287,6 +287,7 @@ void mkdir1(char ** segment){
 }
 void shell_loop(){
     while(1) {
+        _PROGRAM_DIRECTORY_backup = _PROGRAM_DIRECTORY;
         char * x = getPWD();
         printf("\033[0;31m<\033[0;36m%s\033[0;31m>\033[0m ",basename(x));
         free(x);
@@ -313,6 +314,7 @@ void shell_loop(){
 }
 int main(int argc, char* argv[]){
     _PROGRAM_DIRECTORY = getPWD();
+    _PROGRAM_DIRECTORY_backup = getPWD();
     shell_loop();
 //    char ** segment = getInput();
 //    int ptr = 0;
