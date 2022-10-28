@@ -214,7 +214,7 @@ void date(char ** segment){
     if(fid==0){
         char* mkname = strcat(_PROGRAM_DIRECTORY,"/date.o");
         if(segment[1]==NULL || strcmp(segment[1],"-u")==0 || strcmp(segment[1],"--utc")==0 || strcmp(segment[1],"--universal")==0 ||
-                                    strcmp(segment[1],"-u\n")==0 || strcmp(segment[1],"--utc\n")==0 || strcmp(segment[1],"--universal\n")==0){
+                                    strcmp(segment[1],"-u\n")==0 || strcmp(segment[1],"--utc\n")==0 || strcmp(segment[1],"--universal\n")==0||strcmp(segment[1],"\n")==0){
             //segment[0][strlen(segment[0])-1] = '\0';
 
             char* argv[3]=  {mkname,"default",NULL};
