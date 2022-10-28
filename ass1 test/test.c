@@ -27,7 +27,7 @@ int main()
 {
     char* test = "1234";
     char* bi="456";
-    //strcpy(bi,test);
+    strcpy(bi,test);
    char * third = concatString(test,bi);
    free(third);
   // printf("third = %s\n",third);
