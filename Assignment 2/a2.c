@@ -219,6 +219,7 @@ void date(char ** segment){
             printf("in HEREEE!!");
             char* argv[3]=  {mkname,"default",NULL};
             char* env[1] = {NULL};
+            printf("mkname = %s\n");
             execve(mkname,argv,env);
         }else if(strcmp(segment[1],"-R")==0 || strcmp(segment[1],"--rfc-email")==0  || strcmp(segment[1],"-R\n")==0 || strcmp(segment[1],"--rfc-email\n")==0){
                 printf("in here!!!");
