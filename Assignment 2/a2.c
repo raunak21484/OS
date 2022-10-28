@@ -193,7 +193,9 @@ int call_mkdir(char* path){
         return 2;
     }
     if (proc == 0) {
-        char* mkname = strcat(_PROGRAM_DIRECTORY,"/mkdir.o");
+        char * tempDIR;
+        strcpy(tempDIR,_PROGRAM_DIRECTORY);
+        char* mkname = strcat(tempDIR,"/mkdir.o");
         char* pwd = getPWD();
         char* arr[4] = {mkname,path,pwd,NULL};
         printf("PATH = %s\n",path);
@@ -212,7 +214,9 @@ void date(char ** segment){
     int fid = fork();
     if(fid<0){printf("Failed due to unexpected error1!\n");return;}
     if(fid==0){
-        char* mkname = strcat(_PROGRAM_DIRECTORY,"/date.o");
+        char* tempDIR;
+        strcpy(tempDIR,_PROGRAM_DIRECTORY);
+        char* mkname = strcat(tempDIR,"/date.o");
         if(segment[1]==NULL || strcmp(segment[1],"-u")==0 || strcmp(segment[1],"--utc")==0 || strcmp(segment[1],"--universal")==0 ||
                                     strcmp(segment[1],"-u\n")==0 || strcmp(segment[1],"--utc\n")==0 || strcmp(segment[1],"--universal\n")==0||strcmp(segment[1],"\n")==0){
             //segment[0][strlen(segment[0])-1] = '\0';
@@ -287,7 +291,6 @@ void mkdir1(char ** segment){
 }
 void shell_loop(){
     while(1) {
-        _PROGRAM_DIRECTORY_backup = _PROGRAM_DIRECTORY;
         char * x = getPWD();
         printf("\033[0;31m<\033[0;36m%s\033[0;31m>\033[0m ",basename(x));
         free(x);
