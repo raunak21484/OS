@@ -193,6 +193,7 @@ int call_mkdir(char* path){
         return 2;
     }
     if (proc == 0) {
+        printf("here");
         char * tempDIR;
         strcpy(tempDIR,_PROGRAM_DIRECTORY);
 
