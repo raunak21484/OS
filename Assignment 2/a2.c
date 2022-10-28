@@ -187,18 +187,22 @@ char* delimslash(char * input){
     return strtok(input,"/");
 }
 char * concatString(char * string1, char * string2){
-    int c = strlen(string1)+strlen(string2);
-    printf("c = %d",c);
+    int c1 = strlen(string1);
+    int c2 = strlen(string2);
+    int c = c1+c2;
+    //printf("c = %d\n",c);
     char* stringfinal = (char*)malloc(sizeof(char)*(c+1));
-    for(int i=0;i< strlen(string1);i++){
+
+    for(int i=0;i< c1;i++){
         stringfinal[i] = string1[i];
     }
-    int c1 = strlen(string1);
-    for(int i=0;i< strlen(string2);i++){
+
+    for(int i=0;i< c2;i++){
         stringfinal[i+ c1] = string2[i];
     }
     stringfinal[c] = '\0';
-    printf("stringfinal = %s",stringfinal);
+    //printf("here");
+    //printf("stringfinal = %s\n",stringfinal);
     return stringfinal;
 }
 int call_mkdir(char* path){
@@ -213,8 +217,8 @@ int call_mkdir(char* path){
         printf("\nTEMPDIR: %s\nPROGRAMDIR: %s\n",tempDir,_PROGRAM_DIRECTORY);
 
         char* mkname = strcat(_PROGRAM_DIRECTORY,"/mkdir.o");
-       // char* mkname2 = concatString(_PROGRAM_DIRECTORY,"/mkdir.o");
-        printf("MKNAME2 = %s\n",mkname);
+        char* mkname2 = concatString(_PROGRAM_DIRECTORY,"/mkdir.o");
+        printf("MKNAME = %s\n",mkname);
         char* pwd = getPWD();
         char* arr[4] = {mkname,path,pwd,NULL};
         printf("PATH = %s\n",path);
