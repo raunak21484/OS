@@ -401,7 +401,7 @@ void ls(char ** segment){
         else{
             int status;
             wait(&status);
-            if(status = 50){printf("Directory Does not exist!\n");}
+            if(status == 50){printf("Directory Does not exist!\n");}
             else if(status!=0){printf("Failed due to unexpected error! Code = %d |\n",status);}
         }
 
