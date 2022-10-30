@@ -54,6 +54,22 @@ int main(int argc, char* argv[]){//mkname, flags(T,N), pwd, list of all names, N
     FILE* fptr;
     char bufch;
     for(int i=3;argv[i]!=NULL;i++){
+        tflag =0;
+        if(argv[i][strlen(argv[i])-1]=='\\'){
+            int c=1;
+            while(strlen(argv[i])-1-c>=0 && argv[i][strlen(argv[i])-1-c]=='\\'){
+                c++;
+            }
+            if(c%2==1 && argv[i+1]!=NULL){
+                tflag = 1;
+            }
+        }
+        if(tflag ==1){
+            argv[i+1] = concatString(argv[i],argv[i+1]);
+        }else{
+            tempstr = argv[i];
+        }
+
         if(tempstr!=NULL){
             char* t2 = slashTreatment(tempstr);
             char * strfinal = concatString(argv[2],t2);
@@ -80,22 +96,6 @@ int main(int argc, char* argv[]){//mkname, flags(T,N), pwd, list of all names, N
 
             fclose(fptr);
         }
-        tflag =0;
-        if(argv[i][strlen(argv[i])-1]=='\\'){
-            int c=1;
-            while(strlen(argv[i])-1-c>=0 && argv[i][strlen(argv[i])-1-c]=='\\'){
-                c++;
-            }
-            if(c%2==1 && argv[i+1]!=NULL){
-                tflag = 1;
-            }
-        }
-        if(tflag ==1){
-            argv[i+1] = concatString(argv[i],argv[i+1]);
-        }else{
-            tempstr = argv[i];
-        }
-
     }
     return 0;
 }
