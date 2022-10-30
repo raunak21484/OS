@@ -7,6 +7,5 @@
 #include<libgen.h>
 
 int main(int argc, char* argv[]){
-    printf("File to delete: '%s'\n",argv[1]);
     return remove(argv[1]);
 }
