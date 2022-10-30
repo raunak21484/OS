@@ -710,7 +710,6 @@ void catthread(char** segment){
         char* env[1] = {NULL};
 //        execve(mkname, argv, env);
         pthread_t id;
-        printf("argv[2] = '%s'\n",argv[2]);
         char* t1 = getfstring(argv);
         pthread_create(&id,NULL, &syscall1,&t1);
         pthread_join(id,NULL);
@@ -731,32 +730,17 @@ void rmthread(char ** segment){
         printf("Please place all flags at the beginning!\n");
         return;
     }
-    int pid = fork();
-    if(pid<0){
-        printf("Failed to fork!\n");
-        return;
-    }if(pid==0){
+
         char * fpath = concatString(_PROGRAM_DIRECTORY,"/");
         char* mkname = concatString(_PROGRAM_DIRECTORY,"/rm.o");
         char* pathfinal = concatString(fpath, echoMessage(segment,force+sucmes+1,' '));
         char* argv[3] = {mkname,pathfinal,NULL};
         char* env[1] = {NULL};
-        execve(mkname,argv,env);
-        printf("FAILED 1");
-        return;
-    }else{
-        int status;
-        wait(&status);
-        if(status!=0){
-            if(force==1){
-                return;
-            }else{
-                printf("File does not exist!\n");
-            }
-        }else if(sucmes==1){
-            printf("File deleted Successfully!\n");
-        }
-    }
+        //execve(mkname,argv,env);
+    pthread_t id;
+    char* t1 = getfstring(argv);
+    pthread_create(&id,NULL, &syscall1,&t1);
+    pthread_join(id,NULL);
 }
 void shell_loop(){
     while(1) {
