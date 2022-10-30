@@ -53,6 +53,9 @@ void echo(char** segment){
                 if(segment[ptr][ptr2+1]!='\0' && marking!= ptr2){
                     marking = ptr2+1;
                     printf("%c",segment[ptr][ptr2+1]);}
+                else if(segment[ptr][ptr2+1]=='\0'){
+                    printf(" ");
+                }
                 ptr2++;
                 continue;
             }
@@ -80,7 +83,7 @@ char* echoMessage(char** segment, int ptr, char sep){
     int tptr = ptr;
     while(segment[tptr]!=NULL){tsize+=strlen(segment[tptr]);tptr++;}
 //    printf("TSIZE: %d\n",tsize);
-    char * ECHOMESSAGE = (char*)malloc((tsize*2) * sizeof(char));
+    char * ECHOMESSAGE = (char*)malloc((tsize*3+3) * sizeof(char));
     int eptr = 0;
     int marking = -1, dollarmarking = -1;
 
@@ -96,6 +99,9 @@ char* echoMessage(char** segment, int ptr, char sep){
                     marking = ptr2+1;
                     //printf("%c",'\\');
                     ECHOMESSAGE[eptr] = segment[ptr][ptr2+1];
+                    eptr++;
+                }else if(segment[ptr][ptr2+1]=='\0'){
+                    ECHOMESSAGE[eptr] = ' ';
                     eptr++;
                 }
                 ptr2++;
