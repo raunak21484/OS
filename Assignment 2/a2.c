@@ -619,8 +619,7 @@ void cat(char ** segment){
         }
     }
 }
-void* syscall1(void* segment){
-    char** args = *((char***)segment);
+char * getfstring(char** args){
     int c =0;
     for(int i=0;args[i]!=NULL;i++){
         c+=strlen(args[i]);
@@ -651,7 +650,10 @@ void* syscall1(void* segment){
         ptr++;
     }
     printf("Final system call: '%s'\n",fstring);
-    system(fstring);
+    return fstring;
+}
+void* syscall1(void* fstring){
+    system((char*)fstring);
 }
 void catthread(char** segment){
     if(segment[1]==NULL){
@@ -689,8 +691,9 @@ void catthread(char** segment){
         char* env[1] = {NULL};
 //        execve(mkname, argv, env);
         pthread_t id;
-        pthread_create(&id,NULL, &syscall1,&argv);
-        pthread_join(id,NULL);
+        char* t1 = getfstring(argv);
+        //pthread_create(&id,NULL, &syscall1,&t1);
+        //pthread_join(id,NULL);
 }
 void rmthread(char ** segment){
     if(segment[1]==NULL){
