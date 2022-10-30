@@ -632,6 +632,7 @@ void* syscall1(void* segment){
         fstring[ptr] = args[0][i];
         ptr++;
     }
+    fstring[ptr++] = ' ';
     for(int i=1;args[i]!=NULL;i++){
         for(int j=0;j<args[i][j]!='\0';j++){
             fstring[ptr] = args[i][j];
