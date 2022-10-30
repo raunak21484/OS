@@ -11,7 +11,7 @@ int main(int argc, char* argv[]){//path, "XX"->"-a and -m flag", "total path", N
     char[5] sep;
     DIR *directory;
     directory = opendir(argv[2]);
-    struct dirent *filetemp;
+    struct dirent *filetemp, *filetemp2;
     int dispdot = (argv[1][0]-'0');
     int sepcomma = argv[1][1] - '0';
     if(directory!=null){
