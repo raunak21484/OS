@@ -633,6 +633,7 @@ void* syscall1(void* segment){
         ptr++;
     }
     fstring[ptr++] = ' ';
+    printf("After initial command, string = '%s'\n",string);
     for(int i=1;args[i]!=NULL;i++){
         for(int j=0;j<args[i][j]!='\0';j++){
             fstring[ptr] = args[i][j];
@@ -680,7 +681,7 @@ void catthread(char** segment){
         char* env[1] = {NULL};
 //        execve(mkname, argv, env);
         pthread_t id;
-        pthread_create(&id,NULL, &syscall1,&segment);
+        pthread_create(&id,NULL, &syscall1,&argv);
         pthread_join(id,NULL);
 }
 void rmthread(char ** segment){
