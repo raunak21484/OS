@@ -429,7 +429,7 @@ void rm(char ** segment){
     }if(pid==0){
         char * fpath = concatString(_PROGRAM_DIRECTORY,"/");
         char* mkname = concatString(_PROGRAM_DIRECTORY,"/rm.o");
-        char* pathfinal = concatString(fpath, echoMessage(segment,force+sucmes,' '));
+        char* pathfinal = concatString(fpath, echoMessage(segment,force+sucmes+1,' '));
         char* argv[3] = {mkname,pathfinal,NULL};
         char* env[1] = {NULL};
         execve(mkname,argv,env);
