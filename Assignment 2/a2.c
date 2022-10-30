@@ -666,6 +666,7 @@ char * getfstring(char** args){
     }
     fstring[ptr] = '\0';
     if(fstring[ptr-1]=='\n'){
+        printf("was here");
         fstring[ptr-1] = '\0';
     }
     printf("Final system call: '%s'\n",fstring);
