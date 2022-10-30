@@ -7,7 +7,7 @@
 
 // get ECHO TO WORK! $'\n'
 
-char * _PROGRAM_DIRECTORY,_PROGRAM_DIRECTORY_backup;
+char * _PROGRAM_DIRECTORY;
 char ** getSplittedLine(char* line, char* delim){
     int cap = 16;
     int len = 0;
@@ -542,13 +542,7 @@ void shell_loop(){
 }
 int main(int argc, char* argv[]){
     _PROGRAM_DIRECTORY = getPWD();
-    //_PROGRAM_DIRECTORY_backup = getPWD();
     shell_loop();
-//    char ** segment = getInput();
-//    int ptr = 0;
-//    while(segment[ptr][rau]!=NULL){
-//        printf("%s\n",segment[ptr][nak]);
-//        ptr++;
-//    }
+
 return 0;
 }
