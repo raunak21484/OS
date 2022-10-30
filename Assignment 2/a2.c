@@ -653,12 +653,12 @@ char * getfstring(char** args){
             if(i==2){
                 printf("%c",args[i][j]);
             }
-            if(args[i][j]==' '){
-                fstring[ptr] = '\\';
-                ptr++;
-            }
-            fstring[ptr] = args[i][j];
-            ptr++;
+//            if(args[i][j]==' '){
+//                fstring[ptr] = '\\';
+//                ptr++;
+//            }
+//            fstring[ptr] = args[i][j];
+//            ptr++;
         }
         fstring[ptr] = ' ';
         ptr++;
