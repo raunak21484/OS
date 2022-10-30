@@ -658,7 +658,6 @@ char * getfstring(char** args){
         }
         fstring[ptr] = ' ';
         ptr++;
-        }
     }
     fstring[ptr] = '\0';
     while(ptr>0 && fstring[ptr]=='\0'){
