@@ -660,8 +660,8 @@ char * getfstring(char** args){
 //            fstring[ptr] = args[i][j];
 //            ptr++;
         }
-        fstring[ptr] = ' ';
-        ptr++;
+        //fstring[ptr] = ' ';
+        //ptr++;
         if(i==2){printf("\n\n");}
     }
     fstring[ptr] = '\0';
