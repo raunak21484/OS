@@ -367,7 +367,7 @@ void date(char ** segment){
             //printf("mkname = %s, location = %p\n",mkname,mkname);
             execve(mkname,argv,env);
         }else if(strcmp(segment[1],"-R")==0 || strcmp(segment[1],"--rfc-email")==0  || strcmp(segment[1],"-R\n")==0 || strcmp(segment[1],"--rfc-email\n")==0){
-                printf("in here!!!");
+                //printf("in here!!!");
             char *argv[3] = {mkname,"r",NULL};
                 char* env[1] = {NULL};
                 execve(mkname,argv,env);
@@ -867,7 +867,7 @@ void datethread(char ** segment){
             pthread_create(&id,NULL, &syscall1,&t1);
             pthread_join(id,(void**) &status);
         }else if(strcmp(segment[1],"-R")==0 || strcmp(segment[1],"--rfc-email")==0  || strcmp(segment[1],"-R\n")==0 || strcmp(segment[1],"--rfc-email\n")==0){
-            printf("in here!!!");
+            //printf("in here!!!");
             char *argv[3] = {mkname,"r",NULL};
             char* env[1] = {NULL};
             //execve(mkname,argv,env);
