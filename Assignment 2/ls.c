@@ -9,15 +9,29 @@
 int main(int argc, char* argv[]){//path, "XX"->"-a and -m flag", "total path", NULL
     printf("%s\n%s\n%s\n",argv[0],argv[1],argv[2]);
     char[5] sep;
-    if(argv[1][1] == '1'){
-        sep = ", ";
-    }else{
-        sep = " ";
-    }
     DIR *directory;
     directory = opendir(argv[2]);
-    struct dirent *dir;
-    int dispdot = (int)(argv[1][0]-'0');
-
+    struct dirent *filetemp;
+    int dispdot = (argv[1][0]-'0');
+    int sepcomma = argv[1][1] - '0';
+    if(directory!=null){
+        filetemp = readdir(directory);
+        filetemp2 = readdir(directory);
+        while(filetemp!=NULL){
+            if(filetemp->d_name[0]=='.'){
+                if(dispdot){
+                printf("%s",filetemp->d_name);
+                if(sepcomma&& filetemp2!=NULL){printf(",");}
+                printf(" ");
+                }
+            }else{
+                    printf("%s",filetemp->d_name);
+                    if(sepcomma&& filetemp2!=NULL){printf(",");}
+                    printf(" ");
+            }
+            filetemp = filetemp2;
+            filetemp2 = readdir(directory);
+        }
+    }
     return 0;
 }
