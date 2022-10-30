@@ -93,7 +93,7 @@ int main(int argc, char* argv[]){//mkname, flags(T,N), pwd, list of all names, N
                 if(bufch == '\n'){
                     lc++;
                     if(argv[1][1]=='1'){
-                        printf("%6d\t",lc);
+                        printf("%6d   ",lc);
                     }
                 }
             }
