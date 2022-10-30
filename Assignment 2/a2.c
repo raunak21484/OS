@@ -637,6 +637,11 @@ char * getfstring(char** args){
         ptr++;
     }
     printf("args[2] = %s\n",args[2]);
+    printf("args[2] = ");
+    for(int i=0;args[2][i]!='\0';i++){
+        printf("%c",args[2][i]);
+    }
+    printf("\n");
     fstring[ptr++] = ' ';
     printf("After initial command, string = '%s'\n",fstring);//
     for(int i=1;args[i]!=NULL;i++){
