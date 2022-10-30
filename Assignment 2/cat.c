@@ -44,10 +44,11 @@ char * concatString(char * string1, char * string2){
     return stringfinal;
 }
 int main(int argc, char* argv[]){//mkname, flags(T,N), pwd, list of all names, NULL
-//    printf("In cat.c, program: \n");
-//    for(int i=0;argv[i]!=NULL;i++){
-//        printf("'%s'\n",argv[i]);
-//    }
+    printf("In cat.c, program: \n");
+    for(int i=0;argv[i]!=NULL;i++){
+        printf("'%s'\n",argv[i]);
+    }
+    printf("DONE \n\n");
     int tflag=0;
     char* tempstr = NULL;
     FILE* fptr;
