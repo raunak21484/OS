@@ -8,5 +8,5 @@
 
 int main(int argc, char* argv[]){//path, "XX"->"-a and -m flag", "total path", NULL
     printf("%s\n%s\n%s\n",argv[0],argv[1],argv[2]);
-    return 2;
+    return 0;
 }
