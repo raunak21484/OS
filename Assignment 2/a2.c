@@ -234,10 +234,10 @@ int call_mkdir(char* path){
         char* mkname = concatString(_PROGRAM_DIRECTORY,"/mkdir.o");
         //char* mkname = strcat(_PROGRAM_DIRECTORY,"/mkdir.o");
 
-        printf("MKNAME = %s\n",mkname);
+        //printf("MKNAME = %s\n",mkname);
         char* pwd = getPWD();
         char* arr[4] = {mkname,path,pwd,NULL};
-        printf("PATH = %s\n",path);
+        //printf("PATH = %s\n",path);
         char * env[1] = {NULL};
 
         execve(mkname,arr,env);
@@ -321,7 +321,7 @@ void mkdir1(char ** segment){
             }
             free(temp);
         }else{
-            printf("DEFAULT");
+            //printf("DEFAULT");
             char* message = echoMessage(segment,1,' ');
             if(call_mkdir(message)!=0){ printf("Creation of directory failed!\n");}
             //MAKE DIRECTORY NORMALLY
