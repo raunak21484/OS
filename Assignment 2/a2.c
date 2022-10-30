@@ -347,7 +347,7 @@ void ls(char ** segment){
                         printf("Failed due to unexpected error! Code = -3\n");
                     }
                     else{
-                        char * ccat1 = concatString(_PROGRAM_DIRECTORY,"/")''
+                        char * ccat1 = concatString(_PROGRAM_DIRECTORY,"/");
                         char* ccat = concatString(ccat1, echoMessage(segment,3,' '));
                         char* argv[4]  = {mkname, "11",ccat,NULL};
                         execve(mkname,argv,env);
