@@ -643,6 +643,7 @@ char * getfstring(char** args){
     }
     printf("\n");
     fstring[ptr++] = ' ';
+    fstring[ptr] = '\0';
     printf("After initial command, string = '%s'\n",fstring);//
     for(int i=1;args[i]!=NULL;i++){
         if(i==2){printf("Here is arg[2]: ");}
