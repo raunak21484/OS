@@ -625,7 +625,7 @@ void* syscall1(void* segment){
     for(int i=0;args[i]!=NULL;i++){
         c+=strlen(args[i]);
     }
-    c*=2;
+    c*=4;
     char* fstring = (char*)malloc(sizeof(char)*(c+10));
     int ptr = 0;
     for(int i=0;args[0][i]!='&';i++){
@@ -636,6 +636,10 @@ void* syscall1(void* segment){
     printf("After initial command, string = '%s'\n",fstring);//
     for(int i=1;args[i]!=NULL;i++){
         for(int j=0;j<args[i][j]!='\0';j++){
+            if(args[i][j]==' '){
+                fstring[ptr] = '\\';
+                ptr++;
+            }
             fstring[ptr] = args[i][j];
             ptr++;
         }
