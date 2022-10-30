@@ -675,7 +675,7 @@ char * getfstring(char** args){
     return fstring;
 }
 void* syscall1(void* fstring){
-    char* temp = *((char*) fstring);
+    char* temp = *((char**) fstring);
     printf("temp fstring=  '%s'\n",temp);
     system(temp);
 }
