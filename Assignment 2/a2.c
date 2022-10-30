@@ -6,7 +6,106 @@
 #include<libgen.h>
 
 // get ECHO TO WORK! $'\n'
+void echols(char** segment){
+    int ptr =1;
+    int EOL = 1;
+    if(segment[1] != NULL){
+        if(strcmp(segment[1],"-n")==0 || strcmp(segment[1],"-n\n")==0){
+            EOL = 0;
+            ptr = 2;
+        }else if(strcmp(segment[1],"-E")==0 || strcmp(segment[1],"-E\n")==0){
+            ptr = 2;
+        }
+    }
+    int marking = -1, dollarmarking = -1;
+    while(segment[ptr]!=NULL){
+        int ptr2 = 0;
+        marking = -1;dollarmarking=-1;
+        while(segment[ptr][ptr2]!='\0'){
+            if(segment[ptr][ptr2]=='\\'){
+                if(segment[ptr][ptr2+1]=='\\' && marking!= ptr2){
+                    marking = ptr2+1;
+                    printf("%c",'\\');}
+                ptr2++;
+                continue;
+            }
+            if(segment[ptr][ptr2]=='$'){
+                if(segment[ptr][ptr2+1]=='$' && dollarmarking!=ptr2){
+                    dollarmarking = ptr2+1;
+                    printf("%d",(int)getpid());
+                }
+                ptr2++;
+                continue;
+            }
+            if(segment[ptr+1]==NULL && segment[ptr][ptr2]=='\n' && EOL==0){
+                ptr2++;
+            }
+            printf("%c",segment[ptr][ptr2]);
+            ptr2++;
+        }
+        ptr++;
+        if(segment[ptr]!=NULL){printf(" ");}
+    }
+}
+char* echoMessagemkdir(char** segment, int ptr, char sep){
+    int EOL = 0;
+    int tsize =0;
+    int tptr = ptr;
+    while(segment[tptr]!=NULL){tsize+=strlen(segment[tptr]);tptr++;}
+//    printf("TSIZE: %d\n",tsize);
+    char * ECHOMESSAGE = (char*)malloc((tsize*2) * sizeof(char));
+    int eptr = 0;
+    int marking = -1, dollarmarking = -1;
 
+    while(segment[ptr]!=NULL){
+        //printf("Segment[%d] raunak114 = %s\n",ptr,segment[ptr]);
+        int ptr2 = 0;
+        marking = -1;dollarmarking=-1;
+        while(segment[ptr][ptr2]!='\0'){
+
+            if(segment[ptr][ptr2]=='\\'){
+                //printf("FOUND1!!");
+                if(segment[ptr][ptr2+1]=='\\' && marking!= ptr2){
+                    marking = ptr2+1;
+                    //printf("%c",'\\');
+                    ECHOMESSAGE[eptr] = '\\';
+                    eptr++;
+                }
+                ptr2++;
+                continue;
+            }
+            if(segment[ptr][ptr2]=='$'){
+                //printf("FOUND2!");
+                ECHOMESSAGE[eptr] = '$';
+                eptr++;
+                if(segment[ptr][ptr2+1]=='$' && dollarmarking!=ptr2){
+                    dollarmarking = ptr2+1;
+                    //printf("%d",(int)getpid());
+                }
+                ptr2++;
+                continue;
+            }
+            if(segment[ptr+1]==NULL && segment[ptr][ptr2]=='\n' && EOL==0){
+                //printf("HERE");
+                ptr2++;
+            }
+            //printf("%c",segment[ptr][ptr2]);
+            ECHOMESSAGE[eptr] = segment[ptr][ptr2];
+            ptr2++;
+
+            eptr++;
+        }
+        ptr++;
+        if(segment[ptr]!=NULL){ECHOMESSAGE[eptr] = sep; eptr++;}
+    }
+    ECHOMESSAGE[eptr] = '\0';
+    //printf("EPTR = %d",eptr);
+//    printf("\nMessage: \n");
+//    for(int i=0;i<eptr;i++){
+//        printf("'%c' ",ECHOMESSAGE[i]);
+//    }
+    return ECHOMESSAGE;
+}
 char * _PROGRAM_DIRECTORY;
 char ** getSplittedLine(char* line, char* delim){
     int cap = 16;
@@ -285,7 +384,7 @@ void mkdir1(char ** segment){
     if(segment[1]!=NULL) {
         if(strcmp(segment[1],"\n")==0 || strcmp(segment[1]," ") == 0){return;}
         else if(strcmp(segment[1],"-v")==0){
-            char* message = echoMessage(segment,2,' ');
+            char* message = echoMessagemkdir(segment,2,' ');
             int stat =call_mkdir(message);
             //printf("\nstat = %d\n",stat);//
             if(stat==0){
@@ -297,7 +396,7 @@ void mkdir1(char ** segment){
         }else if(strcmp(segment[1],"-v\n")==0 || strcmp(segment[1],"-p\n")==0){
             printf("mkdir: Missing operand\n");
         }else if(strcmp(segment[1],"-p")==0){
-            char* message = echoMessage(segment,2,' ');
+            char* message = echoMessagemkdir(segment,2,' ');
             char** segmentTWO = getSplittedLine(message,"/");
             int c =0;
             for(int i=0;segmentTWO[i]!=NULL;i++){
@@ -322,7 +421,7 @@ void mkdir1(char ** segment){
             free(temp);
         }else{
             //printf("DEFAULT");
-            char* message = echoMessage(segment,1,' ');
+            char* message = echoMessagemkdir(segment,1,' ');
             if(call_mkdir(message)!=0){ printf("Creation of directory failed!\n");}
             //MAKE DIRECTORY NORMALLY
         }
