@@ -54,6 +54,7 @@ int main(int argc, char* argv[]){//mkname, flags(T,N), pwd, list of all names, N
     char* tempstr = NULL;
     FILE* fptr;
     char bufch;
+    int lc =0;
     for(int i=3;argv[i]!=NULL;i++){
         tflag =0;
         if(argv[i][strlen(argv[i])-1]=='\\'){
@@ -82,7 +83,11 @@ int main(int argc, char* argv[]){//mkname, flags(T,N), pwd, list of all names, N
                 tempstr = NULL;
                 break;
             }
-            int lc =0;
+
+            lc++;
+            if(argv[1][1]=='1'){
+                printf("%6d   ",lc);
+            }
             while((bufch = fgetc(fptr))!=EOF){
 
                 if(bufch!='\\'){
