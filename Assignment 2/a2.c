@@ -53,9 +53,9 @@ void echo(char** segment){
                 if(segment[ptr][ptr2+1]!='\0' && marking!= ptr2){
                     marking = ptr2+1;
                     printf("%c",segment[ptr][ptr2+1]);}
-                else if(segment[ptr][ptr2+1]=='\0'){
-                    printf(" ");
-                }
+//                else if(segment[ptr][ptr2+1]=='\0'){
+//                    printf(" ");
+//                }
                 ptr2++;
                 continue;
             }
@@ -100,10 +100,11 @@ char* echoMessage(char** segment, int ptr, char sep){
                     //printf("%c",'\\');
                     ECHOMESSAGE[eptr] = segment[ptr][ptr2+1];
                     eptr++;
-                }else if(segment[ptr][ptr2+1]=='\0'){
-                    ECHOMESSAGE[eptr] = ' ';
-                    eptr++;
                 }
+//                else if(segment[ptr][ptr2+1]=='\0'){
+//                    ECHOMESSAGE[eptr] = ' ';
+//                    eptr++;
+//                }
                 ptr2++;
                 continue;
             }
