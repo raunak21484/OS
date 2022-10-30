@@ -87,7 +87,7 @@ int main(int argc, char* argv[]){//mkname, flags(T,N), pwd, list of all names, N
                 if(bufch == '\n'){
                     lc++;
                     if(argv[1][1]=='1'){
-                        printf("%n\t",lc);
+                        printf("%6d\t",lc);
                     }
                 }
                 if(bufch!='\t' || argv[1][0]=='0'){
