@@ -8,7 +8,7 @@
 int main(int argc, char* argv[]){
     printf("In cat.c, program: \n");
     for(int i=0;argv[i]!=NULL;i++){
-        printf("'%s'",argv[i]);
+        printf("'%s'\n",argv[i]);
     }
     return 0;
 }
