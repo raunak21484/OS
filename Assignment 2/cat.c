@@ -77,7 +77,9 @@ int main(int argc, char* argv[]){//mkname, flags(T,N), pwd, list of all names, N
             printf("Final String: '%s'\n",strfinal);
             fptr = fopen(strfinal,"r");
             if(fptr==NULL){
-                printf("Unable to open file!\n");
+                printf("Unable to open file '%s'\n",strfinal);
+                tempstr = NULL;
+                break;
             }
             int lc =0;
             while((bufch = fgetc(fptr))!=EOF){
