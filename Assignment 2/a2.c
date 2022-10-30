@@ -628,7 +628,11 @@ void* syscall1(void* segment){
     c*=2;
     char* fstring = (char*)malloc(sizeof(char)*(c+10));
     int ptr = 0;
-    for(int i=0;args[i]!=NULL;i++){
+    for(int i=0;args[0]!='&';i++){
+        fstring[ptr] = args[0][i];
+        ptr++;
+    }
+    for(int i=1;args[i]!=NULL;i++){
         for(int j=0;j<args[i][j]!='\0';j++){
             fstring[ptr] = args[i][j];
             ptr++;
