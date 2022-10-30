@@ -347,14 +347,16 @@ void ls(char ** segment){
                         printf("Failed due to unexpected error! Code = -3\n");
                     }
                     else{
-                        char* ccat = concatString(_PROGRAM_DIRECTORY, echoMessage(segment,3,' '));
+                        char * ccat1 = concatString(_PROGRAM_DIRECTORY,"/")''
+                        char* ccat = concatString(ccat1, echoMessage(segment,3,' '));
                         char* argv[4]  = {mkname, "11",ccat,NULL};
                         execve(mkname,argv,env);
                         printf("Failed due to unexpected error! Code = -4\n");
                     }
                 }
                 else{
-                    char* ccat = concatString(_PROGRAM_DIRECTORY, echoMessage(segment,2,' '));
+                    char * ccat1 = concatString(_PROGRAM_DIRECTORY,"/")''
+                    char* ccat = concatString(ccat1, echoMessage(segment,2,' '));
                     char* argv[4]  = {mkname, "01",ccat,NULL};
                     execve(mkname,argv,env);
                     printf("Failed due to unexpected error! Code = -5\n");
@@ -373,21 +375,24 @@ void ls(char ** segment){
                         execve(mkname, argv,env);
                         printf("Failed due to unexpected error! Code = -7\n");
                     }else{
-                        char* ccat = concatString(_PROGRAM_DIRECTORY, echoMessage(segment,3,' '));
+                        char * ccat1 = concatString(_PROGRAM_DIRECTORY,"/")''
+                        char* ccat = concatString(ccat1, echoMessage(segment,3,' '));
                         char* argv[4]  = {mkname, "11",ccat,NULL};
                         execve(mkname,argv,env);
                         printf("Failed due to unexpected error! Code = -8\n");
                     }
                 }
                 else{
-                    char* ccat = concatString(_PROGRAM_DIRECTORY, echoMessage(segment,2,' '));
+                    char * ccat1 = concatString(_PROGRAM_DIRECTORY,"/")''
+                    char* ccat = concatString(ccat1, echoMessage(segment,2,' '));
                     char* argv[4]  = {mkname, "10",ccat,NULL};
                     execve(mkname,argv,env);
                     printf("Failed due to unexpected error! Code = -9\n");
                 }
             }
             else{
-                char* ccat = concatString(_PROGRAM_DIRECTORY, echoMessage(segment,1,' '));
+                char * ccat1 = concatString(_PROGRAM_DIRECTORY,"/")''
+                char* ccat = concatString(ccat1, echoMessage(segment,1,' '));
                 char* argv[4]  = {mkname, "00",ccat,NULL};
                 execve(mkname,argv,env);
                 printf("Failed due to unexpected error! Code = -10\n");
