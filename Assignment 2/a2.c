@@ -396,7 +396,7 @@ void ls(char ** segment){
         else{
             int status;
             wait(&status);
-            if(status!=0){printf("Failed due to unexpected error! Code = %d\n",status);}
+            if(status!=0){printf("Failed due to unexpected error! Code = %d |\n",status);}
         }
 
 }
