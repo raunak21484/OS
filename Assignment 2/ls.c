@@ -7,7 +7,7 @@
 #include <dirent.h>
 
 int main(int argc, char* argv[]){//path, "XX"->"-a and -m flag", "total path", NULL
-    printf("%s\n%s\n%s\n",argv[0],argv[1],argv[2]);
+    //printf("%s\n%s\n%s\n",argv[0],argv[1],argv[2]);
     DIR *directory;
     directory = opendir(argv[2]);
     struct dirent *filetemp, *filetemp2;
@@ -32,5 +32,6 @@ int main(int argc, char* argv[]){//path, "XX"->"-a and -m flag", "total path", N
             filetemp2 = readdir(directory);
         }
     }
+    printf("\n");
     return 0;
 }
