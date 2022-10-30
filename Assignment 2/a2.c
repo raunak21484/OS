@@ -639,7 +639,11 @@ char * getfstring(char** args){
     fstring[ptr++] = ' ';
     printf("After initial command, string = '%s'\n",fstring);//
     for(int i=1;args[i]!=NULL;i++){
+        if(i==2){printf("Here is arg[2]: ");}
         for(int j=0;j<args[i][j]!='\0';j++){
+            if(i==2){
+                printf("%c",args[i][j]);
+            }
             if(args[i][j]==' '){
                 fstring[ptr] = '\\';
                 ptr++;
@@ -649,6 +653,7 @@ char * getfstring(char** args){
         }
         fstring[ptr] = ' ';
         ptr++;
+        if(i==2){printf("\n\n");}
     }
     fstring[ptr] = '\0';
     printf("Final system call: '%s'\n",fstring);
