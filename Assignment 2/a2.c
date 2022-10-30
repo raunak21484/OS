@@ -650,6 +650,7 @@ char * getfstring(char** args){
         fstring[ptr] = ' ';
         ptr++;
     }
+    fstring[ptr] = '\0';
     printf("Final system call: '%s'\n",fstring);
     return fstring;
 }
