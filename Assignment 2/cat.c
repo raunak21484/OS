@@ -89,7 +89,7 @@ int main(int argc, char* argv[]){//mkname, flags(T,N), pwd, list of all names, N
                     printf("%c",bufch);
                 }
                 else{
-                    if(argv[1][0]=='0'){printf("\t");}
+                    if(argv[1][0]=='0'){printf("HERE");printf("\t");}
                     else{printf("^I");}
                 }
                 if(bufch == '\n'){
