@@ -731,6 +731,7 @@ void rmthread(char ** segment){
         return;
     }
 
+
         char * fpath = concatString(_PROGRAM_DIRECTORY,"/");
         char* mkname = concatString(_PROGRAM_DIRECTORY,"/rm.o");
         char* pathfinal = concatString(fpath, echoMessage(segment,force+sucmes+1,' '));
@@ -741,6 +742,7 @@ void rmthread(char ** segment){
     char* t1 = getfstring(argv);
     pthread_create(&id,NULL, &syscall1,&t1);
     pthread_join(id,NULL);
+
 }
 void shell_loop(){
     while(1) {
