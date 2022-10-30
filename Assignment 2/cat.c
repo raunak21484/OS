@@ -62,8 +62,7 @@ int main(int argc, char* argv[]){//mkname, flags(T,N), pwd, list of all names, N
                 printf("Unable to open file!\n");
             }
             int lc =0;
-            do{
-                bufch = (char)fgets(fptr);
+            while((bufch = fgets(fptr))!=EOF){
                 if(bufch == '\n'){
                     lc++;
                     if(argv[1][1]=='1'){
@@ -71,11 +70,12 @@ int main(int argc, char* argv[]){//mkname, flags(T,N), pwd, list of all names, N
                     }
                 }
                 if(bufch!='\t' || argv[1][0]=='0'){
-                printf("%c",bufch);}
+                    printf("%c",bufch);}
                 else{
                     printf("^I");
                 }
-            }while(bufch!=EOF);
+            }
+
             fclose(fptr);
         }
         tflag =0;
