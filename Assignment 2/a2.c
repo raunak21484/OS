@@ -439,7 +439,7 @@ void rm(char ** segment){
         int status;
         wait(&status);
         if(status!=0){
-            if(force==0){
+            if(force==1){
                 return;
             }else{
                 printf("File does not exist!\n");
