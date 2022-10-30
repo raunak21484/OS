@@ -19,7 +19,7 @@ int main(int argc, char* argv[]){//path, "XX"->"-a and -m flag", "total path", N
         while(filetemp!=NULL){
             if(filetemp->d_name[0]=='.'){
                 if(dispdot){
-                printf("%s",filetemp->d_name);
+                printf("\\033[0;33m%s\033[0m",filetemp->d_name);
                 if(sepcomma&& filetemp2!=NULL){printf(",");}
                 printf(" ");
                 }
