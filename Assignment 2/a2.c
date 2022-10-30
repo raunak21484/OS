@@ -701,6 +701,7 @@ void shell_loop(){
         else if(strcmp(s0,"ls")==0){ls(segment);}
         else if(strcmp(s0,"rm")==0){rm(segment);}
         else if(strcmp(s0,"cat")==0){cat(segment);}
+        else if(strcmp(s0,"cat&t")==0){ catthread(segment);}
         else{printf("Segment[0] is %s!\n",segment[0]);printf("Command Not Found!\n");}
         free(s0);
 
