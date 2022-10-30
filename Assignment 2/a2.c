@@ -883,6 +883,20 @@ void datethread(char ** segment){
         return;
 
 }
+int call_mkdirthread(char* path){//raunak114
+    char* mkname = concatString(_PROGRAM_DIRECTORY,"/mkdir.o");
+    char* pwd = getPWD();
+    char* arr[4] = {mkname,path,pwd,NULL};
+    char * env[1] = {NULL};
+    int *status;
+    pthread_t id;
+    char* t1 = getfstring(argv);
+
+    pthread_create(&id,NULL, &syscall1,&t1);
+    pthread_join(id,(void**) &status);
+    return *status;
+    //execve(mkname,arr,env);
+}
 void mkdir1thread(char ** segment){
     if(segment[1]!=NULL) {
         if(strcmp(segment[1],"\n")==0 || strcmp(segment[1]," ") == 0){return;}
@@ -931,20 +945,7 @@ void mkdir1thread(char ** segment){
 
     }
 }
-int call_mkdirthread(char* path){//raunak114
-        char* mkname = concatString(_PROGRAM_DIRECTORY,"/mkdir.o");
-        char* pwd = getPWD();
-        char* arr[4] = {mkname,path,pwd,NULL};
-        char * env[1] = {NULL};
-        int *status;
-        pthread_t id;
-        char* t1 = getfstring(argv);
 
-        pthread_create(&id,NULL, &syscall1,&t1);
-        pthread_join(id,(void**) &status);
-        return *status;
-        //execve(mkname,arr,env);
-}
 void shell_loop(){
     while(1) {
         char * x = getPWD();
