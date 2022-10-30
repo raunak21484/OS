@@ -637,7 +637,7 @@ char * getfstring(char** args){
         ptr++;
     }
     printf("args[2] = %s\n",args[2]);
-    printf("args[2] = ");
+    printf("args[2]obb = ");
     for(int i=0;args[2][i]!='\0';i++){
         printf("%c",args[2][i]);
     }
