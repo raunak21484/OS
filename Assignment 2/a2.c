@@ -633,7 +633,7 @@ void* syscall1(void* segment){
         ptr++;
     }
     fstring[ptr++] = ' ';
-    printf("After initial command, string = '%s'\n",string);//
+    printf("After initial command, string = '%s'\n",fstring);//
     for(int i=1;args[i]!=NULL;i++){
         for(int j=0;j<args[i][j]!='\0';j++){
             fstring[ptr] = args[i][j];
