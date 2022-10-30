@@ -474,9 +474,36 @@ void cat(char ** segment){
     if(flags[1]+flags[0]- 2*'0'==1 && segment[1][0]!='-'){
         printf("Please start the command with all the flags!\n");
     }
-    printf("Segment: ");
-    for(int i=0;segment[i]!=NULL;i++){
-        printf("'%s'\n",segment[i]);
+    int c=0;
+    while(segment[c]!=NULL){c++;}
+//    printf("Segment: ");
+//    for(int i=0;segment[i]!=NULL;i++){
+//        printf("'%s'\n",segment[i]);
+//    }
+    char* mkname = concatString(_PROGRAM_DIRECTORY,"/cat.o");
+    int pid = fork();
+    if(pid<0){
+        printf("Forking error!\n");
+        return;
+    }
+    if(pid==0){
+        char** argv = (char**)malloc(sizeof(char*)*(c+4));
+        argv[0] = mkname;
+        argv[1] = flags;
+        for(int i=0;segment[i]!=NULL;i++){
+            argv[2+i]= segment[i];
+        }
+        argv[c+2] = NULL;
+        char* env[1] = {NULL};
+        execve(mkname, argv, env);
+        printf("Unknown error!\n");
+        return;
+    }else{
+        int status;
+        wait(&status);
+        if(status!=0){
+            printf("Unknown error occured!\n");
+        }
     }
 }
 void shell_loop(){
