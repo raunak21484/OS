@@ -259,7 +259,7 @@ void changeDir(char ** segment){
             tptr++;
         }
 
-        if(firstarg <=3 && nol==0 && (strcmp(segment[ptr1],"-P")==0|| strcmp(segment[ptr1],"-P\n")==0|| strcmp(segment[ptr1],"-L")==0|| strcmp(segment[ptr1],"-L")==0)){
+        if(firstarg <=3 && nol==0 && (strcmp(segment[ptr1],"-P")==0|| strcmp(segment[ptr1],"-P\n")==0|| strcmp(segment[ptr1],"-L")==0|| strcmp(segment[ptr1],"-L\n")==0)){
             firstarg++;
         }else{
             nol = 1;
