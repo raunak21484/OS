@@ -84,12 +84,14 @@ int main(int argc, char* argv[]){//mkname, flags(T,N), pwd, list of all names, N
                 break;
             }
 
-            lc++;
-            if(argv[1][1]=='1'){
-                printf("%6d   ",lc);
-            }
+            int first = 1;
             while((bufch = fgetc(fptr))!=EOF){
-
+//                if(first==1){
+//                    lc++;
+//                    if(argv[1][1]=='1'){
+//                        printf("%6d   ",lc);
+//                    }
+//                }
                 if(bufch!='\\'){
                     printf("%c",bufch);
                 }
