@@ -375,7 +375,7 @@ void ls(char ** segment){
                         execve(mkname, argv,env);
                         printf("Failed due to unexpected error! Code = -7\n");
                     }else{
-                        char * ccat1 = concatString(_PROGRAM_DIRECTORY,"/")''
+                        char * ccat1 = concatString(_PROGRAM_DIRECTORY,"/");
                         char* ccat = concatString(ccat1, echoMessage(segment,3,' '));
                         char* argv[4]  = {mkname, "11",ccat,NULL};
                         execve(mkname,argv,env);
@@ -383,7 +383,7 @@ void ls(char ** segment){
                     }
                 }
                 else{
-                    char * ccat1 = concatString(_PROGRAM_DIRECTORY,"/")''
+                    char * ccat1 = concatString(_PROGRAM_DIRECTORY,"/");
                     char* ccat = concatString(ccat1, echoMessage(segment,2,' '));
                     char* argv[4]  = {mkname, "10",ccat,NULL};
                     execve(mkname,argv,env);
@@ -391,7 +391,7 @@ void ls(char ** segment){
                 }
             }
             else{
-                char * ccat1 = concatString(_PROGRAM_DIRECTORY,"/")''
+                char * ccat1 = concatString(_PROGRAM_DIRECTORY,"/");
                 char* ccat = concatString(ccat1, echoMessage(segment,1,' '));
                 char* argv[4]  = {mkname, "00",ccat,NULL};
                 execve(mkname,argv,env);
