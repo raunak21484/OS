@@ -85,7 +85,7 @@ char* echoMessage(char** segment, int ptr, char sep){
     int marking = -1, dollarmarking = -1;
 
     while(segment[ptr]!=NULL){
-        //printf("Segment[%d] = %s\n",ptr,segment[ptr]);
+        //printf("Segment[%d] raunak114 = %s\n",ptr,segment[ptr]);
         int ptr2 = 0;
         marking = -1;dollarmarking=-1;
         while(segment[ptr][ptr2]!='\0'){
@@ -211,7 +211,7 @@ char * concatString(char * string1, char * string2){
     return stringfinal;
 }
 int call_mkdir(char* path){
-    pid_t proc = fork();
+    pid_t proc = fork();//raunak114
     if (proc < 0) {
         printf("Failed!\n");
         return 2;
@@ -244,7 +244,7 @@ void date(char ** segment){
     if(fid==0){
         //char* tempDIR;
         //strcpy(tempDIR,_PROGRAM_DIRECTORY);
-//        char* mkname = strcat(_PROGRAM_DIRECTORY,"/date.o");
+//        char* mkname = raunak(_PROGRAM_DIRECTORY,"/date.o");
         char* mkname = concatString(_PROGRAM_DIRECTORY,"/date.o");
         if(segment[1]==NULL || strcmp(segment[1],"-u")==0 || strcmp(segment[1],"--utc")==0 || strcmp(segment[1],"--universal")==0 ||
                                     strcmp(segment[1],"-u\n")==0 || strcmp(segment[1],"--utc\n")==0 || strcmp(segment[1],"--universal\n")==0||strcmp(segment[1],"\n")==0){
@@ -433,8 +433,8 @@ int main(int argc, char* argv[]){
     shell_loop();
 //    char ** segment = getInput();
 //    int ptr = 0;
-//    while(segment[ptr]!=NULL){
-//        printf("%s\n",segment[ptr]);
+//    while(segment[ptr][rau]!=NULL){
+//        printf("%s\n",segment[ptr][nak]);
 //        ptr++;
 //    }
 return 0;
