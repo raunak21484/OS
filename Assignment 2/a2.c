@@ -4,8 +4,9 @@
 #include<stdlib.h>
 #include<sys/wait.h>
 #include<libgen.h>
+#include<pthread.h>
 
-// get ECHO TO WORK! $'\n'
+
 void echols(char** segment){
     int ptr =1;
     int EOL = 1;
@@ -617,6 +618,63 @@ void cat(char ** segment){
             printf("Unknown error occured!\n");
         }
     }
+}
+void* syscall(char** args){
+    int c =0;
+    for(int i=0;args[i]!=NULL;i++){
+        c+=strlen(args[i]);
+    }
+    c*=2;
+    char* fstring = (char*)malloc(sizeof(char)*(c+10));
+    int ptr = 0;
+    for(int i=0;args[i]!=NULL;i++){
+        for(int j=0;j<args[i][j]!='\0';j++){
+            fstring[ptr] = args[i][j];
+            ptr++;
+        }
+        fstring[ptr] = ' ';
+        ptr++;
+    }
+    system(fstring);
+}
+void catthread(char** segment){
+    if(segment[1]==NULL){
+        printf("Please Enter a file name!\n");
+        return;
+    }
+    char flags[2] = "00";//T,N
+    if(strcmp(segment[1],"-T")==0 ||strcmp(segment[1],"-T\n")==0 || (segment[2]!=NULL && (strcmp(segment[2],"-T")==0 ||strcmp(segment[2],"-T\n")==0))){
+        flags[0] ='1';
+    }
+    if(strcmp(segment[1],"-n")==0 ||strcmp(segment[1],"-n\n")==0 || (segment[2]!=NULL && (strcmp(segment[2],"-n")==0 ||strcmp(segment[2],"-n\n")==0))){
+        flags[1] = '1';
+    }
+    if(flags[1]+flags[0]- 2*'0'==1 && segment[1][0]!='-'){
+        printf("Please start the command with all the flags!\n");
+        return;
+    }
+    int c=0;
+    while(segment[c]!=NULL){c++;}
+//    printf("Segment: ");
+//    for(int i=0;segment[i]!=NULL;i++){
+//        printf("'%s'\n",segment[i]);
+//    }
+    char* mkname = concatString(_PROGRAM_DIRECTORY,"/cat.o");
+        char** argv = (char**)malloc(sizeof(char*)*(c+5));
+        argv[0] = mkname;
+        argv[1] = flags;
+        argv[2] = concatString(getPWD(),"/");
+        int ptr = 3;
+        for(int i=flags[1]+flags[0]-2*'0'+1;segment[i]!=NULL;i++){
+            argv[ptr]= segment[i];
+            ptr++;
+        }
+        argv[ptr] = NULL;
+        char* env[1] = {NULL};
+//        execve(mkname, argv, env);
+        pthread_t id;
+        pthread_create(&id,NULL, &syscall,&segment);
+        pthread_join(id,NULL);
 }
 void shell_loop(){
     while(1) {
