@@ -679,8 +679,51 @@ void catthread(char** segment){
         char* env[1] = {NULL};
 //        execve(mkname, argv, env);
         pthread_t id;
-        pthread_create(&id,NULL, &syscall1,&segment);
+        pthread_create(&id,NULL, &syscall1,&argv);
         pthread_join(id,NULL);
+}
+void rmthread(char ** segment){
+    if(segment[1]==NULL){
+        printf("Missing Operand\n");
+        return;
+    }
+    int force = 0,sucmes =0;
+    if(strcmp(segment[1],"-f")==0 || strcmp(segment[1],"-f\n")==0 || (segment[2]!=NULL && (strcmp(segment[2],"-f")==0 || strcmp(segment[2],"-f\n")==0 ))){
+        force = 1;
+    }
+    if(strcmp(segment[1],"-v")==0 || strcmp(segment[1],"-v\n")==0 || (segment[2]!=NULL && (strcmp(segment[2],"-v")==0 || strcmp(segment[2],"-v\n")==0 ))){
+        sucmes = 1;
+    }
+    if(force+sucmes== 1 && segment[1][0]!='-'){
+        printf("Please place all flags at the beginning!\n");
+        return;
+    }
+    int pid = fork();
+    if(pid<0){
+        printf("Failed to fork!\n");
+        return;
+    }if(pid==0){
+        char * fpath = concatString(_PROGRAM_DIRECTORY,"/");
+        char* mkname = concatString(_PROGRAM_DIRECTORY,"/rm.o");
+        char* pathfinal = concatString(fpath, echoMessage(segment,force+sucmes+1,' '));
+        char* argv[3] = {mkname,pathfinal,NULL};
+        char* env[1] = {NULL};
+        execve(mkname,argv,env);
+        printf("FAILED 1");
+        return;
+    }else{
+        int status;
+        wait(&status);
+        if(status!=0){
+            if(force==1){
+                return;
+            }else{
+                printf("File does not exist!\n");
+            }
+        }else if(sucmes==1){
+            printf("File deleted Successfully!\n");
+        }
+    }
 }
 void shell_loop(){
     while(1) {
@@ -707,6 +750,7 @@ void shell_loop(){
         else if(strcmp(s0,"rm")==0){rm(segment);}
         else if(strcmp(s0,"cat")==0){cat(segment);}
         else if(strcmp(s0,"cat&t")==0){ catthread(segment);}
+        else if(strcmp(s0,"rm&t")==0){rmthread(segment);}
         else{printf("Segment[0] is %s!\n",segment[0]);printf("Command Not Found!\n");}
         free(s0);
 
