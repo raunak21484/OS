@@ -743,8 +743,6 @@ void rmthread(char ** segment){
     pthread_t id;
     char* t1 = getfstring(argv);
     int *status;
-    //wait(&status);
-
     pthread_create(&id,NULL, &syscall1,&t1);
     pthread_join(id,(void**) &status);
     if((*status)!=0){
@@ -756,6 +754,110 @@ void rmthread(char ** segment){
     }else if(sucmes==1){
         printf("File deleted Successfully!\n");
     }
+}
+void lsthread(char ** segment){
+
+    char* mkname = concatString(_PROGRAM_DIRECTORY,"/ls.o");
+    int *status;
+        char* env[1] = {NULL};
+        if(segment[1]==NULL){
+            char * argv[4] = {mkname,"00",getPWD(),NULL};
+            //execve(mkname,argv,env);
+            pthread_t id;
+            char* t1 = getfstring(argv);
+            pthread_create(&id,NULL, &syscall1,&t1);
+            pthread_join(id,(void**) &status);
+        }
+        else if(strcmp(segment[1],"-m")==0 || strcmp(segment[1],"-m\n")==0){
+            if(segment[2] == NULL){
+                char* argv[4] = {mkname,"01",getPWD(),NULL};
+                //execve(mkname, argv,env);
+                char* t1 = getfstring(argv);
+                pthread_create(&id,NULL, &syscall1,&t1);
+                pthread_join(id,(void**) &status);
+
+            }
+            else if(strcmp(segment[2],"-a")==0 || strcmp(segment[2],"-a\n")==0){
+                if(segment[3]==NULL){
+                    char* argv[4] = {mkname,"11",getPWD(),NULL};
+                    //execve(mkname, argv,env);
+                    char* t1 = getfstring(argv);
+                    pthread_create(&id,NULL, &syscall1,&t1);
+                    pthread_join(id,(void**) &status);
+                }
+                else{
+                    char * ccat1 = concatString(getPWD(),"/");
+                    char* ccat = concatString(ccat1, echoMessage(segment,3,' '));
+                    char* argv[4]  = {mkname, "11",ccat,NULL};
+                    //execve(mkname,argv,env);
+                    char* t1 = getfstring(argv);
+                    pthread_create(&id,NULL, &syscall1,&t1);
+                    pthread_join(id,(void**) &status);
+                }
+            }
+            else{
+                char * ccat1 = concatString(getPWD(),"/");
+                char* ccat = concatString(ccat1, echoMessage(segment,2,' '));
+                char* argv[4]  = {mkname, "01",ccat,NULL};
+                //execve(mkname,argv,env);
+                char* t1 = getfstring(argv);
+                pthread_create(&id,NULL, &syscall1,&t1);
+                pthread_join(id,(void**) &status);
+            }
+        }
+        else if(strcmp(segment[1],"-a")==0 || strcmp(segment[1],"-a\n")==0){
+            if(segment[2] == NULL){
+                char* argv[4] = {mkname,"10",getPWD(),NULL};
+                //execve(mkname, argv,env);
+                char* t1 = getfstring(argv);
+                pthread_create(&id,NULL, &syscall1,&t1);
+                pthread_join(id,(void**) &status);
+
+            }
+            else if(strcmp(segment[2],"-m")==0 || strcmp(segment[2],"-m\n")==0){
+                if(segment[3]==NULL){
+                    char* argv[4] = {mkname,"11",getPWD(),NULL};
+                    //execve(mkname, argv,env);
+                    char* t1 = getfstring(argv);
+                    pthread_create(&id,NULL, &syscall1,&t1);
+                    pthread_join(id,(void**) &status);
+                }else{
+                    char * ccat1 = concatString(getPWD(),"/");
+                    char* ccat = concatString(ccat1, echoMessage(segment,3,' '));
+                    char* argv[4]  = {mkname, "11",ccat,NULL};
+                    //execve(mkname,argv,env);
+                    char* t1 = getfstring(argv);
+                    pthread_create(&id,NULL, &syscall1,&t1);
+                    pthread_join(id,(void**) &status);
+                }
+            }
+            else{
+                char * ccat1 = concatString(getPWD(),"/");
+                char* ccat = concatString(ccat1, echoMessage(segment,2,' '));
+                char* argv[4]  = {mkname, "10",ccat,NULL};
+                //execve(mkname,argv,env);
+                char* t1 = getfstring(argv);
+                pthread_create(&id,NULL, &syscall1,&t1);
+                pthread_join(id,(void**) &status);
+            }
+        }
+        else{
+            char * ccat1 = concatString(getPWD(),"/");
+            char* ccat = concatString(ccat1, echoMessage(segment,1,' '));
+            char* argv[4]  = {mkname, "00",ccat,NULL};
+            //execve(mkname,argv,env);
+            char* t1 = getfstring(argv);
+            pthread_create(&id,NULL, &syscall1,&t1);
+            pthread_join(id,(void**) &status);
+        }
+    }
+//    else{
+//        int status;
+//        wait(&status);
+        if((*status)!=0){printf("Failed due to unexpected error! Code = %d |\n",(*status));}
+        if((*status)!=0){printf("Directory Does not exist!\n");}
+//    }
+
 }
 void shell_loop(){
     while(1) {
@@ -783,6 +885,7 @@ void shell_loop(){
         else if(strcmp(s0,"cat")==0){cat(segment);}
         else if(strcmp(s0,"cat&t")==0){ catthread(segment);}
         else if(strcmp(s0,"rm&t")==0){rmthread(segment);}
+        else if(strcmp(s0,"ls&t")==0){lsthread(segment);}
         else{printf("Segment[0] is %s!\n",segment[0]);printf("Command Not Found!\n");}
         free(s0);
 
