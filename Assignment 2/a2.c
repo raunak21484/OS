@@ -475,7 +475,7 @@ void cat(char ** segment){
         printf("Please start the command with all the flags!\n");
     }
     printf("Segment: ");
-    for(int i=0;i<segment[i]!=NULL;i++){
+    for(int i=0;segment[i]!=NULL;i++){
         printf("'%s'\n",segment[i]);
     }
 }
