@@ -665,9 +665,11 @@ char * getfstring(char** args){
         if(i==2){printf("\n\n");}
     }
     fstring[ptr] = '\0';
-    if(fstring[ptr-1]=='\n'){
-        printf("was here");
-        fstring[ptr-1] = '\0';
+    while(ptr>0 &&fstring[ptr]=='\0'){
+        if(fstring[ptr-1]=='\n'){
+            fstring[ptr-1] = '\0';
+        }
+        ptr--;
     }
     printf("Final system call: '%s'\n",fstring);
     return fstring;
