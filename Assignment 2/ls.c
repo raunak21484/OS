@@ -38,7 +38,7 @@ int main(int argc, char* argv[]){//path, "XX"->"-a and -m flag", "total path", N
             filetemp2 = readdir(directory);
         }
     }else{
-        return 1;
+        return 50;
     }
     printf("\n");
     return 0;
