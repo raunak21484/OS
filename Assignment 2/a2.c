@@ -336,16 +336,9 @@ int call_mkdir(char* path){
         return 2;
     }
     if (proc == 0) {
-//        char* tempDir;
-//        strcpy(tempDir,_PROGRAM_DIRECTORY);
-//        printf("\nTEMPDIR: %s\nPROGRAMDIR: %s\n",tempDir,_PROGRAM_DIRECTORY);
         char* mkname = concatString(_PROGRAM_DIRECTORY,"/mkdir.o");
-        //char* mkname = strcat(_PROGRAM_DIRECTORY,"/mkdir.o");
-
-        //printf("MKNAME = %s\n",mkname);
         char* pwd = getPWD();
         char* arr[4] = {mkname,path,pwd,NULL};
-        //printf("PATH = %s\n",path);
         char * env[1] = {NULL};
 
         execve(mkname,arr,env);
@@ -886,9 +879,71 @@ void datethread(char ** segment){
         if((*status)!=0){
         char * temp = echoMessage(segment,0,'|');
         printf("seg: %s\n",temp);
-        printf("Failed due to unexpected error2!\n");}
+        printf("Invalid Date!\n");}
         return;
 
+}
+void mkdir1thread(char ** segment){
+    if(segment[1]!=NULL) {
+        if(strcmp(segment[1],"\n")==0 || strcmp(segment[1]," ") == 0){return;}
+        else if(strcmp(segment[1],"-v")==0){
+            char* message = echoMessagemkdir(segment,2,' ');
+            int stat =call_mkdirthread(message);
+            //printf("\nstat = %d\n",stat);//
+            if(stat==0){
+                printf("Created Directory: %s\n",message);
+            }else{
+                printf("Creation of directory failed!\n");
+            }
+
+        }else if(strcmp(segment[1],"-v\n")==0 || strcmp(segment[1],"-p\n")==0){
+            printf("mkdir: Missing operand\n");
+        }else if(strcmp(segment[1],"-p")==0){
+            char* message = echoMessagemkdir(segment,2,' ');
+            char** segmentTWO = getSplittedLine(message,"/");
+            int c =0;
+            for(int i=0;segmentTWO[i]!=NULL;i++){
+                c+=strlen(segmentTWO[i]);
+            }
+            char * temp = (char*)malloc(sizeof(char)*(2*c+1));
+            int ptr = 0;
+            for(int i=0;segmentTWO[i]!=NULL;i++){
+                printf("%s\n",segmentTWO[i]);
+                for(int j=0;j<strlen(segmentTWO[i]);j++){
+                    temp[ptr] = segmentTWO[i][j];
+                    ptr++;
+                }
+                temp[ptr] = '/';
+                ptr++;
+                temp[ptr+1] = '\0';
+                //strncat(temp,segmentTWO[i],strlen(segmentTWO[i]));
+                if(call_mkdirthread(temp)!=0){
+                    printf("ERROR, temp = %d\n",temp);
+                }
+            }
+            free(temp);
+        }else{
+            //printf("DEFAULT");
+            char* message = echoMessagemkdir(segment,1,' ');
+            if(call_mkdirthread(message)!=0){ printf("Creation of directory failed!\n");}
+            //MAKE DIRECTORY NORMALLY
+        }
+
+    }
+}
+int call_mkdirthread(char* path){//raunak114
+        char* mkname = concatString(_PROGRAM_DIRECTORY,"/mkdir.o");
+        char* pwd = getPWD();
+        char* arr[4] = {mkname,path,pwd,NULL};
+        char * env[1] = {NULL};
+        int *status;
+        pthread_t id;
+        char* t1 = getfstring(argv);
+
+        pthread_create(&id,NULL, &syscall1,&t1);
+        pthread_join(id,(void**) &status);
+        return *status;
+        //execve(mkname,arr,env);
 }
 void shell_loop(){
     while(1) {
@@ -918,6 +973,7 @@ void shell_loop(){
         else if(strcmp(s0,"rm&t")==0){rmthread(segment);}
         else if(strcmp(s0,"ls&t")==0){lsthread(segment);}
         else if(strcmp(s0,"date&t")==0){datethread(segment);}
+        else if(strcmp(s0,"mkdir&t")==0){mkdir1thread(segment);}
         else{printf("Segment[0] is %s!\n",segment[0]);printf("Command Not Found!\n");}
         free(s0);
 
