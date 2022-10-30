@@ -890,7 +890,7 @@ int call_mkdirthread(char* path){//raunak114
     char * env[1] = {NULL};
     int *status;
     pthread_t id;
-    char* t1 = getfstring(argv);
+    char* t1 = getfstring(arr);
 
     pthread_create(&id,NULL, &syscall1,&t1);
     pthread_join(id,(void**) &status);
