@@ -63,19 +63,19 @@ int main(int argc, char* argv[]){//mkname, flags(T,N), pwd, list of all names, N
             }
             int lc =0;
             do{
-                ch = fgets(fptr);
-                if(ch == '\n'){
+                bufch = fgets(fptr);
+                if(bufch == '\n'){
                     lc++;
                     if(argv[1][1]=='1'){
-                        printf("%6n",lc);
+                        printf("%6n  ",lc);
                     }
                 }
-                if(ch!='\t' || argv[1][0]=='0'){
-                printf("%c",ch);}
+                if(bufch!='\t' || argv[1][0]=='0'){
+                printf("%c",bufch);}
                 else{
                     printf("^I");
                 }
-            }while(ch!=EOF);
+            }while(bufch!=EOF);
             fclose(fptr);
         }
         tflag =0;
