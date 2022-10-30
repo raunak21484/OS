@@ -850,13 +850,8 @@ void lsthread(char ** segment){
             pthread_create(&id,NULL, &syscall1,&t1);
             pthread_join(id,(void**) &status);
         }
-    }
-//    else{
-//        int status;
-//        wait(&status);
-        if((*status)!=0){printf("Failed due to unexpected error! Code = %d |\n",(*status));}
+
         if((*status)!=0){printf("Directory Does not exist!\n");}
-//    }
 
 }
 void shell_loop(){
