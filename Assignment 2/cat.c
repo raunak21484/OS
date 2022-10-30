@@ -86,7 +86,8 @@ int main(int argc, char* argv[]){//mkname, flags(T,N), pwd, list of all names, N
             while((bufch = fgetc(fptr))!=EOF){
 
                 if(bufch!='\t'){
-                    printf("%c",bufch);}
+                    printf("%c",bufch);
+                }
                 else{
                     if(argv[1][0]=='0'){printf("\t");}
                     else{printf("^I");}
