@@ -469,7 +469,7 @@ void cat(char ** segment){
         flags[0] ='1';
     }
     if(strcmp(segment[1],"-n")==0 ||strcmp(segment[1],"-n\n")==0 || (segment[2]!=NULL && (strcmp(segment[2],"-n")==0 ||strcmp(segment[2],"-n\n")==0))){
-        flag[1] = '1';
+        flags[1] = '1';
     }
     if(flags[1]+flags[0]- 2*'0'==1 && segment[1][0]!='-'){
         printf("Please start the command with all the flags!\n");
