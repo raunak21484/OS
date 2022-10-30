@@ -30,7 +30,7 @@ int main(int argc, char* argv[]){//path, "XX"->"-a and -m flag", "total path", N
             }else{
                 i++;
                 if(i%2){printf("\033[0;33m%s\033[0m",filetemp->d_name);}
-                else{printf("\033[0;32mm%s\033[0m",filetemp->d_name);}
+                else{printf("\033[0;32m%s\033[0m",filetemp->d_name);}
                     if(sepcomma&& filetemp2!=NULL){printf(",");}
                     printf(" ");
             }
