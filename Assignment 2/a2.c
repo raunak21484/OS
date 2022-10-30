@@ -693,6 +693,7 @@ void catthread(char** segment){
         char* env[1] = {NULL};
 //        execve(mkname, argv, env);
         pthread_t id;
+        printf("argv[2] = '%s'\n",argv[2]);
         char* t1 = getfstring(argv);
         pthread_create(&id,NULL, &syscall1,&t1);
         pthread_join(id,NULL);
