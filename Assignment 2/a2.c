@@ -854,6 +854,43 @@ void lsthread(char ** segment){
         if((*status)!=0){printf("Directory Does not exist!\n");}
 
 }
+void datethread(char ** segment){
+
+        //char* tempDIR;
+        //strcpy(tempDIR,_PROGRAM_DIRECTORY);
+//        char* mkname = raunak(_PROGRAM_DIRECTORY,"/date.o");
+        char* mkname = concatString(_PROGRAM_DIRECTORY,"/date.o");
+        if(segment[1]==NULL || strcmp(segment[1],"-u")==0 || strcmp(segment[1],"--utc")==0 || strcmp(segment[1],"--universal")==0 ||
+           strcmp(segment[1],"-u\n")==0 || strcmp(segment[1],"--utc\n")==0 || strcmp(segment[1],"--universal\n")==0||strcmp(segment[1],"\n")==0){
+            //segment[0][strlen(segment[0])-1] = '\0';
+            //printf("in HEREEE!!");
+            char* argv[3]=  {mkname,"default",NULL};
+            char* env[1] = {NULL};
+            //printf("mkname = %s, location = %p\n",mkname,mkname);
+            //execve(mkname,argv,env);
+            pthread_t id;
+            char* t1 = getfstring(argv);
+            int *status;
+            pthread_create(&id,NULL, &syscall1,&t1);
+            pthread_join(id,(void**) &status);
+        }else if(strcmp(segment[1],"-R")==0 || strcmp(segment[1],"--rfc-email")==0  || strcmp(segment[1],"-R\n")==0 || strcmp(segment[1],"--rfc-email\n")==0){
+            printf("in here!!!");
+            char *argv[3] = {mkname,"r",NULL};
+            char* env[1] = {NULL};
+            //execve(mkname,argv,env);
+            pthread_t id;
+            char* t1 = getfstring(argv);
+            int *status;
+            pthread_create(&id,NULL, &syscall1,&t1);
+            pthread_join(id,(void**) &status);
+        }
+        if(status!=0){
+        char * temp = echoMessage(segment,0,'|');
+        printf("seg: %s\n",temp);
+        printf("Failed due to unexpected error2!\n");}
+        return;
+
+}
 void shell_loop(){
     while(1) {
         char * x = getPWD();
@@ -881,6 +918,7 @@ void shell_loop(){
         else if(strcmp(s0,"cat&t")==0){ catthread(segment);}
         else if(strcmp(s0,"rm&t")==0){rmthread(segment);}
         else if(strcmp(s0,"ls&t")==0){lsthread(segment);}
+        else if(strcmp(s0,"date&t")==0){datethread(segment);}
         else{printf("Segment[0] is %s!\n",segment[0]);printf("Command Not Found!\n");}
         free(s0);
 
