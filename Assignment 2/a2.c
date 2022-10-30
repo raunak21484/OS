@@ -680,7 +680,7 @@ void catthread(char** segment){
         char* env[1] = {NULL};
 //        execve(mkname, argv, env);
         pthread_t id;
-        pthread_create(&id,NULL, &syscall1,&argv);
+        pthread_create(&id,NULL, &syscall1,&segment);
         pthread_join(id,NULL);
 }
 void rmthread(char ** segment){
