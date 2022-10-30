@@ -250,6 +250,7 @@ char* delim(char* input){
 void changeDir(char ** segment){
     int c =0,ptr1 =1;
     int tptr = 0;
+    int firstarg = 1,nol =0;
     while(segment[ptr1]!=NULL){
         tptr = 0;
         while(segment[ptr1][tptr]!='\0'){
@@ -257,9 +258,14 @@ void changeDir(char ** segment){
             tptr++;
         }
         ptr1++;
+        if(firstarg <=3 && nol==0 && (strcmp(segment[ptr1],"-P")==0|| strcmp(segment[ptr1],"-P\n")==0|| strcmp(segment[ptr1],"-L")==0|| strcmp(segment[ptr1],"-L")==0)){
+            firstarg++;
+        }else{
+            nol = 1;
+        }
         c++;
     }
-    if(ptr1==1 || (strcmp(segment[1],"\n")==0)){
+    if(ptr1==firstarg || (strcmp(segment[1],"\n")==0)){
         chdir("/home");
         return;
     }
@@ -267,10 +273,10 @@ void changeDir(char ** segment){
         chdir("/root");
         return;
     }
-    printf("segment[1] is '%s'\n",segment[1]);
+    //printf("segment[1] is '%s'\n",segment[1]);
     char* newDir = (char*)malloc((c+1)*sizeof(char));
     newDir[c] = '\0';
-    ptr1 = 1;
+    ptr1 = firstarg;
     c=0;
     while(segment[ptr1]!=0){
         tptr = 0;
