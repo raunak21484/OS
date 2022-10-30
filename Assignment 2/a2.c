@@ -620,7 +620,6 @@ void cat(char ** segment){
     }
 }
 char * getfstring(char** args){
-    printf("args[2] = %s\n",args[2]);
     int c =0;
     for(int i=0;args[i]!=NULL;i++){
         c+=strlen(args[i]);
@@ -637,6 +636,7 @@ char * getfstring(char** args){
         fstring[ptr] = args[0][i];
         ptr++;
     }
+    printf("args[2] = %s\n",args[2]);
     fstring[ptr++] = ' ';
     printf("After initial command, string = '%s'\n",fstring);//
     for(int i=1;args[i]!=NULL;i++){
