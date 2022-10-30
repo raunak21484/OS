@@ -359,10 +359,10 @@ void date(char ** segment){
         if(segment[1]==NULL || strcmp(segment[1],"-u")==0 || strcmp(segment[1],"--utc")==0 || strcmp(segment[1],"--universal")==0 ||
                                     strcmp(segment[1],"-u\n")==0 || strcmp(segment[1],"--utc\n")==0 || strcmp(segment[1],"--universal\n")==0||strcmp(segment[1],"\n")==0){
             //segment[0][strlen(segment[0])-1] = '\0';
-            printf("in HEREEE!!");
+            //printf("in HEREEE!!");
             char* argv[3]=  {mkname,"default",NULL};
             char* env[1] = {NULL};
-            printf("mkname = %s, location = %p\n",mkname,mkname);
+            //printf("mkname = %s, location = %p\n",mkname,mkname);
             execve(mkname,argv,env);
         }else if(strcmp(segment[1],"-R")==0 || strcmp(segment[1],"--rfc-email")==0  || strcmp(segment[1],"-R\n")==0 || strcmp(segment[1],"--rfc-email\n")==0){
                 printf("in here!!!");
