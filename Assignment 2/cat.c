@@ -20,6 +20,7 @@ char* slashTreatment(char* str){
             ptr++;
         }
     }
+    if(newstr[ptr-1]=='\n'){newstr[ptr-1]='\0';}
     newstr[ptr] = '\0';
     return newstr;
 }
