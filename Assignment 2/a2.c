@@ -491,7 +491,7 @@ void cat(char ** segment){
         argv[0] = mkname;
         argv[1] = flags;
         argv[2] = concatString(getPWD(),"/");
-        for(int i=0;segment[i]!=NULL;i++){
+        for(int i=flags[1]+flags[0]-2*'0'+1;segment[i]!=NULL;i++){
             argv[3+i]= segment[i];
         }
         argv[c+3] = NULL;
