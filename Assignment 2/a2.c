@@ -620,6 +620,7 @@ void cat(char ** segment){
     }
 }
 char * getfstring(char** args){
+    printf("args[2] = %s\n",args[2]);
     int c =0;
     for(int i=0;args[i]!=NULL;i++){
         c+=strlen(args[i]);
