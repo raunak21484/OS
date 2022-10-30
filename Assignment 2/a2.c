@@ -628,7 +628,7 @@ char * getfstring(char** args){
     printf("c = %d\n\n\n",c);
     char* fstring = (char*)malloc(sizeof(char)*(c+10));
     int ptr = 0;
-    for(int i=0;args[0][i]!='&';i++){
+    for(int i=0;args[0][i]!='&' || args[0][i]!='\0';i++){
         if(args[0][i]==' '){
             fstring[ptr] = '\\';
             ptr++;
