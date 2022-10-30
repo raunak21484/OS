@@ -665,7 +665,7 @@ char * getfstring(char** args){
         if(i==2){printf("\n\n");}
     }
     fstring[ptr] = '\0';
-    while(ptr>0 &&fstring[ptr]=='\0'){
+    while(ptr>0 && fstring[ptr]=='\0'){
         if(fstring[ptr-1]=='\n'){
             fstring[ptr-1] = '\0';
         }
@@ -675,6 +675,8 @@ char * getfstring(char** args){
     return fstring;
 }
 void* syscall1(void* fstring){
+    char* temp = (char*) fstring;
+    printf("temp fstring=  '%s'\n",temp);
     system((char*)fstring);
 }
 void catthread(char** segment){
