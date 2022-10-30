@@ -637,6 +637,7 @@ void* syscall1(){
     }
     fstring[ptr++] = ' ';
     printf("After initial command, string = '%s'\n",fstring);//
+    printf("argscall[1] == NULL: %d\n",(argsCall[1]==NULL));
     for(int i=1;argsCall[i]!=NULL;i++){
         for(int j=0;j<argsCall[i][j]!='\0';j++){
             if(argsCall[i][j]==' '){
