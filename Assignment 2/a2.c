@@ -316,7 +316,7 @@ void mkdir1(char ** segment){
                 temp[ptr+1] = '\0';
                 //strncat(temp,segmentTWO[i],strlen(segmentTWO[i]));
                 if(call_mkdir(temp)!=0){
-                    printf("ERROR, temp = %\n",temp);
+                    printf("ERROR, temp = %d\n",temp);
                 }
             }
             free(temp);
