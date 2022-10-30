@@ -463,6 +463,7 @@ void rm(char ** segment){
 void cat(char ** segment){
     if(segment[1]==NULL){
         printf("Please Enter a file name!\n");
+        return;
     }
     char flags[2] = "00";//T,N
     if(strcmp(segment[1],"-T")==0 ||strcmp(segment[1],"-T\n")==0 || (segment[2]!=NULL && (strcmp(segment[2],"-T")==0 ||strcmp(segment[2],"-T\n")==0))){
@@ -473,6 +474,7 @@ void cat(char ** segment){
     }
     if(flags[1]+flags[0]- 2*'0'==1 && segment[1][0]!='-'){
         printf("Please start the command with all the flags!\n");
+        return;
     }
     int c=0;
     while(segment[c]!=NULL){c++;}
