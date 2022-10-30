@@ -759,11 +759,11 @@ void lsthread(char ** segment){
 
     char* mkname = concatString(_PROGRAM_DIRECTORY,"/ls.o");
     int *status;
+    pthread_t id;
         char* env[1] = {NULL};
         if(segment[1]==NULL){
             char * argv[4] = {mkname,"00",getPWD(),NULL};
             //execve(mkname,argv,env);
-            pthread_t id;
             char* t1 = getfstring(argv);
             pthread_create(&id,NULL, &syscall1,&t1);
             pthread_join(id,(void**) &status);
