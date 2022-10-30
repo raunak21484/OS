@@ -265,6 +265,7 @@ void changeDir(char ** segment){
         }
         c++;
     }
+    printf("%d <-- firstarg\n",firstarg);
     if(ptr1==firstarg || (strcmp(segment[1],"\n")==0)){
         chdir("/home");
         return;
