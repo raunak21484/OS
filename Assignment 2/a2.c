@@ -743,7 +743,7 @@ void rmthread(char ** segment){
     pthread_t id;
     char* t1 = getfstring(argv);
     int *status;
-    wait(&status);
+    //wait(&status);
 
     pthread_create(&id,NULL, &syscall1,&t1);
     pthread_join(id,(void**) &status);
