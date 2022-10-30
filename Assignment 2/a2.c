@@ -625,7 +625,7 @@ char * getfstring(char** args){
         c+=strlen(args[i]);
     }
     c*=4;
-    printf("c = %d\n\n\n",c);
+    //printf("c = %d\n\n\n",c);
     char* fstring = (char*)malloc(sizeof(char)*(c+10));
     int ptr = 0;
     for(int i=0;args[0][i]!='&' && args[0][i]!='\0';i++){
@@ -641,18 +641,14 @@ char * getfstring(char** args){
 
     fstring[ptr++] = ' ';
     fstring[ptr] = '\0';
-    printf("After initial command, string = '%s'\n",fstring);
+    //printf("After initial command, string = '%s'\n",fstring);
 //    printf("args[2]obb = ");
 //    for(int i=0;args[2][i]!='\0';i++){
 //        printf("%c",args[2][i]);
 //    }
 //    printf("\n");
     for(int i=1;args[i]!=NULL;i++){
-        if(i==2){printf("Here is arg[2]: ");}
         for(int j=0;args[i][j]!='\0';j++){
-            if(i==2){
-                printf("%c",args[i][j]);
-            }
             if(args[i][j]==' '){
                 fstring[ptr] = '\\';
                 ptr++;
@@ -662,7 +658,7 @@ char * getfstring(char** args){
         }
         fstring[ptr] = ' ';
         ptr++;
-        if(i==2){printf("\n\n");}
+        }
     }
     fstring[ptr] = '\0';
     while(ptr>0 && fstring[ptr]=='\0'){
@@ -671,12 +667,12 @@ char * getfstring(char** args){
         }
         ptr--;
     }
-    printf("Final system call: '%s'\n",fstring);
+    //printf("Final system call: '%s'\n",fstring);
     return fstring;
 }
 void* syscall1(void* fstring){
     char* temp = *((char**) fstring);
-    printf("temp fstring=  '%s'\n",temp);
+    //printf("temp fstring=  '%s'\n",temp);
     system(temp);
 }
 void catthread(char** segment){
