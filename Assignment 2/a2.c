@@ -975,7 +975,7 @@ void shell_loop(){
         else if(strcmp(s0,"ls&t")==0){lsthread(segment);}
         else if(strcmp(s0,"date&t")==0){datethread(segment);}
         else if(strcmp(s0,"mkdir&t")==0){mkdir1thread(segment);}
-        else{printf("Segment[0] is %s!\n",segment[0]);printf("Command Not Found!\n");}
+        else{printf("Command Not Found!\n");}
         free(s0);
 
     }
