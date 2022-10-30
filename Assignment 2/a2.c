@@ -619,7 +619,7 @@ void cat(char ** segment){
         }
     }
 }
-void* syscall(void* segment){
+void* syscall1(void* segment){
     char** args = *(char***)segment;
     int c =0;
     for(int i=0;args[i]!=NULL;i++){
@@ -674,7 +674,7 @@ void catthread(char** segment){
         char* env[1] = {NULL};
 //        execve(mkname, argv, env);
         pthread_t id;
-        pthread_create(&id,NULL, &syscall,&segment);
+        pthread_create(&id,NULL, &syscall1,&segment);
         pthread_join(id,NULL);
 }
 void shell_loop(){
