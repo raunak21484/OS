@@ -855,7 +855,7 @@ void lsthread(char ** segment){
 
 }
 void datethread(char ** segment){
-
+    int *status;
         //char* tempDIR;
         //strcpy(tempDIR,_PROGRAM_DIRECTORY);
 //        char* mkname = raunak(_PROGRAM_DIRECTORY,"/date.o");
@@ -870,7 +870,7 @@ void datethread(char ** segment){
             //execve(mkname,argv,env);
             pthread_t id;
             char* t1 = getfstring(argv);
-            int *status;
+
             pthread_create(&id,NULL, &syscall1,&t1);
             pthread_join(id,(void**) &status);
         }else if(strcmp(segment[1],"-R")==0 || strcmp(segment[1],"--rfc-email")==0  || strcmp(segment[1],"-R\n")==0 || strcmp(segment[1],"--rfc-email\n")==0){
@@ -880,7 +880,6 @@ void datethread(char ** segment){
             //execve(mkname,argv,env);
             pthread_t id;
             char* t1 = getfstring(argv);
-            int *status;
             pthread_create(&id,NULL, &syscall1,&t1);
             pthread_join(id,(void**) &status);
         }
