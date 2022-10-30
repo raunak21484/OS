@@ -191,8 +191,9 @@ char* delimslash(char * input){
     return strtok(input,"/");
 }
 char * concatString(char * string1, char * string2){
-    int c1 = strlen(string1);
-    int c2 = strlen(string2);
+
+    int c1 = (string1!=NULL?strlen(string1):0);
+    int c2 = (string2!=NULL?strlen(string2):0);
     int c = c1+c2;
     //printf("c = %d\n",c);
     char* stringfinal = (char*)malloc(sizeof(char)*(c+1));
@@ -317,6 +318,88 @@ void mkdir1(char ** segment){
 
     }
 }
+void ls(char ** segment){
+
+        char* mkname = concatString(_PROGRAM_DIRECTORY,"/ls.o");
+        int fid = fork();
+        if(fid<0){
+            printf("Failed!");
+            return;
+        }
+        if(fid==0){
+            char* env[1] = {NULL};
+            if(segment[1]==NULL){
+                char * argv[4] = {mkname,"00",_PROGRAM_DIRECTORY,NULL};
+                execve(mkname,argv,env);
+                printf("Failed due to unexpected error! Code = -1\n");
+            }
+            else if(strcmp(segment[1],"-m")==0 || strcmp(segment[1],"-m\n")==0){
+                if(segment[2] == NULL){
+                    char* argv[4] = {mkname,"01",_PROGRAM_DIRECTORY,NULL};
+                    execve(mkname, argv,env);
+                    printf("Failed due to unexpected error! Code = -2\n");
+
+                }
+                else if(strcmp(segment[2],"-a")==0 || strcmp(segment[2],"-a\n")==0){
+                    if(segment[3]==NULL){
+                        char* argv[4] = {mkname,"11",_PROGRAM_DIRECTORY,NULL};
+                        execve(mkname, argv,env);
+                        printf("Failed due to unexpected error! Code = -3\n");
+                    }
+                    else{
+                        char* ccat = concatString(_PROGRAM_DIRECTORY, echoMessage(segment,3,' '));
+                        char* argv[4]  = {mkname, "11",ccat,NULL};
+                        execve(mkname,argv,env);
+                        printf("Failed due to unexpected error! Code = -4\n");
+                    }
+                }
+                else{
+                    char* ccat = concatString(_PROGRAM_DIRECTORY, echoMessage(segment,2,' '));
+                    char* argv[4]  = {mkname, "01",ccat,NULL};
+                    execve(mkname,argv,env);
+                    printf("Failed due to unexpected error! Code = -5\n");
+                }
+            }
+            else if(strcmp(segment[1],"-a")==0 || strcmp(segment[1],"-a\n")==0){
+                if(segment[2] == NULL){
+                    char* argv[4] = {mkname,"10",_PROGRAM_DIRECTORY,NULL};
+                    execve(mkname, argv,env);
+                    printf("Failed due to unexpected error! Code = -6\n");
+
+                }
+                else if(strcmp(segment[2],"-m")==0 || strcmp(segment[2],"-m\n")==0){
+                    if(segment[3]==NULL){
+                        char* argv[4] = {mkname,"11",_PROGRAM_DIRECTORY,NULL};
+                        execve(mkname, argv,env);
+                        printf("Failed due to unexpected error! Code = -7\n");
+                    }else{
+                        char* ccat = concatString(_PROGRAM_DIRECTORY, echoMessage(segment,3,' '));
+                        char* argv[4]  = {mkname, "11",ccat,NULL};
+                        execve(mkname,argv,env);
+                        printf("Failed due to unexpected error! Code = -8\n");
+                    }
+                }
+                else{
+                    char* ccat = concatString(_PROGRAM_DIRECTORY, echoMessage(segment,2,' '));
+                    char* argv[4]  = {mkname, "10",ccat,NULL};
+                    execve(mkname,argv,env);
+                    printf("Failed due to unexpected error! Code = -9\n");
+                }
+            }
+            else{
+                char* ccat = concatString(_PROGRAM_DIRECTORY, echoMessage(segment,1,' '));
+                char* argv[4]  = {mkname, "00",ccat,NULL};
+                execve(mkname,argv,env);
+                printf("Failed due to unexpected error! Code = -10\n");
+            }
+        }
+        else{
+            int status;
+            wait(&status);
+            if(status!=0){printf("Failed due to unexpected error! Code = %d\n",status);}
+        }
+
+}
 void shell_loop(){
     while(1) {
         char * x = getPWD();
@@ -338,6 +421,7 @@ void shell_loop(){
         else if(strcmp(s0,"echo")==0){ echo(segment);}
         else if(strcmp(s0,"mkdir")==0){mkdir1(segment);}
         else if(strcmp(s0,"date")==0){date(segment);}
+        else if(strcmp(s0,"ls")==0){ls(segment);}
         else{printf("Segment[0] is %s!\n",segment[0]);printf("Command Not Found!\n");}
         free(s0);
 
