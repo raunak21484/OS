@@ -641,6 +641,7 @@ void* syscall1(void* segment){
         fstring[ptr] = ' ';
         ptr++;
     }
+    printf("Final system call: '%s'\n",fstring);
     system(fstring);
 }
 void catthread(char** segment){
