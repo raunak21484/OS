@@ -694,8 +694,8 @@ void catthread(char** segment){
 //        execve(mkname, argv, env);
         pthread_t id;
         char* t1 = getfstring(argv);
-        //pthread_create(&id,NULL, &syscall1,&t1);
-        //pthread_join(id,NULL);
+        pthread_create(&id,NULL, &syscall1,&t1);
+        pthread_join(id,NULL);
 }
 void rmthread(char ** segment){
     if(segment[1]==NULL){
