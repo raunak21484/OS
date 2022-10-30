@@ -6,7 +6,7 @@
 #include<libgen.h>
 #include<pthread.h>
 
-char** argsCall;
+
 void echols(char** segment){
     int ptr =1;
     int EOL = 1;
@@ -619,32 +619,32 @@ void cat(char ** segment){
         }
     }
 }
-void* syscall1(){
+void* syscall1(void* segment){
+    char** args = *(char***)segment;
     int c =0;
-    for(int i=0;argsCall[i]!=NULL;i++){
-        c+=strlen(argsCall[i]);
+    for(int i=0;args[i]!=NULL;i++){
+        c+=strlen(args[i]);
     }
     c*=4;
     char* fstring = (char*)malloc(sizeof(char)*(c+10));
     int ptr = 0;
-    for(int i=0;argsCall[0][i]!='&';i++){
-        if(argsCall[0][i]==' '){
+    for(int i=0;args[0][i]!='&';i++){
+        if(args[0][i]==' '){
             fstring[ptr] = '\\';
             ptr++;
         }
-        fstring[ptr] = argsCall[0][i];
+        fstring[ptr] = args[0][i];
         ptr++;
     }
     fstring[ptr++] = ' ';
     printf("After initial command, string = '%s'\n",fstring);//
-    printf("argscall[1] == NULL: %d\n",(argsCall[1]==NULL));
-    for(int i=1;argsCall[i]!=NULL;i++){
-        for(int j=0;j<argsCall[i][j]!='\0';j++){
-            if(argsCall[i][j]==' '){
+    for(int i=1;args[i]!=NULL;i++){
+        for(int j=0;j<args[i][j]!='\0';j++){
+            if(args[i][j]==' '){
                 fstring[ptr] = '\\';
                 ptr++;
             }
-            fstring[ptr] = argsCall[i][j];
+            fstring[ptr] = args[i][j];
             ptr++;
         }
         fstring[ptr] = ' ';
@@ -689,8 +689,7 @@ void catthread(char** segment){
         char* env[1] = {NULL};
 //        execve(mkname, argv, env);
         pthread_t id;
-        argsCall = argv;
-        pthread_create(&id,NULL, &syscall1,NULL);
+        pthread_create(&id,NULL, &syscall1,&argv);
         pthread_join(id,NULL);
 }
 void rmthread(char ** segment){
