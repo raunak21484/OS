@@ -620,7 +620,7 @@ void cat(char ** segment){
     }
 }
 void* syscall(void* segment){
-    char** args = *(char**)segment;
+    char** args = *(char***)segment;
     int c =0;
     for(int i=0;args[i]!=NULL;i++){
         c+=strlen(args[i]);
