@@ -57,13 +57,13 @@ int main(int argc, char* argv[]){//mkname, flags(T,N), pwd, list of all names, N
             char* t2 = slashTreatment(tempstr);
             char * strfinal = concatString(argv[2],t2);
             printf("Final String: '%s'\n",strfinal);
-            fptr = (char)fopen(strfinal,"r");
+            fptr = fopen(strfinal,"r");
             if(fptr==NULL){
                 printf("Unable to open file!\n");
             }
             int lc =0;
             do{
-                bufch = fgets(fptr);
+                bufch = (char)fgets(fptr);
                 if(bufch == '\n'){
                     lc++;
                     if(argv[1][1]=='1'){
