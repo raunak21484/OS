@@ -14,7 +14,7 @@ int main(int argc, char* argv[]){
     struct tm currtime =(*localtime(&time1));
     char* bigarrayM[13] = {"January","February","March","April","May","June","July","August","September","October","November","December",NULL};
     char* smallarrayM[13] = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec",NULL};
-    char* bigArrayD[8] = {"Sund ay","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday",NULL};
+    char* bigArrayD[8] = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday",NULL};
     char* smallArrayD[8] = {"Sun","Mon","Tue","Wed","Thur","Fri","Sat",NULL};
     if(strcmp(argv[1],"default")==0){
         //printf("ONE\n");
