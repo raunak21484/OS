@@ -66,7 +66,7 @@ int main(int argc, char* argv[]){//mkname, flags(T,N), pwd, list of all names, N
             }
         }
         if(tflag ==1){
-            argv[i+1] = concatString(argv[i],argv[i+1]);
+            argv[i+1] = concatString(argv[i],concatString(" ",argv[i+1]));
         }else{
             tempstr = argv[i];
         }
