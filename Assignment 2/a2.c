@@ -491,10 +491,12 @@ void cat(char ** segment){
         argv[0] = mkname;
         argv[1] = flags;
         argv[2] = concatString(getPWD(),"/");
+        int ptr = 3;
         for(int i=flags[1]+flags[0]-2*'0'+1;segment[i]!=NULL;i++){
-            argv[3+i]= segment[i];
+            argv[ptr]= segment[i];
+            ptr++;
         }
-        argv[c+3] = NULL;
+        argv[ptr] = NULL;
         char* env[1] = {NULL};
         execve(mkname, argv, env);
         printf("Unknown error!\n");
