@@ -355,7 +355,7 @@ void ls(char ** segment){
                     }
                 }
                 else{
-                    char * ccat1 = concatString(_PROGRAM_DIRECTORY,"/")''
+                    char * ccat1 = concatString(_PROGRAM_DIRECTORY,"/");
                     char* ccat = concatString(ccat1, echoMessage(segment,2,' '));
                     char* argv[4]  = {mkname, "01",ccat,NULL};
                     execve(mkname,argv,env);
