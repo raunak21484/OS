@@ -742,12 +742,12 @@ void rmthread(char ** segment){
         //execve(mkname,argv,env);
     pthread_t id;
     char* t1 = getfstring(argv);
-    int status;
+    int *status;
     wait(&status);
 
     pthread_create(&id,NULL, &syscall1,&t1);
     pthread_join(id,(void**) &status);
-    if(status!=0){
+    if((*status)!=0){
         if(force==1){
             return;
         }else{
