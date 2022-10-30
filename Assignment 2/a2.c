@@ -464,7 +464,7 @@ void cat(char ** segment){
     if(segment[1]==NULL){
         printf("Please Enter a file name!\n");
     }
-    char * flags = "00";//T,N
+    char flags[2] = "00";//T,N
     if(strcmp(segment[1],"-T")==0 ||strcmp(segment[1],"-T\n")==0 || (segment[2]!=NULL && (strcmp(segment[2],"-T")==0 ||strcmp(segment[2],"-T\n")==0))){
         flags[0] ='1';
     }
