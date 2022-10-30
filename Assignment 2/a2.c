@@ -884,7 +884,7 @@ void datethread(char ** segment){
             pthread_create(&id,NULL, &syscall1,&t1);
             pthread_join(id,(void**) &status);
         }
-        if(status!=0){
+        if((*status)!=0){
         char * temp = echoMessage(segment,0,'|');
         printf("seg: %s\n",temp);
         printf("Failed due to unexpected error2!\n");}
