@@ -57,7 +57,7 @@ int main(int argc, char* argv[]){//mkname, flags(T,N), pwd, list of all names, N
             char* t2 = slashTreatment(tempstr);
             char * strfinal = concatString(argv[2],t2);
             printf("Final String: '%s'\n",strfinal);
-            fptr = fopen(strfinal,"r");
+            fptr = (char)fopen(strfinal,"r");
             if(fptr==NULL){
                 printf("Unable to open file!\n");
             }
