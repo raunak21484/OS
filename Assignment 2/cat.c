@@ -84,16 +84,17 @@ int main(int argc, char* argv[]){//mkname, flags(T,N), pwd, list of all names, N
             }
             int lc =0;
             while((bufch = fgetc(fptr))!=EOF){
+
+                if(bufch!='\t' || argv[1][0]=='0'){
+                    printf("%c",bufch);}
+                else{
+                    printf("^I");
+                }
                 if(bufch == '\n'){
                     lc++;
                     if(argv[1][1]=='1'){
                         printf("%6d\t",lc);
                     }
-                }
-                if(bufch!='\t' || argv[1][0]=='0'){
-                    printf("%c",bufch);}
-                else{
-                    printf("^I");
                 }
             }
 
