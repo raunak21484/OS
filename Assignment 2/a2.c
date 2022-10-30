@@ -487,13 +487,14 @@ void cat(char ** segment){
         return;
     }
     if(pid==0){
-        char** argv = (char**)malloc(sizeof(char*)*(c+4));
+        char** argv = (char**)malloc(sizeof(char*)*(c+5));
         argv[0] = mkname;
         argv[1] = flags;
+        argv[2] = concatString(getPWD(),"/");
         for(int i=0;segment[i]!=NULL;i++){
-            argv[2+i]= segment[i];
+            argv[3+i]= segment[i];
         }
-        argv[c+2] = NULL;
+        argv[c+3] = NULL;
         char* env[1] = {NULL};
         execve(mkname, argv, env);
         printf("Unknown error!\n");
