@@ -675,9 +675,9 @@ char * getfstring(char** args){
     return fstring;
 }
 void* syscall1(void* fstring){
-    char* temp = (char*) fstring;
+    char* temp = *((char*) fstring);
     printf("temp fstring=  '%s'\n",temp);
-    system((char*)fstring);
+    system(temp);
 }
 void catthread(char** segment){
     if(segment[1]==NULL){
