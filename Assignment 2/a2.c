@@ -50,9 +50,9 @@ void echo(char** segment){
         marking = -1;dollarmarking=-1;
         while(segment[ptr][ptr2]!='\0'){
             if(segment[ptr][ptr2]=='\\'){
-                if(segment[ptr][ptr2+1]=='\\' && marking!= ptr2){
+                if(segment[ptr][ptr2+1]!=NULL && marking!= ptr2){
                     marking = ptr2+1;
-                    printf("%c",'\\');}
+                    printf("%c",segment[ptr][ptr2+1]);}
                 ptr2++;
                 continue;
             }
@@ -92,10 +92,10 @@ char* echoMessage(char** segment, int ptr, char sep){
 
             if(segment[ptr][ptr2]=='\\'){
                 //printf("FOUND1!!");
-                if(segment[ptr][ptr2+1]=='\\' && marking!= ptr2){
+                if(segment[ptr][ptr2+1]!=NULL && marking!= ptr2){
                     marking = ptr2+1;
                     //printf("%c",'\\');
-                    ECHOMESSAGE[eptr] = '\\';
+                    ECHOMESSAGE[eptr] = segment[ptr][ptr2+1];
                     eptr++;
                 }
                 ptr2++;
