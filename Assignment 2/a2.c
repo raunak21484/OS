@@ -447,25 +447,25 @@ void ls(char ** segment){
         if(fid==0){
             char* env[1] = {NULL};
             if(segment[1]==NULL){
-                char * argv[4] = {mkname,"00",_PROGRAM_DIRECTORY,NULL};
+                char * argv[4] = {mkname,"00",getPWD(),NULL};
                 execve(mkname,argv,env);
                 printf("Failed due to unexpected error! Code = -1\n");
             }
             else if(strcmp(segment[1],"-m")==0 || strcmp(segment[1],"-m\n")==0){
                 if(segment[2] == NULL){
-                    char* argv[4] = {mkname,"01",_PROGRAM_DIRECTORY,NULL};
+                    char* argv[4] = {mkname,"01",getPWD(),NULL};
                     execve(mkname, argv,env);
                     printf("Failed due to unexpected error! Code = -2\n");
 
                 }
                 else if(strcmp(segment[2],"-a")==0 || strcmp(segment[2],"-a\n")==0){
                     if(segment[3]==NULL){
-                        char* argv[4] = {mkname,"11",_PROGRAM_DIRECTORY,NULL};
+                        char* argv[4] = {mkname,"11",getPWD(),NULL};
                         execve(mkname, argv,env);
                         printf("Failed due to unexpected error! Code = -3\n");
                     }
                     else{
-                        char * ccat1 = concatString(_PROGRAM_DIRECTORY,"/");
+                        char * ccat1 = concatString(getPWD(),"/");
                         char* ccat = concatString(ccat1, echoMessage(segment,3,' '));
                         char* argv[4]  = {mkname, "11",ccat,NULL};
                         execve(mkname,argv,env);
@@ -473,7 +473,7 @@ void ls(char ** segment){
                     }
                 }
                 else{
-                    char * ccat1 = concatString(_PROGRAM_DIRECTORY,"/");
+                    char * ccat1 = concatString(getPWD(),"/");
                     char* ccat = concatString(ccat1, echoMessage(segment,2,' '));
                     char* argv[4]  = {mkname, "01",ccat,NULL};
                     execve(mkname,argv,env);
@@ -482,18 +482,18 @@ void ls(char ** segment){
             }
             else if(strcmp(segment[1],"-a")==0 || strcmp(segment[1],"-a\n")==0){
                 if(segment[2] == NULL){
-                    char* argv[4] = {mkname,"10",_PROGRAM_DIRECTORY,NULL};
+                    char* argv[4] = {mkname,"10",getPWD(),NULL};
                     execve(mkname, argv,env);
                     printf("Failed due to unexpected error! Code = -6\n");
 
                 }
                 else if(strcmp(segment[2],"-m")==0 || strcmp(segment[2],"-m\n")==0){
                     if(segment[3]==NULL){
-                        char* argv[4] = {mkname,"11",_PROGRAM_DIRECTORY,NULL};
+                        char* argv[4] = {mkname,"11",getPWD(),NULL};
                         execve(mkname, argv,env);
                         printf("Failed due to unexpected error! Code = -7\n");
                     }else{
-                        char * ccat1 = concatString(_PROGRAM_DIRECTORY,"/");
+                        char * ccat1 = concatString(getPWD(),"/");
                         char* ccat = concatString(ccat1, echoMessage(segment,3,' '));
                         char* argv[4]  = {mkname, "11",ccat,NULL};
                         execve(mkname,argv,env);
@@ -501,7 +501,7 @@ void ls(char ** segment){
                     }
                 }
                 else{
-                    char * ccat1 = concatString(_PROGRAM_DIRECTORY,"/");
+                    char * ccat1 = concatString(getPWD(),"/");
                     char* ccat = concatString(ccat1, echoMessage(segment,2,' '));
                     char* argv[4]  = {mkname, "10",ccat,NULL};
                     execve(mkname,argv,env);
@@ -509,7 +509,7 @@ void ls(char ** segment){
                 }
             }
             else{
-                char * ccat1 = concatString(_PROGRAM_DIRECTORY,"/");
+                char * ccat1 = concatString(getPWD(),"/");
                 char* ccat = concatString(ccat1, echoMessage(segment,1,' '));
                 char* argv[4]  = {mkname, "00",ccat,NULL};
                 execve(mkname,argv,env);
