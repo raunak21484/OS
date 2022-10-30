@@ -13,18 +13,22 @@ int main(int argc, char* argv[]){//path, "XX"->"-a and -m flag", "total path", N
     struct dirent *filetemp, *filetemp2;
     int dispdot = (argv[1][0]-'0');
     int sepcomma = argv[1][1] - '0';
+    int i=0;
     if(directory!=NULL){
         filetemp = readdir(directory);
         filetemp2 = readdir(directory);
         while(filetemp!=NULL){
+            i++;
             if(filetemp->d_name[0]=='.'){
                 if(dispdot){
-                printf("\033[0;33m%s\033[0m",filetemp->d_name);
+                if(i%2){printf("\033[0;33m%s\033[0m",filetemp->d_name);}
+                else{printf("\033[0;32mm%s\033[0m",filetemp->d_name);}
                 if(sepcomma&& filetemp2!=NULL){printf(",");}
                 printf(" ");
                 }
             }else{
-                    printf("\033[0;33m%s\033[0m",filetemp->d_name);
+                if(i%2){printf("\033[0;33m%s\033[0m",filetemp->d_name);}
+                else{printf("\033[0;32mm%s\033[0m",filetemp->d_name);}
                     if(sepcomma&& filetemp2!=NULL){printf(",");}
                     printf(" ");
             }
