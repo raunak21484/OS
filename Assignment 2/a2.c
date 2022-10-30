@@ -653,6 +653,19 @@ char * getfstring(char** args){
             if(i==2){
                 printf("%c",args[i][j]);
             }
+        }
+        if(i==2){printf("\n\n");}
+    }
+
+
+
+
+    for(int i=1;args[i]!=NULL;i++){
+        if(i==2){printf("Here is arg[2]: ");}
+        for(int j=0;j<args[i][j]!='\0';j++){
+            if(i==2){
+                printf("%c",args[i][j]);
+            }
 //            if(args[i][j]==' '){
 //                fstring[ptr] = '\\';
 //                ptr++;
