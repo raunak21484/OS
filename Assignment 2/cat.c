@@ -95,6 +95,7 @@ int main(int argc, char* argv[]){//mkname, flags(T,N), pwd, list of all names, N
             }
 
             fclose(fptr);
+            tempstr = NULL;
         }
     }
     return 0;
