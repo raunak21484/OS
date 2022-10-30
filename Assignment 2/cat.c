@@ -62,7 +62,7 @@ int main(int argc, char* argv[]){//mkname, flags(T,N), pwd, list of all names, N
                 printf("Unable to open file!\n");
             }
             int lc =0;
-            while((bufch = fgets(fptr))!=EOF){
+            while((bufch = fgetc(fptr))!=EOF){
                 if(bufch == '\n'){
                     lc++;
                     if(argv[1][1]=='1'){
