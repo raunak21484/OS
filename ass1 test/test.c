@@ -25,7 +25,7 @@ char * concatString(char * string1, char * string2){
 }
 int main()
 {
-    int test = '1'-'0';
+    int test = '3'-'0';
     printf("%d",test);
     return 0;
 }
