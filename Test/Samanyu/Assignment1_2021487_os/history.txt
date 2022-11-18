@@ -1,0 +1,28 @@
+cd assignment
+ls
+cd
+pwd -i
+exit
+exit
+mkdir samls
+cd sam
+mkdir sam1ls
+mkdir
+pwd -\
+pwd -am
+pwd -d
+history
+mkdir samls
+history
+mkdir samcd sam
+ls
+mkdir homemkdir /exit
+cd Desktop
+exit
+echo hi
+mkdir lksmkdir yuols
+echo hi'\t' y
+echo hi $'\t' o
+ls
+ls -vls -cd Desktop
+cd ..
