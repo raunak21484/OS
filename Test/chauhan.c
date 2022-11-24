@@ -24,8 +24,8 @@ void fcaller1(){
     else if (pid1 > 0){
         int waitid1 = waitpid(pid1,0,0);
         int E1=clock_gettime(CLOCK_REALTIME,&e1);
-        double ans=(e1.tv_sec-s1.tv_sec+e1.tv_nsec-s1.tv_nsec);
-        ans/=(double)1e9;
+        double ans=(e1.tv_sec-s1.tv_sec+(e1.tv_nsec-s1.tv_nsec)/(double)1e9);
+        ;
         printf("----------RunTime for first thread: %lfs----------\n",(ans));
     }
 }
@@ -44,7 +44,7 @@ void fcaller2(){
     else if(pid2 > 0){
         int waitid1 = waitpid(pid2,0,0);
         int E1=clock_gettime(CLOCK_REALTIME,&e1);
-        double ans=(e1.tv_sec-s1.tv_sec+e1.tv_nsec-s1.tv_nsec);
+        double ans=(e1.tv_sec-s1.tv_sec+(e1.tv_nsec-s1.tv_nsec)/(double)1e9);
         ans/=(double)1e9;
         printf("----------RunTime for second thread: %lfs----------\n",(ans));
     }
@@ -64,7 +64,7 @@ void fcaller3(){
     else if(pid3 > 0){
         int waitid1 = waitpid(pid3,0,0);
         int E1=clock_gettime(CLOCK_REALTIME,&e1);
-        double ans=(e1.tv_sec-s1.tv_sec+e1.tv_nsec-s1.tv_nsec);
+        double ans=(e1.tv_sec-s1.tv_sec+(e1.tv_nsec-s1.tv_nsec)/(double)1e9);
         ans/=(double)1e9;
         printf("----------RunTime for third thread: %lfs----------\n",(ans));
     }
