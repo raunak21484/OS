@@ -26,16 +26,16 @@ int main(){
     int S3 = clock_gettime(CLOCK_REALTIME, &s3);
     pid[0] =  fork(); pid[1] = fork(); pid[2] = fork();
     if(!pid[0]){
-        sched_setscheduler(pid1,SCHED_OTHER,p1);
+        sched_setscheduler(pid[0],SCHED_OTHER,p1);
         execlp("/bin/bash","sh","bash1.sh",NULL);
     }
     
     else if(!pid[1]){
-        sched_setscheduler(pid2,SCHED_RR,p2);
+        sched_setscheduler(pid[1],SCHED_RR,p2);
         execlp("/bin/bash","sh","bash2.sh",NULL);
     }
     else if(!pid[2]){
-        sched_setscheduler(pid3,SCHED_FIFO,p3);
+        sched_setscheduler(pid[2],SCHED_FIFO,p3);
         execlp("/bin/bash","sh","bash3.sh",NULL);
     }
     double fans1,fans2,fans3;
