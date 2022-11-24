@@ -40,7 +40,7 @@ int main(){
     }
     double fans1,fans2,fans3;
     for(int i =0; i<3; i++){
-        pid_t pz = wait(NULL);
+        pid_t pz = waitpid(pz,NULL);
         printf("Released!\n");
         if(pz == pid1){
             int E1=clock_gettime(CLOCK_REALTIME,&e1);
