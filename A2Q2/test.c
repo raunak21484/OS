@@ -17,7 +17,7 @@ float matrix2[4][5];
         printf("\n");
     }
     printf("Now calling syscall!\n");
-    int answer  = syscall(SYS_kern_2D_memcpy,matrix1,matrix2,4);
+    int answer  = syscall(SYS_kern_2D_memcpy,matrix1,matrix2);
     if(answer<0){
         printf("Error!");
         exit(1);
