@@ -102,7 +102,7 @@ int main(){
             wait(NULL);
         }
     }else{
-        waitpid(NULL);
+        wait(NULL);
     }
 
 }
