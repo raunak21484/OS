@@ -59,7 +59,7 @@ int main(){
         else if(pz == pid3){
             int E3=clock_gettime(CLOCK_REALTIME,&e3);
             double ans3=e1.tv_sec-s1.tv_sec+e1.tv_nsec-s1.tv_nsec;
-            printf("RunTime for first thread: %lfs\n",(ans3));
+            printf("RunTime for third thread: %lfs\n",(ans3));
             fans3 = ans3;
         }
     }
