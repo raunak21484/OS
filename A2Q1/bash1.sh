@@ -1,7 +1,7 @@
-rm -r -f KernelBuild
-mkdir KernelBuild
-cp linux-5.19.9.tar.xz KernelBuild/linux-5.19.9.tar.xz
-cd KernelBuild
+rm -r -f KernelBuild1
+mkdir KernelBuild1
+cp linux-5.19.9.tar.xz KernelBuild1/linux-5.19.9.tar.xz
+cd KernelBuild1
 tar -xvf linux-5.19.9.tar.xz
 cd linux-5.19.9
 make mrproper

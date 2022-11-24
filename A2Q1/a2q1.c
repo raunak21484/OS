@@ -10,7 +10,7 @@
 
 
 
-void fcaller1(FILE *file){
+void fcaller1(){
     struct timespec s1,e1;
     int S1 = clock_gettime(CLOCK_REALTIME, &s1);
     pid_t pid1 = fork();
@@ -26,12 +26,14 @@ void fcaller1(FILE *file){
         int E1=clock_gettime(CLOCK_REALTIME,&e1);
         double ans=(e1.tv_sec-s1.tv_sec+(e1.tv_nsec-s1.tv_nsec)/(double)1e9);
         ;
+        FILE *outputfile=fopen("Outputfile.txt","a");
         printf("----------RunTime for first thread: %lfs----------\n",(ans));
-        fprintf(file,"%lf\n",ans);
+        fprintf(outputfile,"1: %lf\n",ans);
+        fclose(outputfile);
     }
 }
 
-void fcaller2(FILE *file){
+void fcaller2(){
     struct timespec s1,e1;
     int S1 = clock_gettime(CLOCK_REALTIME, &s1);
     pid_t pid2 = fork();
@@ -46,8 +48,10 @@ void fcaller2(FILE *file){
         int waitid1 = waitpid(pid2,0,0);
         int E1=clock_gettime(CLOCK_REALTIME,&e1);
         double ans=(e1.tv_sec-s1.tv_sec+(e1.tv_nsec-s1.tv_nsec)/(double)1e9);
+        FILE *outputfile=fopen("Outputfile.txt","a");
         printf("----------RunTime for second thread: %lfs----------\n",(ans));
         fprintf(file,"%lf\n",ans);
+        fclose(outputfile);
     }
 }
 
@@ -66,16 +70,17 @@ void fcaller3(FILE *file){
         int waitid1 = waitpid(pid3,0,0);
         int E1=clock_gettime(CLOCK_REALTIME,&e1);
         double ans=(e1.tv_sec-s1.tv_sec+(e1.tv_nsec-s1.tv_nsec)/(double)1e9);
+        FILE *outputfile=fopen("Outputfile.txt","a");
         printf("----------RunTime for third thread: %lfs----------\n",(ans));
         fprintf(file,"%lf\n",ans);
+        fclose(outputfile);
     }
 }
 
 
 int main(){
     pid_t pid1, pid2, pid3;
-    FILE *outputfile;
-    outputfile=fopen("Outputfile.txt","a");
+    
     pid1 = fork();
     if(pid1<0){
         printf("Error pid1!\n");
@@ -106,5 +111,4 @@ int main(){
     }else{
         wait(NULL);
     }
-    fclose(outputfile);
 }
