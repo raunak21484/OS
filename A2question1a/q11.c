@@ -22,9 +22,9 @@ void* countA(){
     }
     struct timespec ta1;
     clock_gettime(CLOCK_REALTIME,&ta1);
-    long long ans = ta1.tv_sec-ta2.tv_sec;
-    ans +=(ta1.tv_nsec-ta2.tv_nsec)/1e9;
-    fprintf(file,"countA =%f\n",ans);
+    double ans = ta1.tv_sec-ta2.tv_sec;
+    ans +=(ta1.tv_nsec-ta2.tv_nsec)/(double)1e9;
+    fprintf(file,"countA =%lf\n",ans);
     return NULL;
 }
 
@@ -39,9 +39,9 @@ void* countB(){
         c++;
     }
     clock_gettime(CLOCK_REALTIME,&tb1);
-    long long ans = tb1.tv_sec-tb2.tv_sec;
+    double ans = tb1.tv_sec-tb2.tv_sec;
     ans +=(tb1.tv_nsec-tb2.tv_nsec)/1e9;
-    fprintf(file,"countB =%f\n",ans);
+    fprintf(file,"countB =%lf\n",ans);
     return NULL;
 }
 
@@ -55,10 +55,10 @@ void* countC(){
     for(long long i=0;i<__UINT32_MAX__;i++){
         c++;
     }
-    long long ans = tc1.tv_sec-tc2.tv_sec;
+    double ans = tc1.tv_sec-tc2.tv_sec;
     ans +=(tc1.tv_nsec-tc2.tv_nsec)/1e9;
     clock_gettime(CLOCK_REALTIME,&tc1);
-    fprintf(file,"countC =%f\n",ans);
+    fprintf(file,"countC =%lf\n",ans);
     return NULL;
 }
 
