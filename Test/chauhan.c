@@ -96,13 +96,13 @@ int main(){
             if(pid3==0){
                 fcaller3();
             }else{
-                waitpid(pid3,0,0);
+                wait(NULL);
             }
         }else{
-            waitpid(pid2,0,0);
+            wait(NULL);
         }
     }else{
-        waitpid(pid1,0,0);
+        waitpid(NULL);
     }
 
 }
