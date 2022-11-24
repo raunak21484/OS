@@ -24,7 +24,7 @@ void* countA(){
     clock_gettime(CLOCK_REALTIME,&ta1);
     long long ans = ta1.tv_sec-ta2.tv_sec;
     ans +=(ta1.tv_nsec-ta2.tv_nsec)/1e9;
-    fprintf(file,"countA =%f\n",(ta1.tv_sec-ta2.tv_sec)+(ta1.tv_nsec-ta2.tv_nsec)/1e9);
+    fprintf(file,"countA =%f\n",ans);
     return NULL;
 }
 
@@ -41,7 +41,7 @@ void* countB(){
     clock_gettime(CLOCK_REALTIME,&tb1);
     long long ans = tb1.tv_sec-tb2.tv_sec;
     ans +=(tb1.tv_nsec-tb2.tv_nsec)/1e9;
-    fprintf(file,"countB =%f\n",tb1.tv_sec-tb2.tv_sec+(tb1.tv_nsec-tb2.tv_nsec)/1e9);
+    fprintf(file,"countB =%f\n",ans);
     return NULL;
 }
 
@@ -58,7 +58,7 @@ void* countC(){
     long long ans = tc1.tv_sec-tc2.tv_sec;
     ans +=(tc1.tv_nsec-tc2.tv_nsec)/1e9;
     clock_gettime(CLOCK_REALTIME,&tc1);
-    fprintf(file,"countC =%f\n");
+    fprintf(file,"countC =%f\n",ans);
     return NULL;
 }
 
