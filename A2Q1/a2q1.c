@@ -34,7 +34,7 @@ void func1(){
 
 void func2(){
     struct timespec timespecs[2];
-    int S1 = clock_gettime(CLOCK_REALTIME, &(timespecs[0])));
+    int S1 = clock_gettime(CLOCK_REALTIME, &(timespecs[0]));
     pid_t pid2 = fork();
     struct sched_param schedparam2;
     schedparam2.sched_priority=1;
