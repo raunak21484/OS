@@ -44,7 +44,7 @@ int main(){
         printf("Released!\n");
         if(pz == pid1){
             int E1=clock_gettime(CLOCK_REALTIME,&e1);
-            double ans1=e1.tv_sec-s1.tv_sec+e1.tv_nsec-s1.tv_nsec;
+            double ans1=(e1.tv_sec-s1.tv_sec+e1.tv_nsec-s1.tv_nsec)/(1e9);
             //FILE *fp = fopen("readings.txt");
             fans1 = ans1;
             printf("RunTime for first thread: %lfs\n",(ans1));
@@ -52,13 +52,13 @@ int main(){
         }
         else if(pz == pid2){
             int E2=clock_gettime(CLOCK_REALTIME,&e2);
-            double ans2=e1.tv_sec-s1.tv_sec+e1.tv_nsec-s1.tv_nsec;
+            double ans2=(e1.tv_sec-s1.tv_sec+e1.tv_nsec-s1.tv_nsec)/(1e9);
             printf("RunTime for second thread: %lfs\n",(ans2));
             fans2 = ans2;
         }
         else if(pz == pid3){
             int E3=clock_gettime(CLOCK_REALTIME,&e3);
-            double ans3=e1.tv_sec-s1.tv_sec+e1.tv_nsec-s1.tv_nsec;
+            double ans3=(e1.tv_sec-s1.tv_sec+e1.tv_nsec-s1.tv_nsec)/(1e9);
             printf("RunTime for third thread: %lfs\n",(ans3));
             fans3 = ans3;
         }
