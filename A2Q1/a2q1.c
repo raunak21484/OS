@@ -50,7 +50,7 @@ void fcaller2(){
         double ans=(e1.tv_sec-s1.tv_sec+(e1.tv_nsec-s1.tv_nsec)/(double)1e9);
         FILE *outputfile=fopen("Outputfile.txt","a");
         printf("----------RunTime for second thread: %lfs----------\n",(ans));
-        fprintf(file,"%lf\n",ans);
+        fprintf(outputfile,"%lf\n",ans);
         fclose(outputfile);
     }
 }
@@ -72,7 +72,7 @@ void fcaller3(FILE *file){
         double ans=(e1.tv_sec-s1.tv_sec+(e1.tv_nsec-s1.tv_nsec)/(double)1e9);
         FILE *outputfile=fopen("Outputfile.txt","a");
         printf("----------RunTime for third thread: %lfs----------\n",(ans));
-        fprintf(file,"%lf\n",ans);
+        fprintf(outputfile,"%lf\n",ans);
         fclose(outputfile);
     }
 }
