@@ -13,7 +13,7 @@
 void fcaller1(){
     struct timespec s1,e1;
     int S1 = clock_gettime(CLOCK_REALTIME, &s1);
-    int pid1 = fork();
+    pid_t pid1 = fork();
     struct sched_param schedp1;
     schedp1.sched_priority=0;
     sched_setscheduler(pid1,SCHED_OTHER,&schedp1);
@@ -33,7 +33,7 @@ void fcaller1(){
 void fcaller2(){
     struct timespec s1,e1;
     int S1 = clock_gettime(CLOCK_REALTIME, &s1);
-    int pid2 = fork();
+    pid_t pid2 = fork();
     struct sched_param schedp2;
     schedp2.sched_priority=1;
     sched_setscheduler(pid2, SCHED_FIFO, &schedp2);
@@ -53,7 +53,7 @@ void fcaller2(){
 void fcaller3(){
     struct timespec s1,e1;
     int S1 = clock_gettime(CLOCK_REALTIME, &s1);
-    int pid3 = fork();
+    pid_t pid3 = fork();
     struct sched_param schedp3;
     schedp3.sched_priority=0;
     sched_setscheduler(pid3,SCHED_RR,&schedp3);
