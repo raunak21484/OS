@@ -10,7 +10,7 @@
 
 
 int main(){
-    pid_t pid1,pid2,pid3;
+    pid_t pid[3];
     struct timespec s1,s2,s3,e1,e2,e3;
      struct sched_param* p1 = (struct sched_param*)malloc(sizeof(struct sched_param));
     if(p1!=NULL) p1->sched_priority=0;
@@ -24,23 +24,23 @@ int main(){
     int S1 = clock_gettime(CLOCK_REALTIME, &s1);
     int S2 = clock_gettime(CLOCK_REALTIME, &s2);
     int S3 = clock_gettime(CLOCK_REALTIME, &s3);
-    pid1 =  fork(); pid2 = fork(); pid3 = fork();
-    if(!pid1){
+    pid[0] =  fork(); pid[1] = fork(); pid[2] = fork();
+    if(!pid[0]){
         sched_setscheduler(pid1,SCHED_OTHER,p1);
         execlp("/bin/bash","sh","bash1.sh",NULL);
     }
     
-    else if(!pid2){
+    else if(!pid[1]){
         sched_setscheduler(pid2,SCHED_RR,p2);
         execlp("/bin/bash","sh","bash2.sh",NULL);
     }
-    else if(!pid3){
+    else if(!pid[2]){
         sched_setscheduler(pid3,SCHED_FIFO,p3);
         execlp("/bin/bash","sh","bash3.sh",NULL);
     }
     double fans1,fans2,fans3;
     for(int i =0; i<3; i++){
-        pid_t pz = waitpid(pz,NULL);
+        pid_t pz = waitpid(pid[i],NULL,0);
         printf("Released!\n");
         if(pz == pid1){
             int E1=clock_gettime(CLOCK_REALTIME,&e1);
