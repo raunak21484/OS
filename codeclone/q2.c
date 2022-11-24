@@ -10,7 +10,7 @@
 
 
 int main(){
-    pid_t p1,p2,p3;
+    pid_t pid1,pid2,pid3;
     struct timespec s1,s2,s3,e1,e2,e3;
      struct sched_param* p1 = (struct sched_param*)malloc(sizeof(struct sched_param));
     if(p1!=NULL) p1->sched_priority=0;
