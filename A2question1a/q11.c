@@ -11,7 +11,7 @@ FILE* file;
 
 void* countA(){
     struct  timespec ta2;
-    struct sched_param *sp(struct sched_param*)malloc(sizeof(struct sched_param));
+    struct sched_param *sp=(struct sched_param*)malloc(sizeof(struct sched_param));
     sp->sched_priority=p[0];
     pthread_setschedparam(pthread_self(),SCHED_OTHER,sp);
     clock_gettime(CLOCK_REALTIME,&ta2);
@@ -30,8 +30,7 @@ void* countA(){
 
 void* countB(){
     struct  timespec tb1,tb2;
-    struct sched_param *sp;
-    sp=(struct sched_param*)malloc(sizeof(struct sched_param));
+    struct sched_param *sp=(struct sched_param*)malloc(sizeof(struct sched_param));
     sp->sched_priority=p[1];
     pthread_setschedparam(pthread_self(),SCHED_RR,sp);
     clock_gettime(CLOCK_REALTIME,&tb2);
@@ -48,8 +47,7 @@ void* countB(){
 
 void* countC(){
     struct  timespec tc1,tc2;
-    struct sched_param *sp;
-    sp=(struct sched_param*)malloc(sizeof(struct sched_param));
+    struct sched_param *sp=(struct sched_param*)malloc(sizeof(struct sched_param));
     sp->sched_priority=p[2];
     pthread_setschedparam(pthread_self(),SCHED_FIFO,sp);
     clock_gettime(CLOCK_REALTIME,&tc2);
