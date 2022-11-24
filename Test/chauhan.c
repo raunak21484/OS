@@ -18,7 +18,7 @@ void fcaller1(){
     schedp1.sched_priority=0;
     sched_setscheduler(pid1,SCHED_OTHER,&schedp1);
     if (pid1 == 0){
-        execlp("/bin/bash","sh","bash1.sh",NULL);
+        execlp("/bin/sh","sh","bash1.sh",NULL);
         // sleep(10);
     }
     else if (pid1 > 0){
@@ -38,7 +38,7 @@ void fcaller2(){
     schedp2.sched_priority=1;
     sched_setscheduler(pid2, SCHED_FIFO, &schedp2);
     if (pid2 == 0){
-        execlp("/bin/bash","sh","bash2.sh",NULL);
+        execlp("/bin/sh","sh","bash2.sh",NULL);
         // sleep(10);
     }
     else if(pid2 > 0){
@@ -58,7 +58,7 @@ void fcaller3(){
     schedp3.sched_priority=0;
     sched_setscheduler(pid3,SCHED_RR,&schedp3);
     if (pid3 == 0){
-        execlp("/bin/bash","sh","bash3.sh",NULL);
+        execlp("/bin/sh","sh","bash3.sh",NULL);
         // sleep(10);
     }
     else if(pid3 > 0){
