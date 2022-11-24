@@ -22,7 +22,7 @@ void fcaller1(){
         // sleep(10);
     }
     else if (pid1 > 0){
-        int waitid1 = wait(NULL);
+        int waitid1 = waitpid(pid1,0,0);
         int E1=clock_gettime(CLOCK_REALTIME,&e1);
         double ans=(e1.tv_sec-s1.tv_sec+e1.tv_nsec-s1.tv_nsec);
         ans/=(double)1e9;
@@ -42,7 +42,7 @@ void fcaller2(){
         // sleep(10);
     }
     else if(pid2 > 0){
-        int waitid1 = wait(NULL);
+        int waitid1 = waitpid(pid2,0,0);
         int E1=clock_gettime(CLOCK_REALTIME,&e1);
         double ans=(e1.tv_sec-s1.tv_sec+e1.tv_nsec-s1.tv_nsec);
         ans/=(double)1e9;
@@ -62,7 +62,7 @@ void fcaller3(){
         // sleep(10);
     }
     else if(pid3 > 0){
-        int waitid1 = wait(NULL);
+        int waitid1 = waipid(pid3,0,0);
         int E1=clock_gettime(CLOCK_REALTIME,&e1);
         double ans=(e1.tv_sec-s1.tv_sec+e1.tv_nsec-s1.tv_nsec);
         ans/=(double)1e9;
