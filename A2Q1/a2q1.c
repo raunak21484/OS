@@ -55,7 +55,7 @@ void fcaller2(){
     }
 }
 
-void fcaller3(FILE *file){
+void fcaller3(){
     struct timespec s1,e1;
     int S1 = clock_gettime(CLOCK_REALTIME, &s1);
     pid_t pid3 = fork();
