@@ -14,62 +14,64 @@ void func1(){
     struct timespec timespecs[2];
     int S1 = clock_gettime(CLOCK_REALTIME, &(timespecs[0]));
     pid_t pid1 = fork();
-    struct sched_param schedp1;
-    schedp1.sched_priority=0;
-    sched_setscheduler(pid1,SCHED_OTHER,&schedp1);
+    struct sched_param schedparam1;
+    schedparam1.sched_priority=0;
+    int waitid1;
+    sched_setscheduler(pid1,SCHED_OTHER,&schedparam1);
     if (pid1 == 0){
         execlp("/bin/sh","sh","bash1.sh",NULL);
     }
     else if (pid1 > 0){
-        int waitid1 = waitpid(pid1,0,0);
+        waitid1 = waitpid(pid1,0,0);
         int E1=clock_gettime(CLOCK_REALTIME,&(timespecs[1]));
-        double ans=(e1.tv_sec-s1.tv_sec+(e1.tv_nsec-s1.tv_nsec)/(double)1e9);
-        ;
+        double ans=(timespecs[1].tv_sec-timespecs[0].tv_sec);
+        ans+=(timespecs[1].tv_nsec-timespecs[0].tv_nsec)/(double)1e9;
         FILE *outputfile=fopen("Outputfile.txt","a");
-        printf("----------RunTime for first thread: %lfs----------\n",(ans));
         fprintf(outputfile,"1: %lf\n",ans);
         fclose(outputfile);
     }
 }
 
 void func2(){
-    struct timespec s1,e1;
-    int S1 = clock_gettime(CLOCK_REALTIME, &s1);
+    struct timespec timespecs[2];
+    int S1 = clock_gettime(CLOCK_REALTIME, &(timespecs[0])));
     pid_t pid2 = fork();
-    struct sched_param schedp2;
-    schedp2.sched_priority=1;
-    sched_setscheduler(pid2, SCHED_FIFO, &schedp2);
+    struct sched_param schedparam2;
+    schedparam2.sched_priority=1;
+    int waitid2;
+    sched_setscheduler(pid2, SCHED_FIFO, &schedparam2);
     if (pid2 == 0){
         execlp("/bin/sh","sh","bash2.sh",NULL);
     }
     else if(pid2 > 0){
-        int waitid1 = waitpid(pid2,0,0);
-        int E1=clock_gettime(CLOCK_REALTIME,&e1);
-        double ans=(e1.tv_sec-s1.tv_sec+(e1.tv_nsec-s1.tv_nsec)/(double)1e9);
+        waitid2 = waitpid(pid2,0,0);
+        int E1=clock_gettime(CLOCK_REALTIME,&(timespecs[1]));
+        double ans=(timespecs[1].tv_sec-timespecs[0].tv_sec);
+        ans+=(timespecs[1].tv_nsec-timespecs[0].tv_nsec)/(double)1e9;
         FILE *outputfile=fopen("Outputfile.txt","a");
-        printf("----------RunTime for second thread: %lfs----------\n",(ans));
-        fprintf(outputfile,"%lf\n",ans);
+        fprintf(outputfile,"2: %lf\n",ans);
         fclose(outputfile);
     }
 }
 
 void func3(){
-    struct timespec s1,e1;
-    int S1 = clock_gettime(CLOCK_REALTIME, &s1);
+    struct timespec timespecs[2];
+    int S1 = clock_gettime(CLOCK_REALTIME, &(timespecs[0]));
     pid_t pid3 = fork();
-    struct sched_param schedp3;
-    schedp3.sched_priority=0;
-    sched_setscheduler(pid3,SCHED_RR,&schedp3);
+    struct sched_param schedparam3;
+    schedparam3.sched_priority=0;
+    int waitid3;
+    sched_setscheduler(pid3,SCHED_RR,&schedparam3);
     if (pid3 == 0){
         execlp("/bin/sh","sh","bash3.sh",NULL);
     }
     else if(pid3 > 0){
-        int waitid1 = waitpid(pid3,0,0);
-        int E1=clock_gettime(CLOCK_REALTIME,&e1);
-        double ans=(e1.tv_sec-s1.tv_sec+(e1.tv_nsec-s1.tv_nsec)/(double)1e9);
+        waitid3 = waitpid(pid3,0,0);
+        int E1=clock_gettime(CLOCK_REALTIME,&(timespecs[1]));
+        double ans=(timespecs[1].tv_sec-timespecs[0].tv_sec);
+        ans+=(timespecs[1].tv_nsec-timespecs[0].tv_nsec)/(double)1e9;
         FILE *outputfile=fopen("Outputfile.txt","a");
-        printf("----------RunTime for third thread: %lfs----------\n",(ans));
-        fprintf(outputfile,"%lf\n",ans);
+        fprintf(outputfile,"3: %lf\n",ans);
         fclose(outputfile);
     }
 }
