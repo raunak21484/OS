@@ -58,7 +58,7 @@ void* countC(){
     long long ans = tc1.tv_sec-tc2.tv_sec;
     ans +=(tc1.tv_nsec-tc2.tv_nsec)/1e9;
     clock_gettime(CLOCK_REALTIME,&tc1);
-    fprintf(file,"countC =%f\n",);
+    fprintf(file,"countC =%f\n");
     return NULL;
 }
 
@@ -69,7 +69,7 @@ int main(){
     p[0] = 0;
     p[1] = 1;
     p[2] = 1;
-    file = fopen("output.txt");
+    file = fopen("output.txt","w");
         pthread_create(&A,NULL,&countA,NULL);
         pthread_create(&B,NULL,&countB,NULL);
         pthread_create(&C,NULL,&countC,NULL);
