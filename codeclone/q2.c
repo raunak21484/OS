@@ -47,7 +47,7 @@ int main(){
             double ans1=e1.tv_sec-s1.tv_sec+e1.tv_nsec-s1.tv_nsec;
             //FILE *fp = fopen("readings.txt");
             fans1 = ans1;
-            printf(fp,"RunTime for first thread: %lfs\n",(ans1));
+            printf("RunTime for first thread: %lfs\n",(ans1));
             
         }
         else if(pz == pid2){
