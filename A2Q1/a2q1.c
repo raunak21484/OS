@@ -87,21 +87,21 @@ int main(){
         return 1;
     }
     if(pid1==0){
-        fcaller1(outputfile);
+        fcaller1();
         pid2 = fork();
         if(pid2<0){
             printf("Error pid2!\n");
             return 1;
         }
         if(pid2 ==0){
-            fcaller2(outputfile);
+            fcaller2();
             pid3 = fork();
             if(pid3<0){
                 printf("Error pid3!\n");
                 return 1;
             }
             if(pid3==0){
-                fcaller3(outputfile);
+                fcaller3();
             }else{
                 wait(NULL);
             }
