@@ -10,20 +10,19 @@
 
 
 
-void fcaller1(){
-    struct timespec s1,e1;
-    int S1 = clock_gettime(CLOCK_REALTIME, &s1);
+void func1(){
+    struct timespec timespecs[2];
+    int S1 = clock_gettime(CLOCK_REALTIME, &(timespecs[0]));
     pid_t pid1 = fork();
     struct sched_param schedp1;
     schedp1.sched_priority=0;
     sched_setscheduler(pid1,SCHED_OTHER,&schedp1);
     if (pid1 == 0){
         execlp("/bin/sh","sh","bash1.sh",NULL);
-        // sleep(10);
     }
     else if (pid1 > 0){
         int waitid1 = waitpid(pid1,0,0);
-        int E1=clock_gettime(CLOCK_REALTIME,&e1);
+        int E1=clock_gettime(CLOCK_REALTIME,&(timespecs[1]));
         double ans=(e1.tv_sec-s1.tv_sec+(e1.tv_nsec-s1.tv_nsec)/(double)1e9);
         ;
         FILE *outputfile=fopen("Outputfile.txt","a");
@@ -33,7 +32,7 @@ void fcaller1(){
     }
 }
 
-void fcaller2(){
+void func2(){
     struct timespec s1,e1;
     int S1 = clock_gettime(CLOCK_REALTIME, &s1);
     pid_t pid2 = fork();
@@ -42,7 +41,6 @@ void fcaller2(){
     sched_setscheduler(pid2, SCHED_FIFO, &schedp2);
     if (pid2 == 0){
         execlp("/bin/sh","sh","bash2.sh",NULL);
-        // sleep(10);
     }
     else if(pid2 > 0){
         int waitid1 = waitpid(pid2,0,0);
@@ -55,7 +53,7 @@ void fcaller2(){
     }
 }
 
-void fcaller3(){
+void func3(){
     struct timespec s1,e1;
     int S1 = clock_gettime(CLOCK_REALTIME, &s1);
     pid_t pid3 = fork();
@@ -64,7 +62,6 @@ void fcaller3(){
     sched_setscheduler(pid3,SCHED_RR,&schedp3);
     if (pid3 == 0){
         execlp("/bin/sh","sh","bash3.sh",NULL);
-        // sleep(10);
     }
     else if(pid3 > 0){
         int waitid1 = waitpid(pid3,0,0);
